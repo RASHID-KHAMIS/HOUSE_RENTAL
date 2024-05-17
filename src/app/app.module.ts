@@ -21,6 +21,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RoleComponent } from './pages/role/role.component';
+import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +37,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutUsComponent,
     HouseListingComponent,
     ContactUsComponent,
-    DashboardComponent
+    DashboardComponent,
+    RoleComponent,
+    AdminDashboardComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +58,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatSortModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    HttpClientModule,
+    FormsModule
   
   ],
   providers: [],

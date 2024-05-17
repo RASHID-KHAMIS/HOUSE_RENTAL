@@ -5,6 +5,7 @@ import { AboutUsComponent } from './layout/about-us/about-us.component';
 import { HouseListingComponent } from './layout/house-listing/house-listing.component';
 import { ContactUsComponent } from './layout/contact-us/contact-us.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
 {
@@ -25,7 +26,13 @@ const routes: Routes = [
 },
 {
   path:'admin',
-  component:DashboardComponent
+  component:AdminDashboardComponent,
+  children:[
+    {
+      path:'',
+      component:DashboardComponent
+    }
+]
 },
 ];
 
