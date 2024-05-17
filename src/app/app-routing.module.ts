@@ -4,6 +4,7 @@ import { IndexComponent } from './layout/index/index.component';
 import { AboutUsComponent } from './layout/about-us/about-us.component';
 import { HouseListingComponent } from './layout/house-listing/house-listing.component';
 import { ContactUsComponent } from './layout/contact-us/contact-us.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
 {
@@ -21,7 +22,11 @@ const routes: Routes = [
 {
   path:'contact-us',
   component:ContactUsComponent
-}
+},
+{
+  path:'admin',
+  component:DashboardComponent
+},
 ];
 
 @NgModule({
