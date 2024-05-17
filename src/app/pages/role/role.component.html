@@ -1,1 +1,165 @@
-<p>role works!</p>
+<div class="ts-main-content">
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2 class="page-title">Create Brand</h2>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Create Brand</div>
+                                <div class="panel-body">
+                                
+
+
+                                                
+            <app-card>
+
+                <div class="card-action">
+                    <button mat-raised-button color="primary" (click)="openDialog()">
+                         <i class="fa fa-plus" aria-hidden="true"></i>
+                          Register Doctor</button>
+                </div><br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                  </mat-form-field>
+                  
+                  <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort>
+                  
+                      <!-- ID Column -->
+                      <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                      </ng-container>
+                  
+                      <!-- Progress Column -->
+                      <ng-container matColumnDef="progress">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+                        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+                      </ng-container>
+                  
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                      </ng-container>
+                  
+                      <!-- Fruit Column -->
+                      <ng-container matColumnDef="fruit">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
+                        <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+                      </ng-container>
+                  
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  
+                      <!-- Row shown when there is no matching data. -->
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                      </tr>
+                    </table>
+                  
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                  </div>
+            </app-card>
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #distributionDialog>
+    <app-card title="Add Doctor">
+        <hr>
+        <form >
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Name" >
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" >
+                    </mat-form-field>
+                </div>
+
+
+            </div>
+<!-- 
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <input matInput placeholder="address" formControlName="address">
+                    </mat-form-field>
+                </div>
+
+            </div> -->
+<!-- 
+            <div class="row">
+
+                <div class="col-md-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Qualifications</mat-label>
+                        <input matInput placeholder="qualifications" formControlName="qualifications">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>licenseNumber</mat-label>
+                        <input matInput placeholder="license Number" formControlName="licenseNumber">
+                    </mat-form-field>
+                </div>
+
+            </div> -->
+
+            <!-- <div class="row">
+
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Specialization</mat-label>
+                        <mat-select formControlName="specialization">
+                            <mat-option *ngFor="let food of foods" [value]="food.value">{{food.value}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+            </div> -->
+
+        </form><br><br>
+
+        <div class="card-bottom">
+            <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
+            <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+        </div>
+
+    </app-card>
+</ng-template>
+
+<!-- Loading Scripts -->

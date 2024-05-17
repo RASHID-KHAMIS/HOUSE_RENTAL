@@ -28,6 +28,8 @@ import { RoleComponent } from './pages/role/role.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { CardComponent } from './layout/card/card.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     RoleComponent,
     AdminDashboardComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   
   ],
   providers: [],
