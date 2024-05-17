@@ -1064,7 +1064,7 @@ nav.navbar {
 	3.1. Banner
 -------------------------------*/
 .banner-section {
-  background-image: url("../images/ZHC-3.jpeg");
+  background-image: url("../images/ZHC-2.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2259,7 +2259,7 @@ form .slider.slider-horizontal {
 ==============================================*/
 
 .page-header {
-  background-image: url("../images/listing-page-header-img.jpg");
+  background-image: url("../images/ZHC-5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 0 none;
@@ -2961,7 +2961,7 @@ table.info-tabel tr td {
 	12. About-Us-Page
 ================================*/
 .aboutus_page {
-	background-image:url(../images/aboutus-page-header-img.jpg);
+	background-image:url("../images/ZHC-5.jpg");
 }
 .about_img {
   background: #000 none repeat scroll 0 0;
