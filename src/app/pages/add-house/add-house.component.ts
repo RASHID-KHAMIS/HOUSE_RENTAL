@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddHouseService } from 'src/app/services/add-house.service';
+import { PriceInformationService } from 'src/app/services/price-information.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,9 +13,11 @@ import Swal from 'sweetalert2';
 export class AddHouseComponent implements OnInit{
 
   houseForm!:FormGroup;
+  rentingForm!:FormGroup;
   constructor(private router:Router,
     private route:ActivatedRoute,
-    private addHouseService:AddHouseService
+    private addHouseService:AddHouseService,
+    private priceInformationService:PriceInformationService
   ){}
   ngOnInit(): void {
    this.configureForm()
@@ -33,15 +36,27 @@ export class AddHouseComponent implements OnInit{
       longitude: new FormControl(null),
       status: new FormControl(1),
       color: new FormControl(null),
-      otherDetails: new FormControl(null)
-    })
+      otherDetails: new FormControl(null),
+      renting_price : new FormControl(null,Validators.required)
+    });
+  
   }
 
   onSave(){
     const values = this.houseForm.value;
     // console.log(values);
     this.addHouseService.addHouse(values).subscribe((resp:any)=>{
-      this.alert()
+ 
+      const price = {
+        "house": resp,
+        "renting_price": this.houseForm.get("renting_price")?.value
+      }
+
+      this.priceInformationService.addPriceInfo(price).subscribe((resp:any)=>{
+        this.alert();
+      })
+
+
     })
     
   }
