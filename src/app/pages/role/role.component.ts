@@ -1,5 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -62,6 +63,7 @@ export class RoleComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  roleForm!:FormGroup;
   constructor(private router:Router,
     private route:ActivatedRoute,
     private dialog:MatDialog
@@ -79,7 +81,7 @@ export class RoleComponent implements OnInit{
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
-
+    this.configureForm()
   }
 
   applyFilter(event: Event) {
@@ -93,7 +95,7 @@ export class RoleComponent implements OnInit{
 
   openDialog() {
     let dialogRef = this.dialog.open(this.distributionDialog, {
-      width: '750px',
+      width: '550px',
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -104,6 +106,19 @@ export class RoleComponent implements OnInit{
         }
       }
     })
+  }
+
+  configureForm(){
+    this.roleForm = new FormGroup({
+      roleName: new FormControl(null,Validators.required),
+     roleStatus: new FormControl(1),
+    })
+  }
+
+  onSave(){
+    const values = this.roleForm.value;
+    console.log(values);
+    
   }
 
 }

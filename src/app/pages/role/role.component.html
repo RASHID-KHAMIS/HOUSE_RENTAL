@@ -9,7 +9,7 @@
                     <h2 class="page-title">Create Brand</h2>
 
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="panel panel-default">
                                 <div class="panel-heading">List of Role</div>
                                 <div class="panel-body">
@@ -26,7 +26,7 @@
                                             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
                                         </mat-form-field>
 
-                                        <div class="mat-elevation-z8">
+
                                             <table mat-table [dataSource]="dataSource" matSort>
 
                                                 <!-- ID Column -->
@@ -66,34 +66,26 @@
 
                                             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
                                                 aria-label="Select page of users"></mat-paginator>
-                                        </div>
+                                 
                                     </app-card>
 
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">ADD Role</div>
                                 <div class="panel-body">
 
                                     <app-card>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label for="">Role Name</label>
-                                                <input type="text" class="form-control" placeholder="Role Name">
-                                                <br>
-                                                <button class="bn btn-primary btn-lg">SAVE</button>
-                                            </div>
-                                        </div>
+                                 
+                                        <button mat mat-raised-button color ="primary">SAVE</button>
                                     </app-card>
 
                                 </div>
                             </div>
-                        </div>
-               
-
+                        </div> -->
                     </div>
 
                 </div>
@@ -104,64 +96,22 @@
 
 
 <ng-template #distributionDialog>
-    <app-card title="Add Doctor">
+    <app-card title="Add Role">
         <hr>
-        <form>
-
-            <!-- 
+        <form [formGroup]="roleForm">
             <div class="row">
-
-
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <mat-form-field style="width: 100%;" appearance="outline">
-                        <mat-label>Phone</mat-label>
-                        <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+                        <mat-label>Role Name</mat-label>
+                        <input matInput placeholder="Role Name" formControlName="roleName">
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field style="width: 100%;" appearance="outline">
-                        <mat-label>Address</mat-label>
-                        <input matInput placeholder="address" formControlName="address">
-                    </mat-form-field>
-                </div>
-
-            </div> -->
-            <!-- 
-            <div class="row">
-
-                <div class="col-md-6">
-                    <mat-form-field style="width: 100%;" appearance="outline">
-                        <mat-label>Qualifications</mat-label>
-                        <input matInput placeholder="qualifications" formControlName="qualifications">
-                    </mat-form-field>
-                </div>
-
-                <div class="col-md-6">
-                    <mat-form-field style="width: 100%;" appearance="outline">
-                        <mat-label>licenseNumber</mat-label>
-                        <input matInput placeholder="license Number" formControlName="licenseNumber">
-                    </mat-form-field>
-                </div>
-
-            </div> -->
-
-            <!-- <div class="row">
-
-                <div class="col-md-6">
-                    <mat-form-field appearance="outline" style="width: 100%;">
-                        <mat-label>Specialization</mat-label>
-                        <mat-select formControlName="specialization">
-                            <mat-option *ngFor="let food of foods" [value]="food.value">{{food.value}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </div>
-            </div> -->
-
+            </div>
         </form><br><br>
 
         <div class="card-bottom">
             <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
-            <button mat-raised-button color="primary" matDialogClose="yes">Add</button>
+            <button mat-raised-button color="primary" matDialogClose="yes" (click)="onSave()">Add</button>
         </div>
 
     </app-card>
