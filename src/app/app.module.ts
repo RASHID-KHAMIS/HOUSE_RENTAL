@@ -31,6 +31,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { CardComponent } from './layout/card/card.component';
 import {MatCardModule} from '@angular/material/card';
 import { AddHouseComponent } from './pages/add-house/add-house.component';
+import { HouseListsComponent } from './pages/house-lists/house-lists.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AddHouseComponent } from './pages/add-house/add-house.component';
     NavbarComponent,
     SidebarComponent,
     CardComponent,
-    AddHouseComponent
+    AddHouseComponent,
+    HouseListsComponent
   ],
   imports: [
     BrowserModule,
