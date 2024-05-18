@@ -17,4 +17,8 @@ export class RoleService {
   addRole(body:any){
     return this.http.post(this.roleAPI + "save",body)
   }
+
+  editRole(id:any,body:any){
+    return this.http.put(this.roleAPI + "update" + "/" + id,body)
+  }
 }

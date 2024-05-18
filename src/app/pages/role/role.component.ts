@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class RoleComponent implements OnInit{
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
   displayedColumns: string[] = ['id', 'name', 'status', 'action'];
   dataSource!: MatTableDataSource<any>;
 
@@ -23,6 +24,7 @@ export class RoleComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
   roleForm!:FormGroup;
+  roleEditForm!:FormGroup;
   constructor(private router:Router,
     private route:ActivatedRoute,
     private dialog:MatDialog,
@@ -36,6 +38,7 @@ export class RoleComponent implements OnInit{
   ngOnInit(): void {
     this.configureForm();
     this.fetchAllRole();
+    this.configureEditForm();
   }
 
   applyFilter(event: Event) {
@@ -70,12 +73,42 @@ export class RoleComponent implements OnInit{
     })
   }
 
+  openDialog2(row:any) {
+    this.roleEditForm = new FormGroup({
+      roleId: new FormControl(row.roleId),
+      roleName: new FormControl(row.roleName),
+     roleStatus: new FormControl(row.roleStatus),
+    })
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
+      width: '550px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+
   configureForm(){
     this.roleForm = new FormGroup({
       roleName: new FormControl(null,Validators.required),
      roleStatus: new FormControl(1),
     })
   }
+
+  configureEditForm(){
+    this.roleEditForm = new FormGroup({
+      roleId: new FormControl(null),
+      roleName: new FormControl(null,Validators.required),
+     roleStatus: new FormControl(1),
+    })
+  }
+
 
   onSave(){
     const values = this.roleForm.value;
@@ -85,6 +118,16 @@ export class RoleComponent implements OnInit{
       this.reload()
     })
     
+  }
+
+  onEdit(){
+    const id = this.roleEditForm.value.roleId;
+    const  values = this.roleEditForm.value;
+
+    this.roleService.editRole(id,values).subscribe((resp:any)=>{
+      this.alert2();
+      this.reload()
+    })
   }
 
   reload(){
@@ -108,6 +151,24 @@ export class RoleComponent implements OnInit{
     Toast.fire({
       icon: "success",
       title: "Role Added successfully"
+    });
+  }
+
+  alert2(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Role Edited successfully"
     });
   }
 
