@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddHouseService } from 'src/app/services/add-house.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-house',
@@ -11,7 +13,8 @@ export class AddHouseComponent implements OnInit{
 
   houseForm!:FormGroup;
   constructor(private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private addHouseService:AddHouseService
   ){}
   ngOnInit(): void {
    this.configureForm()
@@ -36,8 +39,36 @@ export class AddHouseComponent implements OnInit{
 
   onSave(){
     const values = this.houseForm.value;
-    console.log(values);
+    // console.log(values);
+    this.addHouseService.addHouse(values).subscribe((resp:any)=>{
+      this.alert()
+    })
     
   }
+
+  reload(){
+    this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['admin/role'])
+    })
+  }
+
+  alert(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "House Added successfully"
+    });
+  }
+
 
 }
