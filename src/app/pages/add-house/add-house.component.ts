@@ -2,8 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddHouseService } from 'src/app/services/add-house.service';
+import { HouseLocationService } from 'src/app/services/house-location.service';
 import { PriceInformationService } from 'src/app/services/price-information.service';
 import Swal from 'sweetalert2';
+
+interface Y {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-add-house',
@@ -14,10 +20,24 @@ export class AddHouseComponent implements OnInit{
 
   houseForm!:FormGroup;
   rentingForm!:FormGroup;
+
+  regions: Y[] = [
+    {value: 'MJINI MAGHARIBI', viewValue: 'MJINI MAGHARIBI'},
+    {value: 'KASKAZINI UNGUJA', viewValue: 'KASKAZINI UNGUJA'},
+    {value: 'KUSINI UNGUJA', viewValue: 'KUSINI UNGUJA'},
+  ];
+
+  districts: Y[] = [
+    {value: 'MJINI', viewValue: 'MJINI'},
+    {value: 'MAGHARIBI A', viewValue: 'MAGHARIBI A'},
+    {value: 'MAGHARIBI B', viewValue: 'MAGHARIBI B'},
+  ];
+  
   constructor(private router:Router,
     private route:ActivatedRoute,
     private addHouseService:AddHouseService,
-    private priceInformationService:PriceInformationService
+    private priceInformationService:PriceInformationService,
+    private houseLocationService:HouseLocationService
   ){}
   ngOnInit(): void {
    this.configureForm()
@@ -37,6 +57,8 @@ export class AddHouseComponent implements OnInit{
       status: new FormControl(1),
       color: new FormControl(null),
       otherDetails: new FormControl(null),
+      region: new FormControl(null),
+      district: new FormControl(null),
       renting_price : new FormControl(null,Validators.required)
     });
   
@@ -52,13 +74,28 @@ export class AddHouseComponent implements OnInit{
         "renting_price": this.houseForm.get("renting_price")?.value
       }
 
-      this.priceInformationService.addPriceInfo(price).subscribe((resp:any)=>{
+      this.priceInformationService.addPriceInfo(price).subscribe((resp:any)=>{});
+      
+      let region = this.houseForm.get("region")?.value;
+      let district = this.houseForm.get("district")?.value;
+      let other = this.houseForm.get("otherDetails")?.value;
+
+      const form1 = new FormData();
+      form1.append('imageFile', this.Selectfile1, this.Selectfile1.name);
+      this.houseLocationService.addHouseLocation(region,district,other,resp.house_id,form1).subscribe((output:any)=>{
         this.alert();
-      })
+      });
+
+
 
 
     })
     
+  }
+
+  Selectfile1: File = null!;
+  onImageUpload1(event:any) {
+    this.Selectfile1 = event.target.files[0];
   }
 
   reload(){
