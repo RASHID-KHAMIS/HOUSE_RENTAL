@@ -12,7 +12,6 @@ import { HouseLocationService } from 'src/app/services/house-location.service';
   styleUrls: ['./house-lists.component.css']
 })
 export class HouseListsComponent implements OnInit{
-  @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
   displayedColumns: string[] = ['id','tittle', 'type', 'size','address','region','status', 'action'];
   dataSource!: MatTableDataSource<any>;
 
@@ -43,7 +42,6 @@ export class HouseListsComponent implements OnInit{
 
   fetcAllHouseLocation(){
     this.houseLocationService.getAllHouseLocation().subscribe((resp:any)=>{
-      console.log(resp);
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort =this.sort;
@@ -51,19 +49,8 @@ export class HouseListsComponent implements OnInit{
     })
   }
 
-  openDialog(row:any) {
-    let dialogRef = this.dialog.open(this.distributionDialog, {
-      width: '850px',
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        if (result !== 'no') {
-          const enabled = "Y"
-
-        } else if (result === 'no') {
-        }
-      }
-    })
+  onOpen() {
+   this.router.navigateByUrl('admin/view-house')
   }
 
 

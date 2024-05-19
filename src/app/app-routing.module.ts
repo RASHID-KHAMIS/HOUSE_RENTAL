@@ -9,6 +9,7 @@ import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboar
 import { RoleComponent } from './pages/role/role.component';
 import { AddHouseComponent } from './pages/add-house/add-house.component';
 import { HouseListsComponent } from './pages/house-lists/house-lists.component';
+import { ViewHouseComponent } from './pages/view-house/view-house.component';
 
 const routes: Routes = [
 {
@@ -47,6 +48,11 @@ const routes: Routes = [
       path:'house-list',
       component:HouseListsComponent
     },
+    {
+      path:'view-house',
+      component:ViewHouseComponent
+    },
+    
     
 ]
 },

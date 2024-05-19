@@ -35,35 +35,36 @@ export class IndexComponent implements OnInit {
     this.loginService.getLogin(username, password).subscribe((resp: any) => {
       // console.log(resp.length);
 
-    
-        console.log('cccc');
 
-        sessionStorage.setItem('user_id', resp.user_id);
-        sessionStorage.setItem('username', resp.username);
-        sessionStorage.setItem('role', resp.userType);
+      console.log('cccc');
 
-        switch (resp.userType) {
-          case 'ADMINISTRATOR':
-          this.router.navigateByUrl('/admin').then(()=>{
+      sessionStorage.setItem('user_id', resp.user_id);
+      sessionStorage.setItem('username', resp.username);
+      sessionStorage.setItem('role', resp.userType);
+
+      switch (resp.userType) {
+        case 'ADMINISTRATOR':
+          this.router.navigateByUrl('/admin').then(() => {
             location.reload();
           })
           break;
 
-          case 'CUSTOMER':
-            this.router.navigateByUrl('/admin').then(()=>{
-              location.reload();
-            })
-            break
-            default:
-              this.router.navigateByUrl("") 
-        }
+        case 'CUSTOMER':
+          this.router.navigateByUrl('/admin').then(() => {
+            location.reload();
+          })
+          break
+        default:
+          this.router.navigateByUrl("")
+      }
     },
-    (error:HttpErrorResponse)=>{   Swal.fire({
-      title: "Error!",
-      text: "Incorrect username or password.",
-      icon: "error"
-    });
-    })
+      (error: HttpErrorResponse) => {
+        Swal.fire({
+          title: "Error!",
+          text: "Incorrect username or password.",
+          icon: "error"
+        });
+      })
 
 
   }

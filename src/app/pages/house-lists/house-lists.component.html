@@ -77,7 +77,7 @@
                                             <ng-container matColumnDef="action">
                                                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                                                 <td mat-cell *matCellDef="let row">
-                                                    <button mat-raised-button color="primary" (click)="openDialog(row)">View</button>
+                                                    <button mat-raised-button color="primary" (click)="onOpen()">View</button>
                                                 </td>
                                             </ng-container>
 
@@ -108,35 +108,3 @@
     </div>
 </div>
 
-<ng-template #distributionDialog>
-    <app-card title="House Description">
-        <hr>
-        <form>
-            <div class="row">
-                <div class="col-md-8">
-                  <table>
-                    <tbody>
-                        <tr>
-                            <dt>Title:kkk</dt>
-                            <dt>Type:kkk</dt>
-                            <dt>Region:kkk</dt>
-                            <dt>District:kkk</dt>
-                            <dt>Description:kkk</dt>
-                            <dt>Other Details:kkk</dt>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-md-4">
-                    <h1>hfiujfkjfs</h1>
-                </div>
-            </div>
-        </form><br><br>
-
-        <div class="card-bottom">
-            <button mat-raised-button matDialogClose="yes">Cancel</button> &nbsp;
-            <!-- <button mat-raised-button color="primary" matDialogClose="yes">Add</button> -->
-        </div>
-
-    </app-card>
-</ng-template>
