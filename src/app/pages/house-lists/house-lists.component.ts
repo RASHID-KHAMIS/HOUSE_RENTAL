@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,7 +26,8 @@ export class HouseListsComponent implements OnInit{
 
   constructor(private router:Router,
     private route:ActivatedRoute,
-    private houseLocationService:HouseLocationService){}
+    private houseLocationService:HouseLocationService,
+    private dialog:MatDialog){}
   ngOnInit(): void {
     this.fetcAllHouseLocation();
   }
@@ -48,5 +50,21 @@ export class HouseListsComponent implements OnInit{
       
     })
   }
+
+  openDialog(row:any) {
+    let dialogRef = this.dialog.open(this.distributionDialog, {
+      width: '850px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
 
 }
