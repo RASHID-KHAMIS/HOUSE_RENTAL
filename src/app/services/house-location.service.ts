@@ -13,4 +13,8 @@ export class HouseLocationService {
   addHouseLocation(region:any,distict:any,other:any,house:any,body:any){
     return this.http.post(this.houseLocationAPI + "create/" + region + "/" + distict + "/" + other + "/" + house,body)
   }
+
+  getAllHouseLocation(){
+    return this.http.get(this.houseLocationAPI + "allHouseLocation")
+  }
 }
