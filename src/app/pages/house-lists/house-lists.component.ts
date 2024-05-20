@@ -50,8 +50,6 @@ export class HouseListsComponent implements OnInit{
   }
 
   onOpen(row:any) {
-    // console.log(row);
-    
    this.router.navigate(['admin/view-house'],{queryParams:{id:row.location_id}})
   }
 
