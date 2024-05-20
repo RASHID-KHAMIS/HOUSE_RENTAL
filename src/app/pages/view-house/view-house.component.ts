@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 
@@ -11,12 +12,11 @@ export class ViewHouseComponent implements OnInit{
 
   constructor(private router:Router,
     private route:ActivatedRoute,
-    private houseLocationService:HouseLocationService){}
+    private houseLocationService:HouseLocationService,
+    private sanitizer:DomSanitizer){}
   ngOnInit(): void {
     const house =this.route.snapshot.queryParamMap.get('id')
-    console.log(house);
     this.fetchByLocationID(house)
-    
   }
 
 

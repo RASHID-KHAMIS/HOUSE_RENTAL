@@ -33,6 +33,7 @@ import {MatCardModule} from '@angular/material/card';
 import { AddHouseComponent } from './pages/add-house/add-house.component';
 import { HouseListsComponent } from './pages/house-lists/house-lists.component';
 import { ViewHouseComponent } from './pages/view-house/view-house.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ViewHouseComponent } from './pages/view-house/view-house.component';
     CardComponent,
     AddHouseComponent,
     HouseListsComponent,
-    ViewHouseComponent
+    ViewHouseComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
