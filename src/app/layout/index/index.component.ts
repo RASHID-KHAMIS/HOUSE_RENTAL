@@ -32,11 +32,9 @@ export class IndexComponent implements OnInit {
   onLogin() {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
+    
     this.loginService.getLogin(username, password).subscribe((resp: any) => {
-      // console.log(resp.length);
-
-
-      console.log('cccc');
+      console.log(resp);
 
       sessionStorage.setItem('user_id', resp.user_id);
       sessionStorage.setItem('username', resp.username);
