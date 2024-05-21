@@ -16,15 +16,21 @@ export class ViewHouseComponent implements OnInit{
     private sanitizer:DomSanitizer){}
   ngOnInit(): void {
     const house =this.route.snapshot.queryParamMap.get('id')
-    this.fetchByLocationID(house)
+    this.fetchByLocationID(house);
+  
+ 
   }
 
 
   houses:any
+  imageSource1:any;
   fetchByLocationID(house:any){
     this.houseLocationService.getHouseInfoByLocationID(house).subscribe((resp:any)=>{
       console.log(resp);
       this.houses = resp;
+      this.imageSource1 = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${resp.imageUrl}`);
+      console.log(this.imageSource1);
+      
     })
   }
 
