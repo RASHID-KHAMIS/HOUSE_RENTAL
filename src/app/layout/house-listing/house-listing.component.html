@@ -76,7 +76,7 @@
             <p><span>5 Listings</span></p>
           </div>
         </div>
-        <div class="product-listing-m">
+        <div class="product-listing-m" *ngFor="let house of houses">
           <div class="product-listing-img">
             <a style="cursor: pointer;"
               >
@@ -84,16 +84,16 @@
             </a>
           </div>
           <div class="product-listing-content">
-            <h5><a style="cursor: pointer;">xxxxxxxxxx, xxxxxxxxxx</a></h5>
+            <h5><a style="cursor: pointer;">{{house.house_id.title}}</a></h5>
             <p class="list-price">House Price</p>
             <ul>
-              <li><i class="fa fa-user" aria-hidden="true"></i>Total room</li>
+              <li><i class="fa fa-user" aria-hidden="true"></i>{{house.house_id.bedrooms}}</li>
               <li>
-                <i class="fa fa-calendar" aria-hidden="true"></i>Colour or other behaviour
+                <i class="fa fa-calendar" aria-hidden="true"></i>{{house.house_id.color}}
               </li>
-              <li><i class="fa fa-car" aria-hidden="true"></i>House Type</li>
+              <li><i class="fa fa-home" aria-hidden="true"></i>{{house.house_id.type}}</li>
             </ul>
-            <p class="list-price">Location</p>
+            <p class="list-price">{{house.region_name + "," + house.district_name}}</p>
             <a style="cursor: pointer;" class="btn"
               >View Details
               <span class="angle_arrow"
