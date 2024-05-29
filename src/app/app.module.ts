@@ -34,6 +34,7 @@ import { AddHouseComponent } from './pages/add-house/add-house.component';
 import { HouseListsComponent } from './pages/house-lists/house-lists.component';
 import { ViewHouseComponent } from './pages/view-house/view-house.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { HeaderComponent } from './layout/header/header.component';
     AddHouseComponent,
     HouseListsComponent,
     ViewHouseComponent,
-    HeaderComponent
+    HeaderComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,

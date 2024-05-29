@@ -22,9 +22,13 @@ export class HouseListingComponent implements OnInit{
   }
 
   houses:any;
+  houseNumber:any;
   fetchHousePicture(){
     this.houseLocationService.getAllHouseLocation().subscribe((resp:any)=>{
       this.houses = resp;
+      this.houseNumber = resp.length;
+      console.log(this.houseNumber);
+      
     })
   }
 

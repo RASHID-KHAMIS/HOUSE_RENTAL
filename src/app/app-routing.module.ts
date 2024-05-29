@@ -10,6 +10,7 @@ import { RoleComponent } from './pages/role/role.component';
 import { AddHouseComponent } from './pages/add-house/add-house.component';
 import { HouseListsComponent } from './pages/house-lists/house-lists.component';
 import { ViewHouseComponent } from './pages/view-house/view-house.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 
 const routes: Routes = [
 {
@@ -51,6 +52,10 @@ const routes: Routes = [
     {
       path:'view-house',
       component:ViewHouseComponent
+    },
+    {
+      path:'customer',
+      component:CustomerComponent
     },
     
     
