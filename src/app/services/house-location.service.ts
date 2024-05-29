@@ -21,4 +21,8 @@ export class HouseLocationService {
   getHouseInfoByLocationID(id:any){
     return this.http.get(this.houseLocationAPI + "by-id/" + id)
   }
+
+  getRecentHouse(){
+    return this.http.get(this.houseLocationAPI + "getRecentHouses")
+  }
 }

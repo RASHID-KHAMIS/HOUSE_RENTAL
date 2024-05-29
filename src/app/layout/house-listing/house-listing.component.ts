@@ -18,7 +18,8 @@ export class HouseListingComponent implements OnInit{
     private sanitizer:DomSanitizer){}
   ngOnInit(): void {
     this.fetchHousePicture();
-    this.fetchAllPrice()
+    this.fetchAllPrice();
+    this.fetchRecentHouse();
   }
 
   houses:any;
@@ -26,9 +27,7 @@ export class HouseListingComponent implements OnInit{
   fetchHousePicture(){
     this.houseLocationService.getAllHouseLocation().subscribe((resp:any)=>{
       this.houses = resp;
-      this.houseNumber = resp.length;
-      console.log(this.houseNumber);
-      
+      this.houseNumber = resp.length;     
     })
   }
 
@@ -41,6 +40,15 @@ export class HouseListingComponent implements OnInit{
 
   displayImage(url:any){
     return `data:image/png;base64,` + url;
+  }
+
+  recentHouses:any;
+  fetchRecentHouse(){
+    this.houseLocationService.getRecentHouse().subscribe((response:any)=>{
+      console.log(response);
+      this.recentHouses =response;
+      
+    })
   }
 
   searchCar(){

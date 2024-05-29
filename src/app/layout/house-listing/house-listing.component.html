@@ -148,16 +148,24 @@
               <i class="fa fa-home" aria-hidden="true"></i> Recently Listed Houses
             </h5>
           </div>
-          <div class="recent_addedcars">
-            <ul>
+          <div class="recent_addedcars" *ngFor="let recent of recentHouses">
+            <ul >
               <li class="">
                 <div class="recent_post_img">
-                  <a style="cursor: pointer;"
-                    ><img src="../../../assets/images/ZHC-2.png" alt="image"></a>
+                  <a style="cursor: pointer;" >
+                    <img src="{{displayImage(recent.imageUrl)}}" alt="image"></a>
                 </div>
                 <div class="recent_post_title">
-                  <a style="cursor: pointer;">jina la nyumba , detail nyengine</a>
-                  <p class="widget_price">Bei ya nyumba</p>
+                  <a style="cursor: pointer;">{{recent.house_id.title}}</a>
+                  <p > {{recent.house_id.type}}</p>
+                  <p > Rooms : {{recent.house_id.bedrooms}}</p>
+                  <p class="widget_price"> Price :
+                    <span *ngFor="let price of priceInfo">
+                    <span *ngIf="price.house.house_id==recent.house_id.house_id">
+                      {{price.renting_price | number }} tzs
+                    </span>
+                  </span>
+                    </p>
                 </div>
               </li>
             </ul>
