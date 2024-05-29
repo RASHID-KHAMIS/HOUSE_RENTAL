@@ -80,12 +80,17 @@
           <div class="product-listing-img">
             <a style="cursor: pointer;"
               >
-              <img src="../../../assets/images/ZHC-6.JPG" class="img-responsive">
+              <img src="{{displayImage(house.imageUrl)}}" class="img-responsive">
             </a>
           </div>
           <div class="product-listing-content">
             <h5><a style="cursor: pointer;">{{house.house_id.title}}</a></h5>
-            <p class="list-price">House Price</p>
+            <p class="list-price"> <span *ngFor="let price of priceInfo">
+     
+              <span *ngIf="price.house.house_id==house.house_id.house_id">
+              {{price.renting_price | number }} tzs
+              </span>
+            </span></p>
             <ul>
               <li><i class="fa fa-user" aria-hidden="true"></i>{{house.house_id.bedrooms}}</li>
               <li>
