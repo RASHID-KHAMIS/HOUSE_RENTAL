@@ -21,4 +21,8 @@ export class RoleService {
   editRole(id:any,body:any){
     return this.http.put(this.roleAPI + "update" + "/" + id,body)
   }
+
+  getRoleByName(name:any){
+    return this.http.get(this.roleAPI + "roleByName/" + name)
+  }
 }
