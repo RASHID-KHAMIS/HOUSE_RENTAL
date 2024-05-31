@@ -27,7 +27,6 @@ export class HouseDetailsComponent implements OnInit{
   imageSource1:any;
   fetchHouseByLocationID(id:any){
     this.houseLocationService.getHouseInfoByLocationID(id).subscribe((resp:any)=>{
-      console.log(resp);
       this.houses = resp;
       this.imageSource1 = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${resp.imageUrl}`);
       
@@ -37,9 +36,7 @@ export class HouseDetailsComponent implements OnInit{
   priceInfo:any;
   fetchAllPrice(){
     this.priceService.getAllPrice().subscribe((resp:any)=>{
-      this.priceInfo = resp; 
-      console.log(this.priceInfo[0].renting_price);
-      
+      this.priceInfo = resp;    
     })
   }
 

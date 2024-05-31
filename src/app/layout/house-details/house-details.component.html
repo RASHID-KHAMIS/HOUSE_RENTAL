@@ -85,7 +85,6 @@
                         <span *ngIf="price.house.house_id == houses.house_id.house_id">
                             <p >{{price.renting_price}} /=</p>Per Day
                         </span>
-                     
                     </span>
                 </div>
             </div>
@@ -183,18 +182,23 @@
 
         <!--Similar-Cars-->
         <div class="similar_cars">
-            <h3>Similar Cars</h3>
+            <h3>Similar House</h3>
             <div class="row">
 
                 <div class="col-md-3 grid_listing">
                     <div class="product-listing-m gray-bg">
-                        <div class="product-listing-img"> <a href=""><img
-                                    src="../../../assets/admin/img/vehicleimages/1audiq8.jpg" class="img-responsive"
-                                    alt="image" /> </a>
+                        <div class="product-listing-img"> <a href="">
+                            <img [src]="imageSource1" class="img-responsive" alt="image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="">d ffgfd, fdggf</a></h5>
-                            <p class="list-price">656565</p>
+                            <h5><a href="">{{houses.house_id.title}}</a></h5>
+                            <p class="list-price">
+                                <span *ngFor="let price of priceInfo">
+                                    <span *ngIf="price.house.house_id == houses.house_id.house_id">
+                                        <p >{{price.renting_price}} /=</p>
+                                    </span>
+                                </span>
+                            </p>
 
                             <ul class="features_list">
 
