@@ -25,4 +25,8 @@ export class HouseLocationService {
   getRecentHouse(){
     return this.http.get(this.houseLocationAPI + "getRecentHouses")
   }
+
+  getHouseLocationWithLimit(num:any){
+    return this.http.get(this.houseLocationAPI + "last-eight-house/" + num)
+  }
 }

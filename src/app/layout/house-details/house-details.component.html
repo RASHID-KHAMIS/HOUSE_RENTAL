@@ -1,0 +1,280 @@
+<!--Header-->
+
+<header>
+    <app-header></app-header>
+
+    <!-- Navigation -->
+    <nav id="navigation_bar" class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse"
+                    class="navbar-toggle collapsed" type="button"> <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            </div>
+            <div class="header_wrap">
+                <div class="user_login">
+                    <ul>
+                        <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                Rashid
+                                <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Profile Settings</a></li>
+                                <li><a href="#">Update Password</a></li>
+                                <li><a href="#">My Booking</a></li>
+                                <li><a href="#">Sign Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header_search">
+                    <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                    <form action="#" method="post" id="header-search-form">
+                        <input type="text" placeholder="Search..." name="searchdata" class="form-control"
+                            required="true">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="nav navbar-nav">
+                    <li><a routerLink="">Home</a> </li>
+
+                    <li><a routerLink="/about-us">About Us</a></li>
+                    <li><a routerLink="/house-listing">House Listing</a>
+                    <li><a routerLink="/contact-us">Contact Us</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navigation end -->
+
+</header>
+<!-- /Header -->
+
+
+<section id="listing_img_slider">
+    <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+        <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+        <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+        <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+
+</section>
+<!--/Listing-Image-Slider-->
+
+
+<!--Listing-detail-->
+<section class="listing-detail" >
+    <div class="container">
+        <div class="listing_detail_head row">
+            <div class="col-md-9">
+                <h2 >{{houses.house_id.title}}</h2>
+            </div>
+            <div class="col-md-3">
+                <div class="price_info" >
+                    <span *ngFor="let price of priceInfo">
+                        <span *ngIf="price.house.house_id == houses.house_id.house_id">
+                            <p >{{price.renting_price}} /=</p>Per Day
+                        </span>
+                     
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="main_features">
+                    <ul>
+
+                        <li> <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <h5>{{houses.house_id.bedrooms}}</h5>
+                            <p>Rooms</p>
+                        </li>
+                        <li> <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <h5>{{houses.house_id.type}}</h5>
+                            <p>House Type</p>
+                        </li>
+
+                        <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            <h5>{{houses.house_id.bathrooms}}</h5>
+                            <p>Bathrooms</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listing_more_info">
+                    <div class="listing_detail_wrap">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs gray-bg" role="tablist">
+                            <li role="presentation" class="active"><a href="#vehicle-overview "
+                                    aria-controls="vehicle-overview" role="tab" data-toggle="tab">Vehicle Overview </a>
+                            </li>
+
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- vehicle-overview -->
+                            <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
+
+                                <p>{{houses.house_id.description}}</p>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!--Side-Bar-->
+            <aside class="col-md-3">
+
+                <div class="share_vehicle">
+                    <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="#"><i
+                                class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i
+                                class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a href="#"><i
+                                class="fa fa-google-plus-square" aria-hidden="true"></i></a> </p>
+                </div>
+                <div class="sidebar_widget">
+                    <div class="widget_heading">
+                        <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
+                    </div>
+                    <form method="post">
+                        <div class="form-group">
+                            <label>From Date:</label>
+                            <input type="date" class="form-control" name="fromdate" placeholder="From Date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>To Date:</label>
+                            <input type="date" class="form-control" name="todate" placeholder="To Date" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="4" class="form-control" name="message" placeholder="Message"
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn" name="submit" value="Book Now">
+                        </div>
+
+                        <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login
+                            For Book</a>
+
+                    </form>
+                </div>
+            </aside>
+            <!--/Side-Bar-->
+        </div>
+
+        <div class="space-20"></div>
+        <div class="divider"></div>
+
+        <!--Similar-Cars-->
+        <div class="similar_cars">
+            <h3>Similar Cars</h3>
+            <div class="row">
+
+                <div class="col-md-3 grid_listing">
+                    <div class="product-listing-m gray-bg">
+                        <div class="product-listing-img"> <a href=""><img
+                                    src="../../../assets/admin/img/vehicleimages/1audiq8.jpg" class="img-responsive"
+                                    alt="image" /> </a>
+                        </div>
+                        <div class="product-listing-content">
+                            <h5><a href="">d ffgfd, fdggf</a></h5>
+                            <p class="list-price">656565</p>
+
+                            <ul class="features_list">
+
+                                <li><i class="fa fa-user" aria-hidden="true"></i>hhgf</li>
+                                <li><i class="fa fa-calendar" aria-hidden="true"></i>gdsfd</li>
+                                <li><i class="fa fa-car" aria-hidden="true"></i>dsssds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--/Similar-Cars-->
+
+    </div>
+</section>
+<!--/Listing-detail-->
+
+<!--Footer -->
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h6>About Us</h6>
+                    <ul>
+
+
+                        <li><a href="page.php?type=aboutus">About Us</a></li>
+                        <li><a href="admin/">Admin Login</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <h6>Subscribe Newsletter</h6>
+                    <div class="newsletter-form">
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="email" name="subscriberemail" class="form-control newsletter-input"
+                                    required placeholder="Enter Email Address" />
+                            </div>
+                            <button type="submit" name="emailsubscibe" class="btn btn-block">Subscribe <span
+                                    class="angle_arrow"><i class="fa fa-angle-right"
+                                        aria-hidden="true"></i></span></button>
+                        </form>
+                        <p class="subscribed-text">*We send great deals and latest auto news to our subscribed users
+                            very week.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-push-6 text-right">
+                    <div class="footer_widget">
+                        <p>Connect with Us:</p>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-pull-6">
+                    <p class="copy-right">Copyright &copy;Projec tdone by Munira under the Supervision of Dr Khamis of
+                        (SUZA)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /Footer-->
+
+<!--Back to top-->
+<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<!--/Back to top-->

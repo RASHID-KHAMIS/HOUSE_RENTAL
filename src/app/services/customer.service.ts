@@ -13,4 +13,8 @@ export class CustomerService {
   addCustomer(body:any){
     return this.http.post(this.customerAPI,body)
   }
+
+  getAllCustomer(){
+    return this.http.get(this.customerAPI)
+  }
 }

@@ -14,16 +14,25 @@
           <div class="header_wrap">
             <div class="user_login">
               <ul>
-                <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                <select class="form-control">
+                  <option value="" selected class="form-control">Rashid</option>
+                  <option value="">Profile Settings</option>
+                  <option value="">Update Password</option>
+                  <option value="">My Booking</option>
+                  <option value="">Sign Out</option>
+                </select>
+                <!-- <li class="dropdown">
+                   <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
                     Rashid
-                    <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </a>
                   <ul class="dropdown-menu">
                     <li><a href="#">Profile Settings</a></li>
                     <li><a href="#">Update Password</a></li>
                     <li><a href="#">My Booking</a></li>
                     <li><a href="#">Sign Out</a></li>
                   </ul>
-                </li>
+                </li> -->
               </ul>
             </div>
             <div class="header_search">
@@ -89,43 +98,29 @@
             <div role="tabpanel" class="tab-pane active" id="resentnewcar">
   
   
-              <div class="col-list-3">
+              <div class="col-list-3" *ngFor="let house of houses">
                 <div class="recent-car-list">
-                  <div class="car-info-box"> <a href="#"><img src="../../../assets/images/ZHC-2.png" class="img-responsive" alt="image"></a>
+                  <div class="car-info-box"> <a href="#"><img src="{{displayImage(house.imageUrl)}}" class="img-responsive" alt="image"></a>
                     <ul>
-                      <li><i class="fa fa-car" aria-hidden="true"></i>Gorofa </li>
-                      <li><i class="fa fa-calendar" aria-hidden="true"></i>Mtaa</li>
-                      <li><i class="fa fa-user" aria-hidden="true"></i>Idadi Vyumba</li>
+                      <li><i class="fa fa-car" aria-hidden="true"></i>{{house.house_id.type}} </li>
+                      <li><i class="fa fa-calendar" aria-hidden="true"></i>{{house.house_id.address}}</li>
+                      <li><i class="fa fa-user" aria-hidden="true"></i> Rooms : {{house.house_id.bedrooms}}</li>
                     </ul>
                   </div>
                   <div class="car-title-m">
-                    <h6><a href="#"> Jina la nyumba</a></h6>
-                    <span class="price">Bei Yake</span>
+                    <h6><a href="#"> {{house.house_id.title}}</a></h6>
+                    <span class="price" *ngFor="let price of prices">
+                      <span *ngIf="price.house.house_id==house.house_id.house_id">
+                        {{price.renting_price}} /=
+                      </span>
+                     </span>
                   </div>
                   <div class="inventory_info_m">
-                    <p>Kama kuna description ya nyumba hapa wekaaaaaa</p>
+                    <p>{{house.house_id.description}}</p>
                   </div>
                 </div>
               </div>
-  
-              <div class="col-list-3">
-                <div class="recent-car-list">
-                  <div class="car-info-box"> <a href="#"><img src="../../../assets/images/ZHC1.jpg" class="img-responsive" alt="image"></a>
-                    <ul>
-                      <li><i class="fa fa-car" aria-hidden="true"></i>Gorofa</li>
-                      <li><i class="fa fa-calendar" aria-hidden="true"></i> Mtaa</li>
-                      <li><i class="fa fa-user" aria-hidden="true"></i>Idadi ya Vyumba</li>
-                    </ul>
-                  </div>
-                  <div class="car-title-m">
-                    <h6><a href="#"> Jina la nyumba</a></h6>
-                    <span class="price">Bei Yake</span>
-                  </div>
-                  <div class="inventory_info_m">
-                    <p>Kama kuna description ya nyumba hapa wekaaaaaa</p>
-                  </div>
-                </div>
-              </div>
+
   
             </div>
           </div>

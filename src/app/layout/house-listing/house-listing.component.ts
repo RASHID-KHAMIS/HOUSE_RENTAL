@@ -45,7 +45,6 @@ export class HouseListingComponent implements OnInit{
   recentHouses:any;
   fetchRecentHouse(){
     this.houseLocationService.getRecentHouse().subscribe((response:any)=>{
-      console.log(response);
       this.recentHouses =response;
       
     })
@@ -53,6 +52,12 @@ export class HouseListingComponent implements OnInit{
 
   searchCar(){
     
+  }
+
+  onView(house:any){
+    console.log(house);
+    
+    this.router.navigate(['/house-details'],{queryParams:{id:house.location_id}})
   }
 
 }
