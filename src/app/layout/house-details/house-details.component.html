@@ -185,16 +185,16 @@
             <h3>Similar House</h3>
             <div class="row">
 
-                <div class="col-md-3 grid_listing">
+                <div class="col-md-3 grid_listing" *ngFor="let location of houseLocation">
                     <div class="product-listing-m gray-bg">
                         <div class="product-listing-img"> <a href="">
-                            <img [src]="imageSource1" class="img-responsive" alt="image" /> </a>
+                            <img src="{{displayImage(location.imageUrl)}}" class="img-responsive" alt="image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="">{{houses.house_id.title}}</a></h5>
+                            <h5><a href="">{{location.house_id.title}}</a></h5>
                             <p class="list-price">
                                 <span *ngFor="let price of priceInfo">
-                                    <span *ngIf="price.house.house_id == houses.house_id.house_id">
+                                    <span *ngIf="price.house.house_id == location.house_id.house_id">
                                         <p >{{price.renting_price}} /=</p>
                                     </span>
                                 </span>
@@ -202,9 +202,9 @@
 
                             <ul class="features_list">
 
-                                <li><i class="fa fa-user" aria-hidden="true"></i>hhgf</li>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i>gdsfd</li>
-                                <li><i class="fa fa-car" aria-hidden="true"></i>dsssds</li>
+                                <li><i class="fa fa-user" aria-hidden="true"></i>{{location.house_id.type}}</li>
+                                <li><i class="fa fa-calendar" aria-hidden="true"></i>{{location.house_id.address}}</li>
+                                <li><i class="fa fa-home" aria-hidden="true"></i>dsssds</li>
                             </ul>
                         </div>
                     </div>

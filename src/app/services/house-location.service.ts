@@ -29,4 +29,8 @@ export class HouseLocationService {
   getHouseLocationWithLimit(num:any){
     return this.http.get(this.houseLocationAPI + "last-eight-house/" + num)
   }
+
+  getByRegionAndDistrict(region:any,district:any){
+    return this.http.get(this.houseLocationAPI + "house-search-by-region-district/" + region + "/" + district)
+  }
 }

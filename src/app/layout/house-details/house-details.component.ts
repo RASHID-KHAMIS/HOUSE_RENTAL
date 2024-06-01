@@ -25,12 +25,24 @@ export class HouseDetailsComponent implements OnInit{
 
   houses:any;
   imageSource1:any;
+  region:any;
+  district:any;
+  houseLocation:any;
   fetchHouseByLocationID(id:any){
     this.houseLocationService.getHouseInfoByLocationID(id).subscribe((resp:any)=>{
       this.houses = resp;
       this.imageSource1 = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${resp.imageUrl}`);
-      
+      this.region = resp.region_name;
+      this.district = resp.district_name;
+
+      this.houseLocationService.getByRegionAndDistrict(this.region,this.district).subscribe((response:any)=>{
+        this.houseLocation = response;
+      })
     })
+  }
+
+  displayImage(url:any){
+    return 'data:image/png;base64,' + url
   }
 
   priceInfo:any;
