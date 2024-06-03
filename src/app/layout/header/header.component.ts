@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   loginForm!: FormGroup;
   signUpForm!: FormGroup;
+  role:any;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService,
@@ -24,6 +25,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.configureLogin();
     this.configureSigUp();
+
+    this.role = sessionStorage.getItem("role");
   }
 
   configureLogin() {
@@ -53,6 +56,8 @@ export class HeaderComponent implements OnInit {
       sessionStorage.setItem('user_id', resp.user_id);
       sessionStorage.setItem('username', resp.username);
       sessionStorage.setItem('role', resp.userType);
+ 
+      
 
       switch (resp.userType) {
         case 'ADMINISTRATOR':
@@ -62,9 +67,10 @@ export class HeaderComponent implements OnInit {
           break;
 
         case 'CUSTOMER':
-          this.router.navigateByUrl('/admin').then(() => {
+          this.router.navigateByUrl('').then(() => {
             location.reload();
           })
+     
           break
         default:
           this.router.navigateByUrl("")
@@ -99,6 +105,26 @@ export class HeaderComponent implements OnInit {
       })
  
     })
+  }
+
+  onLogOut(){
+    sessionStorage.clear();
+    this.router.navigateByUrl("").then(()=>{
+      location.reload();
+    })
+    // console.log(333);
+    
+  }
+
+  onSelectChange(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    if (selectedValue === 'logout') {
+      this.onLogOut();
+    } else {
+      // Handle other options if needed
+      console.log('Selected:', selectedValue);
+    }
+    
   }
 
   reload() {

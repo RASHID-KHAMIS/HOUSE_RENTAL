@@ -20,9 +20,14 @@ export class IndexComponent implements OnInit {
     private houseLocationService:HouseLocationService,
     private priceService:PriceService
   ) { }
+
+  username:any;
   ngOnInit(): void {
    this.fetchHouseByLimits();
-   this.fetchAllPrice()
+   this.fetchAllPrice();
+
+   this.username = sessionStorage.getItem("username");
+
   }
 
   houses:any;
