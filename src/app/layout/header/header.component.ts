@@ -48,6 +48,8 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+
+  customerInfo:any;
   onLogin() {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
@@ -56,8 +58,6 @@ export class HeaderComponent implements OnInit {
       sessionStorage.setItem('user_id', resp.user_id);
       sessionStorage.setItem('username', resp.username);
       sessionStorage.setItem('role', resp.userType);
- 
-      
 
       switch (resp.userType) {
         case 'ADMINISTRATOR':
@@ -67,9 +67,15 @@ export class HeaderComponent implements OnInit {
           break;
 
         case 'CUSTOMER':
-          this.router.navigateByUrl('').then(() => {
-            location.reload();
+          this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((response:any)=>{
+            this.customerInfo = response; 
+            this.router.navigateByUrl('').then(() => {
+              location.reload();
+            })
+            // console.log(this.customerInfo);
+            
           })
+        
      
           break
         default:

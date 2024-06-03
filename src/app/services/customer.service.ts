@@ -1,3 +1,4 @@
+import { useAnimation } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
@@ -16,5 +17,9 @@ export class CustomerService {
 
   getAllCustomer(){
     return this.http.get(this.customerAPI)
+  }
+
+  getCustomerInfoByUserID(id:any){
+    return this.http.get(this.customerAPI + "/customer-by-user-id/" + id)
   }
 }
