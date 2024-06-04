@@ -1,11 +1,10 @@
-<head>
+<!--Header-->
+
+<header>
     <app-header></app-header>
-
-</head>
-
-<!-- /Header -->
-
-<!--Page Header-->
+  </header>
+  <!-- /Header -->
+  
 <section class="page-header profile_page">
     <div class="container">
         <div class="page-header_wrap">
@@ -38,7 +37,17 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-3">
-                <!-- <?php include('includes/sidebar.php');?> -->
+                <div class="profile_nav">
+                    <ul>
+                      <li><a href="profile.php">Profile Settings</a></li>
+                        <li><a href="update-password.php">Update Password</a></li>
+                      <li><a href="my-booking.php">My Booking</a></li>
+                      <li><a href="post-testimonial.php">Post a Testimonial</a></li>
+                         <li><a href="my-testimonials.php">My Testimonials</a></li>
+                      <li><a href="logout.php">Sign Out</a></li>
+                    </ul>
+                  </div>
+                </div>
 
                 <div class="col-md-8 col-sm-8">
                     <div class="profile_wrap">
@@ -102,15 +111,14 @@
 
                                 <h5 align="center" style="color:red">No booking yet</h5>
 
-
-
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </section>
 <!--/my-vehicles-->
+<app-footer></app-footer>
 <!-- <?php include('includes/footer.php');?> -->
