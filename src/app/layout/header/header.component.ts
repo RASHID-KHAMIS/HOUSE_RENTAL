@@ -123,8 +123,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl("").then(()=>{
       location.reload();
     })
-    
-    
+  
   }
 
   onSelectChange(event: Event) {
@@ -132,7 +131,6 @@ export class HeaderComponent implements OnInit {
     if (selectedValue === 'logout') {
       this.onLogOut();
     }else if(selectedValue === 'booking'){
-      console.log(444);
       this.router.navigateByUrl('booking')
       
     }

@@ -66,9 +66,7 @@ export class AddHouseComponent implements OnInit{
 
   onSave(){
     const values = this.houseForm.value;
-    // console.log(values);
     this.addHouseService.addHouse(values).subscribe((resp:any)=>{
- 
       const price = {
         "house": resp,
         "renting_price": this.houseForm.get("renting_price")?.value
@@ -85,10 +83,6 @@ export class AddHouseComponent implements OnInit{
       this.houseLocationService.addHouseLocation(region,district,other,resp.house_id,form1).subscribe((output:any)=>{
         this.alert();
       });
-
-
-
-
     })
     
   }
