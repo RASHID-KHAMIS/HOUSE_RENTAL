@@ -131,7 +131,12 @@ export class HeaderComponent implements OnInit {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'logout') {
       this.onLogOut();
-    } else {
+    }else if(selectedValue === 'booking'){
+      console.log(444);
+      this.router.navigateByUrl('booking')
+      
+    }
+     else {
       console.log('Selected:', selectedValue);
     }
     

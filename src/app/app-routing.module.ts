@@ -12,6 +12,7 @@ import { HouseListsComponent } from './pages/house-lists/house-lists.component';
 import { ViewHouseComponent } from './pages/view-house/view-house.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { HouseDetailsComponent } from './layout/house-details/house-details.component';
+import { BookingComponent } from './pages/booking/booking.component';
 
 const routes: Routes = [
 {
@@ -33,6 +34,10 @@ const routes: Routes = [
 {
   path:'house-details',
   component:HouseDetailsComponent
+},
+{
+  path:'booking',
+  component:BookingComponent
 },
 {
   path:'admin',

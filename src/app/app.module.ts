@@ -37,6 +37,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { HouseDetailsComponent } from './layout/house-details/house-details.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { BookingComponent } from './pages/booking/booking.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { FooterComponent } from './layout/footer/footer.component';
     HeaderComponent,
     CustomerComponent,
     HouseDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
