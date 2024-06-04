@@ -1354,7 +1354,7 @@ nav.navbar {
 	3.5. Fun-Facts
 -----------------------------*/
 .fun-facts-section {
-  background: rgba(0, 0, 0, 0) url("../images/fun-facts-bg.jpg") repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url("../images/ZHC-3.jpeg") repeat scroll 0 0;
   padding: 100px 0;
   position: relative;
 }
@@ -2876,7 +2876,7 @@ table.info-tabel tr td {
 	10. Contact-Us-Page
 ================================*/
 .contactus_page {
-	background-image:url(../images/contact-page-header-img.jpg);	
+	background-image:url(../images/ZHC-5.jpg);	
 }
 .contact_form {
 	padding:28px;
