@@ -1,14 +1,8 @@
 
-  
-    <!--Header-->
-  
-    <header>
 
+    <!--Header-->
+    <header>
       <app-header></app-header>
-      <!-- Navigation -->
-    
-      <!-- Navigation end -->
-  
     </header>
     <!-- /Header -->
   
@@ -27,6 +21,7 @@
         </div>
       </div>
     </section>
+    <br>
     <!-- /Banners -->
   
   
@@ -35,12 +30,17 @@
       <div class="container">
         <div class="section-header text-center">
           <h2>Find the Best <span>House For You</span></h2>
-          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+          <p>
+            Nyumba sehemu tofauti Zanzibar zinapatikana katika mfumo huu imeoneshwa kutokana mtaa na zilizopo.
+            Mteja anaweza kukodi kutokana na uwezo wake pia unaweza kukodi  nyumba iliyopo sehemu yoyote ikiwa haijakodiwa.
+            Karibu katika mfumo wetu ambao unaonesha nyumba zinazokodishwa zinazopatikana 
+             maeneo tofauti Zanzibar.
+          </p>
         </div>
         <div class="row">
   
           <!-- Nav tabs -->
-          <div class="recent-tab">
+          <div class="recent-tab" *ngIf="displayImage">
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">New Houses</a></li>
             </ul>
@@ -90,32 +90,32 @@
           <div class="col-lg-3 col-xs-6 col-sm-3">
             <div class="fun-facts-m">
               <div class="cell">
-                <h2><i class="fa fa-bar-chart" aria-hidden="true"></i>40+</h2>
-                <p>Nyumba Ngapi </p>
+                <h2 *ngIf="dashboard"><i class="fa fa-bar-chart" aria-hidden="true"></i>{{dashboard.all_houses}}</h2>
+                <p>Number of House </p>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-xs-6 col-sm-3">
             <div class="fun-facts-m">
               <div class="cell">
-                <h2><i class="fa fa-bank" aria-hidden="true"></i>1200+</h2>
-                <p>Zilizokodishwa</p>
+                <h2 *ngIf="dashboard"><i class="fa fa-bank" aria-hidden="true"></i>{{dashboard.zilizokodishwa}}</h2>
+                <p>Number of House Rent</p>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-xs-6 col-sm-3">
             <div class="fun-facts-m">
               <div class="cell">
-                <h2><i class="fa fa-home" aria-hidden="true"></i>1000+</h2>
-                <p>Zilizobaki</p>
+                <h2 *ngIf="dashboard"><i class="fa fa-home" aria-hidden="true"></i>{{dashboard.hazijakodishwa}}</h2>
+                <p>Number of Free House</p>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-xs-6 col-sm-3">
             <div class="fun-facts-m">
               <div class="cell">
-                <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2>
-                <p>Wateja Wangapi</p>
+                <h2 *ngIf="dashboard"><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{dashboard.customers}}</h2>
+                <p>Customers</p>
               </div>
             </div>
           </div>
@@ -124,63 +124,10 @@
       <!-- Dark Overlay-->
       <div class="dark-overlay"></div>
     </section>
-    <!-- /Fun Facts-->
-  
-  
+
   
     <!--Footer -->
-    <footer>
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
-  
-            <div class="col-md-6">
-              <h6>About Us</h6>
-              <ul>
-  
-  
-                <li><a href="page.php?type=aboutus">About Us</a></li>
-                <li><a href="admin/">Admin Login</a></li>
-              </ul>
-            </div>
-  
-            <div class="col-md-3 col-sm-6">
-              <h6>Subscribe Newsletter</h6>
-              <div class="newsletter-form">
-                <form method="post">
-                  <div class="form-group">
-                    <input type="email" name="subscriberemail" class="form-control newsletter-input" required placeholder="Enter Email Address" />
-                  </div>
-                  <button type="submit" name="emailsubscibe" class="btn btn-block">Subscribe <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-                </form>
-                <p class="subscribed-text">*We send great deals and latest auto news to our subscribed users very week.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-md-push-6 text-right">
-              <div class="footer_widget">
-                <p>Connect with Us:</p>
-                <ul>
-                  <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
-                  <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6 col-md-pull-6">
-              <p class="copy-right">Copyright &copy;Projec tdone by Munira under the Supervision of Dr Khamis of (SUZA)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <app-footer></app-footer>
     <!-- /Footer-->
   
     <!--Back to top-->

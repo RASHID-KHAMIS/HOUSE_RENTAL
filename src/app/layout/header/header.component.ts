@@ -27,6 +27,17 @@ export class HeaderComponent implements OnInit {
     this.configureSigUp();
 
     this.role = sessionStorage.getItem("role");
+
+    if(this.role=='CUSTOMER'){
+      this.fetchInformation();
+    }
+    
+  }
+
+  fetchInformation(){
+    this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((response:any)=>{
+      this.customerInfo = response; 
+      })
   }
 
   configureLogin() {
@@ -67,15 +78,9 @@ export class HeaderComponent implements OnInit {
           break;
 
         case 'CUSTOMER':
-          this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((response:any)=>{
-            this.customerInfo = response; 
-            this.router.navigateByUrl('').then(() => {
-              location.reload();
-            })
-            // console.log(this.customerInfo);
-            
+          this.router.navigateByUrl('').then(() => {
+            location.reload();
           })
-        
      
           break
         default:
@@ -118,7 +123,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl("").then(()=>{
       location.reload();
     })
-    // console.log(333);
+    
     
   }
 
@@ -127,7 +132,6 @@ export class HeaderComponent implements OnInit {
     if (selectedValue === 'logout') {
       this.onLogOut();
     } else {
-      // Handle other options if needed
       console.log('Selected:', selectedValue);
     }
     

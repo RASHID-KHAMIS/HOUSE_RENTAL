@@ -21,7 +21,11 @@
 
             </div>
 
-            <div class="login_btn"> <a href="#loginform" class="btn btn-success uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </div>
+            <div class="login_btn" *ngIf="!role"> <a href="#loginform" class="btn btn-success uppercase" 
+              data-toggle="modal" data-dismiss="modal">Login / Register</a> 
+            </div>
+
+            <button class="btn btn-danger" *ngIf="role" (click)="onLogOut()">Log Out</button>
             Welcome To House Rental
           </div>
         </div>
@@ -38,7 +42,7 @@
         <div class="user_login">
           <ul>
             <select class="form-control" (change)="onSelectChange($event)">
-              <option value="" selected class="form-control">{{customerInfo.firstName + " " + customerInfo.lastName }}</option>
+              <option value="" selected class="form-control" *ngIf="customerInfo">{{customerInfo.firstName + " " + customerInfo.lastName }}</option>
               <option value="">Profile Settings</option>
               <option value="">Update Password</option>
               <option value="">My Booking</option>

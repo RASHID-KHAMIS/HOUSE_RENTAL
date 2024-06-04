@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 import { LoginService } from 'src/app/services/login.service';
 import { PriceService } from 'src/app/services/price.service';
+import { ReportService } from 'src/app/services/report.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,13 +19,15 @@ export class IndexComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private houseLocationService:HouseLocationService,
-    private priceService:PriceService
+    private priceService:PriceService,
+    private reportService:ReportService
   ) { }
 
   username:any;
   ngOnInit(): void {
    this.fetchHouseByLimits();
    this.fetchAllPrice();
+   this.fetchDashboardReport();
 
    this.username = sessionStorage.getItem("username");
 
@@ -47,6 +50,15 @@ export class IndexComponent implements OnInit {
   fetchAllPrice(){
     this.priceService.getAllPrice().subscribe((resp:any)=>{
       this.prices = resp;
+    })
+  }
+
+
+  dashboard:any;
+  fetchDashboardReport(){
+    this.reportService.dashboardReport().subscribe((resp:any)=>{
+      this.dashboard = resp;
+      
     })
   }
 
