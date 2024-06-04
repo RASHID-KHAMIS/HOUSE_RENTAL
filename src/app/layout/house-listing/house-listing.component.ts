@@ -55,8 +55,7 @@ export class HouseListingComponent implements OnInit{
   }
 
   onView(house:any){
-    console.log(house);
-    
+
     this.router.navigate(['/house-details'],{queryParams:{id:house.location_id}}).then(()=>{
       location.reload();
     })

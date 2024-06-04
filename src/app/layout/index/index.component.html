@@ -1,137 +1,134 @@
+<!--Header-->
+<header>
+  <app-header></app-header>
+</header>
+<!-- /Header -->
 
-
-    <!--Header-->
-    <header>
-      <app-header></app-header>
-    </header>
-    <!-- /Header -->
-  
-    <!-- Banners -->
-    <section id="banner" class="banner-section">
-      <div class="container">
-        <div class="div_zindex">
-          <div class="row">
-            <div class="col-md-5 col-md-push-7">
-              <div class="banner_content">
-                <h1>&nbsp;</h1>
-                <p>&nbsp; </p>
-              </div>
-            </div>
+<!-- Banners -->
+<section id="banner" class="banner-section">
+  <div class="container">
+    <div class="div_zindex">
+      <div class="row">
+        <div class="col-md-5 col-md-push-7">
+          <div class="banner_content">
+            <h1>&nbsp;</h1>
+            <p>&nbsp; </p>
           </div>
         </div>
       </div>
-    </section>
-    <br>
-    <!-- /Banners -->
-  
-  
-    <!-- Resent Cat-->
-    <section >
-      <div class="container">
-        <div class="section-header text-center">
-          <h2>Find the Best <span>House For You</span></h2>
-          <p>
-            Nyumba sehemu tofauti Zanzibar zinapatikana katika mfumo huu imeoneshwa kutokana mtaa na zilizopo.
-            Mteja anaweza kukodi kutokana na uwezo wake pia unaweza kukodi  nyumba iliyopo sehemu yoyote ikiwa haijakodiwa.
-            Karibu katika mfumo wetu ambao unaonesha nyumba zinazokodishwa zinazopatikana 
-             maeneo tofauti Zanzibar.
-          </p>
-        </div>
-        <div class="row">
-  
-          <!-- Nav tabs -->
-          <div class="recent-tab" *ngIf="displayImage">
-            <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">New Houses</a></li>
-            </ul>
-          </div>
-          <!-- Recently Listed New Cars -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="resentnewcar">
-  
-  
-              <div class="col-list-3" *ngFor="let house of houses">
-                <div class="recent-car-list">
-                  <div class="car-info-box"> <a href="#">
-                    <img src="{{displayImage(house.imageUrl)}}" class="img-responsive" alt="image"></a>
-                    <ul>
-                      <li><i class="fa fa-car" aria-hidden="true"></i>{{house.house_id.type}} </li>
-                      <li><i class="fa fa-calendar" aria-hidden="true"></i>{{house.house_id.address}}</li>
-                      <li><i class="fa fa-user" aria-hidden="true"></i> Rooms : {{house.house_id.bedrooms}}</li>
-                    </ul>
-                  </div>
-                  <div class="car-title-m">
-                    <h6><a href="#"> {{house.house_id.title}}</a></h6>
-                    <span class="price" *ngFor="let price of prices">
-                      <span *ngIf="price.house.house_id==house.house_id.house_id">
-                        {{price.renting_price}} /=
-                      </span>
-                     </span>
-                  </div>
-                  <div class="inventory_info_m">
-                    <p>{{house.house_id.description}}</p>
-                  </div>
-                </div>
-              </div>
+    </div>
+  </div>
+</section>
+<br>
+<!-- /Banners -->
 
-  
+
+<!-- Resent Cat-->
+<section>
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Find the Best <span>House For You</span></h2>
+      <p>
+        Nyumba sehemu tofauti Zanzibar zinapatikana katika mfumo huu imeoneshwa kutokana mtaa na zilizopo.
+        Mteja anaweza kukodi kutokana na uwezo wake pia unaweza kukodi nyumba iliyopo sehemu yoyote ikiwa haijakodiwa.
+        Karibu katika mfumo wetu ambao unaonesha nyumba zinazokodishwa zinazopatikana
+        maeneo tofauti Zanzibar.
+      </p>
+    </div>
+    <div class="row">
+
+      <!-- Nav tabs -->
+      <div class="recent-tab" *ngIf="displayImage">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">New Houses</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Recently Listed New Cars -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="resentnewcar">
+
+
+          <div class="col-list-3" *ngFor="let house of houses" >
+            <div class="recent-car-list" (click)="onHouse(house)">
+              <div class="car-info-box"> <a >
+                  <img src="{{displayImage(house.imageUrl)}}" class="img-responsive" alt="image"></a>
+                <ul>
+                  <li><i class="fa fa-car" aria-hidden="true"></i>{{house.house_id.type}} </li>
+                  <li><i class="fa fa-calendar" aria-hidden="true"></i>{{house.house_id.address}}</li>
+                  <li><i class="fa fa-user" aria-hidden="true"></i> Rooms : {{house.house_id.bedrooms}}</li>
+                </ul>
+              </div>
+              <div class="car-title-m">
+                <h6><a > {{house.house_id.title}}</a></h6>
+                <span class="price" *ngFor="let price of prices">
+                  <span *ngIf="price.house.house_id==house.house_id.house_id">
+                    {{price.renting_price}} /=
+                  </span>
+                </span>
+              </div>
+              <div class="inventory_info_m">
+                <p>{{house.house_id.description}}</p>
+              </div>
             </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<!-- /Resent Cat -->
+
+<!-- Fun Facts-->
+<section class="fun-facts-section">
+  <div class="container div_zindex">
+    <div class="row">
+      <div class="col-lg-3 col-xs-6 col-sm-3">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2 *ngIf="dashboard"><i class="fa fa-bar-chart" aria-hidden="true"></i>{{dashboard.all_houses}}</h2>
+            <p>Number of House </p>
           </div>
         </div>
       </div>
-    </section>
-    <br>
-    <!-- /Resent Cat -->
-  
-    <!-- Fun Facts-->
-    <section class="fun-facts-section">
-      <div class="container div_zindex">
-        <div class="row">
-          <div class="col-lg-3 col-xs-6 col-sm-3">
-            <div class="fun-facts-m">
-              <div class="cell">
-                <h2 *ngIf="dashboard"><i class="fa fa-bar-chart" aria-hidden="true"></i>{{dashboard.all_houses}}</h2>
-                <p>Number of House </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-xs-6 col-sm-3">
-            <div class="fun-facts-m">
-              <div class="cell">
-                <h2 *ngIf="dashboard"><i class="fa fa-bank" aria-hidden="true"></i>{{dashboard.zilizokodishwa}}</h2>
-                <p>Number of House Rent</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-xs-6 col-sm-3">
-            <div class="fun-facts-m">
-              <div class="cell">
-                <h2 *ngIf="dashboard"><i class="fa fa-home" aria-hidden="true"></i>{{dashboard.hazijakodishwa}}</h2>
-                <p>Number of Free House</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-xs-6 col-sm-3">
-            <div class="fun-facts-m">
-              <div class="cell">
-                <h2 *ngIf="dashboard"><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{dashboard.customers}}</h2>
-                <p>Customers</p>
-              </div>
-            </div>
+      <div class="col-lg-3 col-xs-6 col-sm-3">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2 *ngIf="dashboard"><i class="fa fa-bank" aria-hidden="true"></i>{{dashboard.zilizokodishwa}}</h2>
+            <p>Number of House Rent</p>
           </div>
         </div>
       </div>
-      <!-- Dark Overlay-->
-      <div class="dark-overlay"></div>
-    </section>
+      <div class="col-lg-3 col-xs-6 col-sm-3">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2 *ngIf="dashboard"><i class="fa fa-home" aria-hidden="true"></i>{{dashboard.hazijakodishwa}}</h2>
+            <p>Number of Free House</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6 col-sm-3">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2 *ngIf="dashboard"><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{dashboard.customers}}</h2>
+            <p>Customers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
 
-  
-    <!--Footer -->
-    <app-footer></app-footer>
-    <!-- /Footer-->
-  
-    <!--Back to top-->
-    <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-    <!--/Back to top-->
-  
-    
+
+<!--Footer -->
+<app-footer></app-footer>
+<!-- /Footer-->
+
+<!--Back to top-->
+<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<!--/Back to top-->

@@ -62,6 +62,12 @@ export class IndexComponent implements OnInit {
     })
   }
 
+  onHouse(house:any){
+    this.router.navigate(['/house-details'],{queryParams:{id:house.location_id}}).then(()=>{
+      location.reload();
+    }) 
+  }
+
  
 
 }
