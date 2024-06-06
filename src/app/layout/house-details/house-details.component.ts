@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
+import { HouseBookingService } from 'src/app/services/house-booking.service';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 import { HouseService } from 'src/app/services/house.service';
 import { PriceService } from 'src/app/services/price.service';
@@ -22,7 +23,8 @@ export class HouseDetailsComponent implements OnInit{
     private priceService:PriceService,
     private sanitizer:DomSanitizer,
     private customerService:CustomerService,
-    private houseService:HouseService){}
+    private houseService:HouseService,
+    private houseBookingService:HouseBookingService){}
   ngOnInit(): void {
     const house =this.route.snapshot.queryParamMap.get('id')
     this.fetchHouseByLocationID(house);
@@ -64,7 +66,7 @@ export class HouseDetailsComponent implements OnInit{
     this.bookForm = new FormGroup({
       startDate:new FormControl(null,Validators.required),
       endDate:new FormControl(null,Validators.required),
-      totalPrice:new FormControl(null,Validators.required),
+      message:new FormControl(null,Validators.required),
       bookingStatus:new FormControl(1),
       house:new FormControl(null),
       customer:new FormControl(null),
@@ -83,6 +85,11 @@ export class HouseDetailsComponent implements OnInit{
       this.bookForm.patchValue({house:response});
       const values = this.bookForm.value;
       console.log(values);
+
+      this.houseBookingService.addHouseBooking(values).subscribe((resp:any)=>{
+        console.log('added');
+        
+      })
     })
 
   
