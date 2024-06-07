@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HouseBookingService } from 'src/app/services/house-booking.service';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 import { PriceService } from 'src/app/services/price.service';
 
@@ -11,15 +12,33 @@ import { PriceService } from 'src/app/services/price.service';
 })
 export class HouseListingComponent implements OnInit{
 
+
+  house_booking_data: any;
+
   constructor(private router:Router,
     private route:ActivatedRoute,
     private houseLocationService:HouseLocationService,
     private priceService:PriceService,
+    private house_booking_services: HouseBookingService,
     private sanitizer:DomSanitizer){}
   ngOnInit(): void {
     this.fetchHousePicture();
     this.fetchAllPrice();
     this.fetchRecentHouse();
+    this.getAllBookedHouses();
+  }
+
+
+  check_data_exist: boolean = false;
+  getAllBookedHouses(){
+    this.house_booking_services.getBookedHouse().subscribe((resp:any)=>{
+      this.house_booking_data = resp;
+      if(resp.length > 0){
+        this.check_data_exist = false;
+      }else{
+        this.check_data_exist = true;
+      }
+    });
   }
 
   houses:any;

@@ -7,6 +7,7 @@ import { HouseBookingService } from 'src/app/services/house-booking.service';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 import { HouseService } from 'src/app/services/house.service';
 import { PriceService } from 'src/app/services/price.service';
+import Swal from 'sweetalert2';
 import { __values } from 'tslib';
 
 @Component({
@@ -66,33 +67,61 @@ export class HouseDetailsComponent implements OnInit{
     this.bookForm = new FormGroup({
       startDate:new FormControl(null,Validators.required),
       endDate:new FormControl(null,Validators.required),
-      message:new FormControl(null,Validators.required),
-      bookingStatus:new FormControl(1),
+      bookingDescription:new FormControl(null,Validators.required),
+      bookingStatus:new FormControl(0),
       house:new FormControl(null),
       customer:new FormControl(null),
-      staffId:new FormControl(null),
-      roleId:new FormControl(null)
+      staffId:new FormControl(null)
     })
   }
 
   onSubmit(){
-   
-    this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((resp:any)=>{
 
-      this.bookForm.patchValue({customer:resp});  
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
     });
-    this.houseService.getHouseByID(this.route.snapshot.queryParamMap.get('id')).subscribe((response:any)=>{
-      this.bookForm.patchValue({house:response});
-      const values = this.bookForm.value;
-      // console.log(values);
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure you want to book this house ?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, book this house !",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-      this.houseBookingService.addHouseBooking(values).subscribe((resp:any)=>{
-        console.log('added');
-        
-      })
-    })
-
-  
+        this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((resp:any)=>{
+          this.bookForm.patchValue({customer:resp});  
+          this.houseService.getHouseByID(this.route.snapshot.queryParamMap.get('id')).subscribe((response:any)=>{
+            this.bookForm.patchValue({house:response});
+            const values = this.bookForm.value;
+            this.houseBookingService.addHouseBooking(values).subscribe((resp:any)=>{
+              swalWithBootstrapButtons.fire({
+                title: "Booking has been added successifully!",
+                text: "Please wait , your booking is being processed by our staffs .",
+                icon: "success"
+              });
+              setTimeout(()=>{
+                this.router.navigate(["booking"]);
+              },3000);
+            });
+          });
+        });
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Booking was cancelled)",
+          icon: "error"
+        });
+      }
+    });
   }
 
   
