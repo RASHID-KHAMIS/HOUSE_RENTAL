@@ -38,6 +38,7 @@ import { CustomerComponent } from './pages/customer/customer.component';
 import { HouseDetailsComponent } from './layout/house-details/house-details.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { BookingComponent } from './pages/booking/booking.component';
+import { StaffComponent } from './pages/staff/staff.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { BookingComponent } from './pages/booking/booking.component';
     CustomerComponent,
     HouseDetailsComponent,
     FooterComponent,
-    BookingComponent
+    BookingComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,

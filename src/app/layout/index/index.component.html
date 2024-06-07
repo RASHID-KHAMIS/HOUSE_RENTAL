@@ -39,8 +39,8 @@
 
       <!-- Nav tabs -->
       <div class="recent-tab" *ngIf="displayImage">
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">New Houses</a>
+        <ul class="nav nav-tabs" role="tablist" *ngIf="!check">
+          <li role="presentation" class="active" ><a href="#resentnewcar" role="tab" data-toggle="tab">New Houses</a>
           </li>
         </ul>
       </div>

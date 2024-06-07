@@ -33,11 +33,13 @@ export class IndexComponent implements OnInit {
 
   }
 
+  check:boolean = false;
   houses:any;
   fetchHouseByLimits(){
+    this.check = true;
     this.houseLocationService.getHouseLocationWithLimit(8).subscribe((resp:any)=>{
       this.houses = resp;
-      
+      this.check = false
     })
   }
 

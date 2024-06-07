@@ -24,10 +24,13 @@
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-md-3">
+                                                
                                                     <mat-form-field style="width: 100%;" appearance="outline">
                                                         <mat-label>Type</mat-label>
-                                                        <input matInput placeholder="type" formControlName="type">
-                                                    </mat-form-field>
+                                                        <mat-select formControlName="type">
+                                                            <mat-option *ngFor="let type of types" [value]="type.value">{{type.viewValue}}</mat-option>
+                                                        </mat-select>
+                                                      </mat-form-field>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <mat-form-field style="width: 100%;" appearance="outline">

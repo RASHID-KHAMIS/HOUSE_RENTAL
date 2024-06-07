@@ -32,6 +32,12 @@ export class AddHouseComponent implements OnInit{
     {value: 'MAGHARIBI A', viewValue: 'MAGHARIBI A'},
     {value: 'MAGHARIBI B', viewValue: 'MAGHARIBI B'},
   ];
+
+  types: Y[] = [
+    {value: 'FLOOR HOUSE', viewValue: 'FLOOR HOUSE'},
+    {value: 'NORMAL HOUSE', viewValue: 'NORMAL HOUSE'},
+  ];
+
   
   constructor(private router:Router,
     private route:ActivatedRoute,
@@ -81,6 +87,7 @@ export class AddHouseComponent implements OnInit{
       const form1 = new FormData();
       form1.append('imageFile', this.Selectfile1, this.Selectfile1.name);
       this.houseLocationService.addHouseLocation(region,district,other,resp.house_id,form1).subscribe((output:any)=>{
+        this.reload();
         this.alert();
       });
     })
@@ -94,7 +101,7 @@ export class AddHouseComponent implements OnInit{
 
   reload(){
     this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['admin/role'])
+      this.router.navigate(['admin/house-list'])
     })
   }
 

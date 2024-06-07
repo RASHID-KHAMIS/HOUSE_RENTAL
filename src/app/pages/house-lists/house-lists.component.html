@@ -3,7 +3,7 @@
     <div class="content-wrapper">
         <div class="container-fluid">
 
-            <div class="row">
+            <div class="row" *ngIf="!check">
                 <div class="col-md-12">
 
                     <h2 class="page-title">HOUSE LISTS</h2>
@@ -97,6 +97,23 @@
                                     </app-card>
 
                                 </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" *ngIf="check">
+                <div class="col-md-12">
+
+                    <h2 class="page-title">HOUSE LISTS</h2>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">No House Registered yet</div>
                             </div>
                         </div>
 

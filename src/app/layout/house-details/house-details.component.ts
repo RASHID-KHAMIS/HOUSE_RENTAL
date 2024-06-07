@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -95,23 +96,68 @@ export class HouseDetailsComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
 
-        this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((resp:any)=>{
-          this.bookForm.patchValue({customer:resp});  
-          this.houseService.getHouseByID(this.route.snapshot.queryParamMap.get('id')).subscribe((response:any)=>{
-            this.bookForm.patchValue({house:response});
-            const values = this.bookForm.value;
-            this.houseBookingService.addHouseBooking(values).subscribe((resp:any)=>{
-              swalWithBootstrapButtons.fire({
-                title: "Booking has been added successifully!",
-                text: "Please wait , your booking is being processed by our staffs .",
-                icon: "success"
+        const userId = sessionStorage.getItem("user_id");
+        const houseId = this.route.snapshot.queryParamMap.get('id');
+        
+        if (userId && houseId) {
+          this.customerService.getCustomerInfoByUserID(userId).subscribe((resp: any) => {
+            this.bookForm.patchValue({ customer: resp });
+            
+            this.houseService.getHouseByID(houseId).subscribe((response: any) => {
+              this.bookForm.patchValue({ house: response });
+              const values = this.bookForm.value;
+        
+              this.houseBookingService.addHouseBooking(values).subscribe((resp: any) => {
+                Swal.fire({
+                  title: "Booking has been added successfully!",
+                  text: "Please wait, your booking is being processed by our staff.",
+                  icon: "success"
+                });
+                console.log(resp);
+                
+        
+                setTimeout(() => {
+                  this.router.navigate(["booking"]);
+                  this.router.navigate(['admin/view-house'],{queryParams:{id:resp.house_booking_id}})
+                }, 3000);
               });
-              setTimeout(()=>{
-                this.router.navigate(["booking"]);
-              },3000);
+            }, (error: any) => {
+              // Handle error for houseService.getHouseByID
+              Swal.fire({
+                title: "Error!",
+                text: "Failed to fetch house details.",
+                icon: "error"
+              });
+            });
+          }, (error: any) => {
+            // Handle error for customerService.getCustomerInfoByUserID
+            Swal.fire({
+              title: "Error!",
+              text: "Failed to fetch customer information.",
+              icon: "error"
             });
           });
-        });
+        } else {
+          if (!userId) {
+            console.error("User ID not found in sessionStorage");
+            Swal.fire({
+              title: "Error!",
+              text: "Login First or Sign Up for new User ",
+              icon: "error"
+            });
+          }
+          if (!houseId) {
+            console.error("House ID not found in query parameters");
+            Swal.fire({
+              title: "Error!",
+              text: "House ID not found in query parameters.",
+              icon: "error"
+            });
+          }
+        }
+        
+        
+      
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {

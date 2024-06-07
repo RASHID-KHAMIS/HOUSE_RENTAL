@@ -29,4 +29,9 @@ export class ViewHouseComponent implements OnInit{
     })
   }
 
+  onBack(){
+    this.router.navigateByUrl('admin/house-list')
+  
+  }
+
 }

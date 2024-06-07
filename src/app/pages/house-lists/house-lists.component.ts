@@ -23,6 +23,7 @@ export class HouseListsComponent implements OnInit{
     this.dataSource.sort = this.sort;
   }
 
+  check:boolean = false;
   constructor(private router:Router,
     private route:ActivatedRoute,
     private houseLocationService:HouseLocationService,
@@ -41,10 +42,12 @@ export class HouseListsComponent implements OnInit{
   }
 
   fetcAllHouseLocation(){
+    this.check = true;
     this.houseLocationService.getAllHouseLocation().subscribe((resp:any)=>{
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort =this.sort;
+      this.check = false
       
     })
   }
