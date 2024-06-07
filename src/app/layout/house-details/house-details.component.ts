@@ -84,7 +84,7 @@ export class HouseDetailsComponent implements OnInit{
     this.houseService.getHouseByID(this.route.snapshot.queryParamMap.get('id')).subscribe((response:any)=>{
       this.bookForm.patchValue({house:response});
       const values = this.bookForm.value;
-      console.log(values);
+      // console.log(values);
 
       this.houseBookingService.addHouseBooking(values).subscribe((resp:any)=>{
         console.log('added');
