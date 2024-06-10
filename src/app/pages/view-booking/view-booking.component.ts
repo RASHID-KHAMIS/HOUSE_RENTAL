@@ -18,6 +18,7 @@ export class ViewBookingComponent implements OnInit{
   ngOnInit(): void {
     const booking =this.route.snapshot.queryParamMap.get('id');
     this.fetchBookingInfo(booking);
+    this.configureForm();
   }
 
 
@@ -26,7 +27,9 @@ export class ViewBookingComponent implements OnInit{
     this.houseBookingService.getByHouseBookingID(id).subscribe((resp:any)=>{
       console.log(resp);
       this.viewBookingForm = new FormGroup({
-        house_booking_id:new FormControl(resp.house_booking_id)
+        house_booking_id:new FormControl(resp.house_booking_id),
+        house:new FormControl(resp.house),
+        houseTitle:new FormControl(resp.house.title),
       })
     })
   }
@@ -42,7 +45,9 @@ export class ViewBookingComponent implements OnInit{
       totalPrice:new FormControl(null),
       bookingStatus:new FormControl(null),
       bookingDescription:new FormControl(null),
-      staffId:new FormControl(null)
+      staffId:new FormControl(null),
+
+      houseTitle: new FormControl(null),
     })
   }
 

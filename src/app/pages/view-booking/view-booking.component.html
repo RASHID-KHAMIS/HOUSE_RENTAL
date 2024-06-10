@@ -18,6 +18,39 @@
     
                                     <form [formGroup]="viewBookingForm" class="form-horizontal" >
                                         <br><br>
+                                  
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">House Title</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control" formControlName="house_booking_id" readOnly>
+                                            </div>
+                                            <label class="col-sm-1 control-label">House Type</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control" formControlName="houseTitle" readonly>
+                                            </div>
+
+                                            <label class="col-sm-1 control-label">Size</label>
+                                            <div class="col-sm-3">
+                                                <input  class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">Bedrooms</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control" formControlName="house_booking_id" readOnly>
+                                            </div>
+                                            <label class="col-sm-1 control-label">Bathrooms</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control"
+                                                    value="{{bookings.house_id.type}}" readonly>
+                                            </div>
+
+                                            <label class="col-sm-1 control-label">Address</label>
+                                            <div class="col-sm-3">
+                                                <input  class="form-control" readonly>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">House Title</label>
                                             <div class="col-sm-3">
@@ -34,88 +67,84 @@
                                                 <input  class="form-control" readonly>
                                             </div>
                                         </div>
-    
+
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">House size<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-4">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.house_id.size}}" readOnly>
+                                            <label class="col-sm-1 control-label">Customer Name</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control" formControlName="house_booking_id" readOnly>
                                             </div>
-                                            <label class="col-sm-2 control-label">Bedrooms<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-4">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.house_id.bedrooms}}" readonly>
+                                            <label class="col-sm-1 control-label">Email</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control"
+                                                    value="{{bookings.house_id.type}}" readonly>
+                                            </div>
+
+                                            <label class="col-sm-1 control-label">Number</label>
+                                            <div class="col-sm-3">
+                                                <input  class="form-control" readonly>
                                             </div>
                                         </div>
-    
+
+
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Bathrooms<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-4">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.house_id.bathrooms}}" readOnly>
+                                            <label class="col-sm-1 control-label">Address</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control" formControlName="house_booking_id" readOnly>
                                             </div>
-                                            <label class="col-sm-2 control-label">Color<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-4">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.house_id.color}}" readonly>
+                                            <label class="col-sm-1 control-label">ID</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control"
+                                                    value="{{bookings.house_id.type}}" readonly>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-1 control-label">Start Date</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control" formControlName="house_booking_id" readOnly>
+                                            </div>
+                                            <label class="col-sm-1 control-label">End Date</label>
+                                            <div class="col-sm-3">
+                                                <input   class="form-control"
+                                                    value="{{bookings.house_id.type}}" readonly>
+                                            </div>
+
+                                            <label class="col-sm-1 control-label">Amount</label>
+                                            <div class="col-sm-3">
+                                                <input  class="form-control" readonly>
                                             </div>
                                         </div>
-    
-                                        <div class="form-group">
-                                            <label class="col-sm-1 control-label">Region<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-3">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.region_name}}" readOnly>
-                                            </div>
-                                            <label class="col-sm-1 control-label">District<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-3">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.district_name}}" readonly>
-                                            </div>
-    
-                                            <label class="col-sm-1 control-label">Street<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-3">
-                                                <input type="text" name="vehicletitle" class="form-control"
-                                                    value="{{bookings.house_id.address}}" readonly>
-                                            </div>
-                                        </div>
+
     
                                         <div class="hr-dashed"></div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label">Description<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-4">
+                                                <label class="col-sm-1 control-label">  Description</label>
+                                                <div class="col-sm-5">
                                                     <textarea class="form-control" name="vehicalorcview" rows="3"
                                                         readonly>{{bookings.house_id.description}}</textarea>
                                                 </div>
     
     
-                                                <label class="col-sm-1 control-label">Other Details<span
-                                                        style="color:red">*</span></label>
+                                                <label class="col-sm-1 control-label">Other Detail</label>
                                                 <div class="col-sm-5">
                                                     <textarea class="form-control" name="vehicalorcview" rows="3"
                                                         readonly>{{bookings.house_id.otherDetails}}</textarea>
                                                 </div>
                                             </div>
                                         </div>
-    
-    
-                                        <div class="hr-dashed"></div>
-                                        <div class="form-group">
-    
-                                        </div>
+
     
                                     </form>
+                                  
                                 </div>
                             </div>
+                        </div><br><br>
+                        <div class="card-bottom">
+                            <!-- <button mat-raised-button>Cancel</button> &nbsp; -->
+                            <button mat-raised-button color="primary">Confirm</button>
                         </div>
                     </app-card>
                  
