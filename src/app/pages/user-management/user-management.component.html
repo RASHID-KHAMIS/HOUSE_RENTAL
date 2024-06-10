@@ -53,15 +53,6 @@
                                                 </ng-container>
 
 
-                                            <!-- Fruit Column -->
-                                            <ng-container matColumnDef="action">
-                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                                                <td mat-cell *matCellDef="let row">
-                                                    <button mat-raised-button color="primary" *ngIf="row.userType =='ADMINISTRATOR'"><span> ADMINISTRATOR </span></button> &nbsp;
-                                                    <button mat-raised-button color="accent" *ngIf="row.userStatus== 1 OR row.userType != 'ADMINISTRATOR'"><span class="fa fa-unlock" ></span></button>
-                                                    <button mat-raised-button color="warn" *ngIf="row.userStatus== 0"><span class="fa fa-unlock" ></span></button>
-                                                </td>
-                                            </ng-container>
 
                                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

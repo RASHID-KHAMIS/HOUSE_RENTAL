@@ -19,4 +19,8 @@ export class HouseBookingService {
   getBookedHouse():Observable<any>{
     return this.http.get(this.houseBookingAPI + "/booked-house");
   }
+
+  getAllBooked(){
+    return this.http.get(this.houseBookingAPI)
+  }
 }

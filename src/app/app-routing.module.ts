@@ -15,6 +15,7 @@ import { HouseDetailsComponent } from './layout/house-details/house-details.comp
 import { BookingComponent } from './pages/booking/booking.component';
 import { StaffComponent } from './pages/staff/staff.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
 
 const routes: Routes = [
 {
@@ -76,6 +77,10 @@ const routes: Routes = [
     {
       path:'user-management',
       component:UserManagementComponent
+    },
+    {
+      path:'payments',
+      component:PaymentsComponent
     },
     
     

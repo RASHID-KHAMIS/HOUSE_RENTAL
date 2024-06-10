@@ -40,6 +40,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { StaffComponent } from './pages/staff/staff.component';
 import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { UserManagementComponent } from './pages/user-management/user-management
     FooterComponent,
     BookingComponent,
     StaffComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,

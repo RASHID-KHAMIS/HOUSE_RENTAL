@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./user-management.component.css']
 })
 export class UserManagementComponent implements OnInit{
-  displayedColumns: string[] = ['id', 'name', 'position','email', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'position','email'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

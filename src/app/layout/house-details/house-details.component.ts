@@ -118,7 +118,7 @@ export class HouseDetailsComponent implements OnInit{
         
                 setTimeout(() => {
                   this.router.navigate(["booking"]);
-                  this.router.navigate(['admin/view-house'],{queryParams:{id:resp.house_booking_id}})
+                  // this.router.navigate(['admin/view-house'],{queryParams:{id:resp.house_booking_id}})
                 }, 3000);
               });
             }, (error: any) => {

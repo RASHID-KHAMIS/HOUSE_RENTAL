@@ -59,10 +59,10 @@
                                     <h4 style="color:red">Booking No #564545</h4>
                                     <div class="vehicle_img"> <a href=""><img
                                                 src="../../../assets/admin/img/vehicleimages/toyota-fortuner-legender-rear-quarters-6e57.jpg" alt="image"></a> </div>
-                                    <div class="vehicle_title">
-
-                                        <h6><a href=""> htfhf , gfdgfg</a></h6>
-                                        <p><b>From </b> 5345 <b>To </b>5656</p>
+                                    <div class="vehicle_title" *ngFor="let booking of bookings">
+                                       
+                                        <h3><a > {{booking.house.title}} , {{booking.house.type}}</a></h3>
+                                        <p><b>From </b> {{booking.startDate}} <b>To </b>{{booking.endDate}}</p>
                                         <div style="float: left">
                                             <p><b>Message:</b> fdsfds </p>
                                         </div>
@@ -88,24 +88,35 @@
 
                                 <h5 style="color:blue">Invoice</h5>
                                 <table>
-                                    <tr>
-                                        <th>Car Name</th>
-                                        <th>From Date</th>
-                                        <th>To Date</th>
-                                        <th>Total Days</th>
-                                        <th>Rent / Day</th>
-                                    </tr>
-                                    <tr>
-                                        <td>fhghgf,ggfhf</td>
-                                        <td>6545</td>
-                                        <td> 56</td>
-                                        <td>4556</td>
-                                        <td>45654</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="4" style="text-align:center;"> Grand Total</th>
-                                        <th>45664</th>
-                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <th>Car Name</th>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>Total Days</th>
+                                            <th>Rent / Day</th>
+                                        </tr>
+                                        <tr *ngFor="let booking of bookings">
+                                            <td>{{booking.house.title}}</td>
+                                            <td>{{booking.startDate}}</td>
+                                            <td> {{booking.endDate}}</td>
+                                            <td>{{booking.totalPrice | number}}</td>
+                                            <td>
+                                                <span *ngIf="booking.bookingStatus == 0">
+                                                    <span  style="color: red;">Not Paid</span>
+                                                </span>
+
+                                                <span *ngIf="booking.bookingStatus == 1">
+                                                    <span class="badge badge-danger" style="color:green;">Paid</span>
+                                                </span>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="4" style="text-align:center;"> Grand Total</th>
+                                            <th>45664</th>
+                                        </tr>
+                                    </tbody>
+                                 
                                 </table>
                                 <hr />
 
