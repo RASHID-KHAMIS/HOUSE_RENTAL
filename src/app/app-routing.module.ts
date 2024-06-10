@@ -14,6 +14,7 @@ import { CustomerComponent } from './pages/customer/customer.component';
 import { HouseDetailsComponent } from './layout/house-details/house-details.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { StaffComponent } from './pages/staff/staff.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
 
 const routes: Routes = [
 {
@@ -71,6 +72,10 @@ const routes: Routes = [
     {
       path:'staff',
       component:StaffComponent
+    },
+    {
+      path:'user-management',
+      component:UserManagementComponent
     },
     
     

@@ -52,13 +52,18 @@
               <li><i class="fa fa-home" aria-hidden="true"></i>{{house.house_id.type}}</li>
             </ul>
             <p class="list-price">{{house.region_name + "," + house.district_name}}</p>
-            <span *ngFor="let booked of house_booking_data">
-              <button disabled class="btn btn danger" *ngIf="booked.house.house_id == house.house_id.house_id">THIS HOUSE IS ALLREADY BOOKED , YOU CANT BOOK IT</button>
-            </span>
-            <span>
-              <a  style="cursor: pointer;" class="btn" (click)="onView(house)" *ngIf="check_data_exist">View Details
+            <span *ngIf="check_data_exist">
+              <a  style="cursor: pointer;" class="btn" (click)="onView(house)">View Details
                 <span class="angle_arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></span
               ></a>
+            </span>
+            <span *ngIf="!check_data_exist">
+              <span *ngFor="let booked of house_booking_data">
+                <button disabled class="btn btn danger" *ngIf="booked.house.house_id == house.house_id.house_id">THIS HOUSE IS ALLREADY BOOKED , YOU CANT BOOK IT</button>
+                <a  style="cursor: pointer;" class="btn" (click)="onView(house)" *ngIf="booked.house.house_id != house.house_id.house_id">View Details
+                  <span class="angle_arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></span
+                ></a>
+              </span>
             </span>
           </div>
         </div>

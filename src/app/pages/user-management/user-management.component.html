@@ -1,0 +1,93 @@
+<div class="ts-main-content">
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2 class="page-title">USER MANAGEMENT</h2>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">List of Users</div>
+                                <div class="panel-body">
+
+                                    <app-card>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Filter</mat-label>
+                                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                                        </mat-form-field>
+
+
+                                        <table mat-table [dataSource]="dataSource" matSort>
+
+                                            <!-- ID Column -->
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                                                <td mat-cell *matCellDef="let row;let i = index"> {{i + 1}} </td>
+                                            </ng-container>
+
+                                            <!-- Name Column -->
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name </th>
+                                                <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+                                            </ng-container>
+
+                                            <!-- Progress Column -->
+                                            <ng-container matColumnDef="position">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Role
+                                                </th>
+                                                <td mat-cell *matCellDef="let row"> {{row.userType}} </td>
+                                            </ng-container>
+
+                                                <!-- Progress Column -->
+                                                <ng-container matColumnDef="email">
+                                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> email
+                                                    </th>
+                                                    <td mat-cell *matCellDef="let row"> 
+                                                        <span class="badge badge-success" *ngIf="row.userStatus==1">Active</span>
+                                                        <span class="badge badge-danger" *ngIf="row.userStatus==0">In Active</span>
+                                                     </td>
+                                                </ng-container>
+
+
+                                            <!-- Fruit Column -->
+                                            <ng-container matColumnDef="action">
+                                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                                                <td mat-cell *matCellDef="let row">
+                                                    <button mat-raised-button color="primary" *ngIf="row.userType =='ADMINISTRATOR'"><span> ADMINISTRATOR </span></button> &nbsp;
+                                                    <button mat-raised-button color="accent" *ngIf="row.userStatus== 1 OR row.userType != 'ADMINISTRATOR'"><span class="fa fa-unlock" ></span></button>
+                                                    <button mat-raised-button color="warn" *ngIf="row.userStatus== 0"><span class="fa fa-unlock" ></span></button>
+                                                </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                            <!-- Row shown when there is no matching data. -->
+                                            <tr class="mat-row" *matNoDataRow>
+                                                <td class="mat-cell" colspan="4">No data matching the filter
+                                                    "{{input.value}}"</td>
+                                            </tr>
+                                        </table>
+
+                                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+                                            aria-label="Select page of users"></mat-paginator>
+
+                                    </app-card>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
