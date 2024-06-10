@@ -15,14 +15,16 @@ export class BookingComponent implements OnInit{
     private houseBookingService:HouseBookingService,
     private sanitizer:DomSanitizer,){}
   ngOnInit(): void {
-   this.fetchAllBooked();
+    const houseBooking =this.route.snapshot.queryParamMap.get('id')
+;    
+   this.fetchAllBookedByCustomerID(houseBooking);
   }
 
 
   bookings:any;
   imageSource1:any;
-  fetchAllBooked(){
-    this.houseBookingService.getAllBooked().subscribe((resp:any)=>{
+  fetchAllBookedByCustomerID(custID:any){
+    this.houseBookingService.getBookingByCustomerID(custID).subscribe((resp:any)=>{
       console.log(resp);
       this.bookings = resp;
       this.imageSource1 = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${resp.imageUrl}`);

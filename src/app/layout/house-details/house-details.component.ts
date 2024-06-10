@@ -32,6 +32,7 @@ export class HouseDetailsComponent implements OnInit{
     this.fetchHouseByLocationID(house);
     this.fetchAllPrice();
     this.configureBookingForm();
+    
   }
 
 
@@ -117,8 +118,12 @@ export class HouseDetailsComponent implements OnInit{
                 
         
                 setTimeout(() => {
-                  this.router.navigate(["booking"]);
-                  // this.router.navigate(['admin/view-house'],{queryParams:{id:resp.house_booking_id}})
+                  this.customerService.getCustomerInfoByUserID(sessionStorage.getItem('user_id')).
+                  subscribe((response:any)=>{
+                     this.router.navigate(['booking'],{queryParams:{id:response.customer_id}})
+                  })
+                  // this.router.navigate(["booking"]);
+                 
                 }, 3000);
               });
             }, (error: any) => {
