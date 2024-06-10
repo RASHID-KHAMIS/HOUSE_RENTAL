@@ -27,4 +27,12 @@ export class HouseBookingService {
   getBookingByCustomerID(id:any){
     return this.http.get(this.houseBookingAPI + "/my-bookings/" + id)
   }
+
+  getAllBooking(){
+    return this.http.get(this.houseBookingAPI)
+  }
+
+  getByHouseBookingID(id:any){
+    return this.http.get(this.houseBookingAPI + "/" + id)
+  }
 }

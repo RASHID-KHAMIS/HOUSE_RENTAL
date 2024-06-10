@@ -37,4 +37,8 @@ export class BookingComponent implements OnInit{
     return 'data:image/png;base64,' + url
   }
 
+  onLogOut(){
+    
+  }
+
 }

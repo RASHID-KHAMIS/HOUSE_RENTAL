@@ -3,15 +3,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from 'src/app/services/customer.service';
+import { HouseBookingService } from 'src/app/services/house-booking.service';
 
 @Component({
-  selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css']
+  selector: 'app-all-booking',
+  templateUrl: './all-booking.component.html',
+  styleUrls: ['./all-booking.component.css']
 })
-export class CustomerComponent implements OnInit{
-  displayedColumns: string[] = ['id','Name', 'email', 'phone','address','ID','status'];
+export class AllBookingComponent implements OnInit{
+  displayedColumns: string[] = ['id','Name', 'phoneNumber', 'title','address','startDate',
+  'endDate','totalPrice','bookingStatus','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,9 +25,10 @@ export class CustomerComponent implements OnInit{
 
   constructor(private router:Router,
     private route:ActivatedRoute,
-    private customerService:CustomerService){}
+    private houseBookingService:HouseBookingService){}
   ngOnInit(): void {
-  this.fetchAllCustomer();
+  
+    this.fetchAllBooking()
   }
 
   applyFilter(event: Event) {
@@ -38,17 +40,19 @@ export class CustomerComponent implements OnInit{
     }
   }
 
-  fetchAllCustomer(){
-    this.customerService.getAllCustomer().subscribe((resp:any)=>{
+
+  fetchAllBooking(){
+    this.houseBookingService.getAllBooking().subscribe((resp:any)=>{
+      console.log(resp);
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort =this.sort;
+      this.dataSource.sort = this.sort;
       
     })
   }
 
-  onOpen(row:any){
-
+  onView(row:any){
+    this.router.navigate(['admin/view-booking'],{queryParams:{id:row.house_booking_id}})
   }
 
 }
