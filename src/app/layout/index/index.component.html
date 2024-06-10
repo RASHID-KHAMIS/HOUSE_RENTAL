@@ -51,8 +51,10 @@
 
           <div class="col-list-3" *ngFor="let house of houses" >
             <div class="recent-car-list" (click)="onHouse(house)">
-              <div class="car-info-box"> <a >
-                  <img src="{{displayImage(house.imageUrl)}}" class="img-responsive" alt="image"></a>
+              <div class="car-info-box"> 
+                <a >
+                  <img src="{{displayImage(house.imageUrl)}}" class="img-responsive" alt="image">
+                </a>
                 <ul>
                   <li><i class="fa fa-car" aria-hidden="true"></i>{{house.house_id.type}} </li>
                   <li><i class="fa fa-calendar" aria-hidden="true"></i>{{house.house_id.address}}</li>

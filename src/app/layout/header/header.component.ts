@@ -131,7 +131,11 @@ export class HeaderComponent implements OnInit {
     if (selectedValue === 'logout') {
       this.onLogOut();
     }else if(selectedValue === 'booking'){
-      this.router.navigateByUrl('booking')
+      // this.router.navigateByUrl('booking')
+      this.customerService.getCustomerInfoByUserID(sessionStorage.getItem('user_id')).
+      subscribe((response:any)=>{
+         this.router.navigate(['booking'],{queryParams:{id:response.customer_id}})
+      }) 
       
     }
      else {

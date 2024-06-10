@@ -23,13 +23,18 @@ export class BookingComponent implements OnInit{
 
   bookings:any;
   imageSource1:any;
+  check:boolean = false;
   fetchAllBookedByCustomerID(custID:any){
+    this.check =true;
     this.houseBookingService.getBookingByCustomerID(custID).subscribe((resp:any)=>{
-      console.log(resp);
       this.bookings = resp;
-      this.imageSource1 = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${resp.imageUrl}`);
+      this.check = false;
       
     })
+  }
+
+   displayImage(url:any){
+    return 'data:image/png;base64,' + url
   }
 
 }

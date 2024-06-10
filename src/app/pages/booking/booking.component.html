@@ -2,9 +2,9 @@
 
 <header>
     <app-header></app-header>
-  </header>
-  <!-- /Header -->
-  
+</header>
+<!-- /Header -->
+
 <section class="page-header profile_page">
     <div class="container">
         <div class="page-header_wrap">
@@ -39,95 +39,108 @@
             <div class="col-md-3 col-sm-3">
                 <div class="profile_nav">
                     <ul>
-                      <li><a href="profile.php">Profile Settings</a></li>
+                        <li><a href="profile.php">Profile Settings</a></li>
                         <li><a href="update-password.php">Update Password</a></li>
-                      <li><a href="my-booking.php">My Booking</a></li>
-                      <li><a href="post-testimonial.php">Post a Testimonial</a></li>
-                         <li><a href="my-testimonials.php">My Testimonials</a></li>
-                      <li><a href="logout.php">Sign Out</a></li>
+                        <li><a href="my-booking.php">My Booking</a></li>
+                        <li><a href="logout.php">Sign Out</a></li>
                     </ul>
-                  </div>
                 </div>
+            </div>
 
-                <div class="col-md-8 col-sm-8">
-                    <div class="profile_wrap">
-                        <h5 class="uppercase underline">My Booikngs </h5>
-                        <div class="my_vehicles_list">
-                            <ul class="vehicle_listing">
+            <div class="col-md-8 col-sm-8">
+                <div class="profile_wrap">
+                    <h3 class="uppercase underline">My Booikngs </h3>
+                    <div class="my_vehicles_list" *ngIf="!check && bookings?.length > 0">
+                     
+                        <ul class="vehicle_listing" *ngFor="let booking of bookings">
 
-                                <li>
-                                    <h4 style="color:red">Booking No #564545</h4>
-                                    <div class="vehicle_img"> <a href=""><img
-                                                src="../../../assets/admin/img/vehicleimages/toyota-fortuner-legender-rear-quarters-6e57.jpg" alt="image"></a> </div>
-                                    <div class="vehicle_title" *ngFor="let booking of bookings">
-                                       
-                                        <h3><a > {{booking.house.title}} , {{booking.house.type}}</a></h3>
-                                        <p><b>From </b> {{booking.startDate}} <b>To </b>{{booking.endDate}}</p>
-                                        <div style="float: left">
-                                            <p><b>Message:</b> fdsfds </p>
-                                        </div>
+                            <li>
+                                <h4 style="color:red">Booking No {{booking.bookingNumber}}</h4>
+                                <div class="vehicle_img">
+                                    <a >
+                                        <img src="{{displayImage(booking.imageUrl)}}" class="img-responsive" alt="image">
+                                      </a>
+
+                                </div>
+                                <div class="vehicle_title">
+
+                                    <h3><a> {{booking.house.title}} , {{booking.house.type}}</a></h3>
+                                    <p><b>From </b> {{booking.startDate}} <b>To </b>{{booking.endDate}}</p>
+                                    <div style="float: left">
+                                        <p><b>Message:</b> {{booking.bookingDescription}} </p>
                                     </div>
+                                </div>
 
-                                    <div class="vehicle_status"> <a href="#"
-                                            class="btn outline btn-xs active-btn">Confirmed</a>
-                                        <div class="clearfix"></div>
-                                    </div>
-
-
-                                    <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Cancelled</a>
-                                        <div class="clearfix"></div>
-                                    </div>
-
-                                    <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Not Confirm
-                                            yet</a>
-                                        <div class="clearfix"></div>
-                                    </div>
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 1"> 
+                                    <a href="#"
+                                        class="btn outline btn-xs active-btn">Confirmed
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
 
 
-                                </li>
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 2">
+                                     <a href="#" class="btn outline btn-xs">Cancelled
 
-                                <h5 style="color:blue">Invoice</h5>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>Car Name</th>
-                                            <th>From Date</th>
-                                            <th>To Date</th>
-                                            <th>Total Days</th>
-                                            <th>Rent / Day</th>
-                                        </tr>
-                                        <tr *ngFor="let booking of bookings">
-                                            <td>{{booking.house.title}}</td>
-                                            <td>{{booking.startDate}}</td>
-                                            <td> {{booking.endDate}}</td>
-                                            <td>{{booking.totalPrice | number}}</td>
-                                            <td>
-                                                <span *ngIf="booking.bookingStatus == 0">
-                                                    <span  style="color: red;">Not Paid</span>
-                                                </span>
+                                     </a>
+                                    <div class="clearfix"></div>
+                                </div>
 
-                                                <span *ngIf="booking.bookingStatus == 1">
-                                                    <span class="badge badge-danger" style="color:green;">Paid</span>
-                                                </span>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="4" style="text-align:center;"> Grand Total</th>
-                                            <th>45664</th>
-                                        </tr>
-                                    </tbody>
-                                 
-                                </table>
-                                <hr />
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 0"> 
+                                    <a href="#" class="btn outline btn-xs">Not Confirm yet
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
 
-                                <h5 align="center" style="color:red">No booking yet</h5>
 
-                            </ul>
-                        </div>
+                            </li>
+
+                            <h5 style="color:blue">Invoice</h5>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>House Name</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Total Days</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{booking.house.title}}</td>
+                                        <td>{{booking.startDate}}</td>
+                                        <td> {{booking.endDate}}</td>
+                                        <td>{{booking.totalPrice | number}}</td>
+                                        <td>
+                                            <span *ngIf="booking.bookingStatus == 0">
+                                                <span style="color: red;">Not Paid</span>
+                                            </span>
+
+                                            <span *ngIf="booking.bookingStatus == 1">
+                                                <span class="badge badge-danger" style="color:green;">Paid</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" style="text-align:center;"> Grand Total</th>
+                                        <th>{{booking.totalPrice | number}}</th>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <hr />
+
+                           
+
+                        </ul>
                     </div>
+                    <div *ngIf="!check && (!bookings || bookings.length === 0)">
+                        <h1 align="center" style="color:red">No booking yet</h1>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
 </section>
 <!--/my-vehicles-->

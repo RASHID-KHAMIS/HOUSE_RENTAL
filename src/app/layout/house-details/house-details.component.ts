@@ -121,9 +121,7 @@ export class HouseDetailsComponent implements OnInit{
                   this.customerService.getCustomerInfoByUserID(sessionStorage.getItem('user_id')).
                   subscribe((response:any)=>{
                      this.router.navigate(['booking'],{queryParams:{id:response.customer_id}})
-                  })
-                  // this.router.navigate(["booking"]);
-                 
+                  })           
                 }, 3000);
               });
             }, (error: any) => {
