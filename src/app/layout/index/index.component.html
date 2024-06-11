@@ -72,6 +72,13 @@
               <div class="inventory_info_m">
                 <p>{{house.house_id.description}}</p>
               </div>
+              <span *ngIf="!check_data_exist" style="width: 100%;">
+                <span *ngFor="let booked of house_booking_data">
+                  <button disabled class="btn btn danger" *ngIf="booked.house.house_id == house.house_id.house_id">
+                    THIS HOUSE IS ALLREADY BOOKED , YOU CANT BOOK IT</button>
+                </span>
+              </span>
+             
             </div>
           </div>
 

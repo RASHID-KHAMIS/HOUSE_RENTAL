@@ -1,8 +1,7 @@
-  
-    <header>
-      <app-header></app-header>
-   
-      </header>
+<header>
+  <app-header></app-header>
+
+</header>
 
 <section class="page-header listing_page">
   <div class="container">
@@ -30,20 +29,19 @@
         </div>
         <div class="product-listing-m" *ngFor="let house of houses">
           <div class="product-listing-img">
-            <a style="cursor: pointer;"
-              >
+            <a style="cursor: pointer;">
               <img src="{{displayImage(house.imageUrl)}}" class="img-responsive">
             </a>
           </div>
           <div class="product-listing-content">
             <h5><a style="cursor: pointer;">{{house.house_id.title}}</a></h5>
             <p class="list-price"> <span *ngFor="let price of priceInfo">
-     
-              <span *ngIf="price.house.house_id==house.house_id.house_id">
-              {{price.renting_price | number }} tzs
+
+                <span *ngIf="price.house.house_id==house.house_id.house_id">
+                  {{price.renting_price | number }} tzs
+                </span>
               </span>
-            </span>
-          </p>
+            </p>
             <ul>
               <li><i class="fa fa-user" aria-hidden="true"></i>{{house.house_id.bedrooms}}</li>
               <li>
@@ -53,16 +51,16 @@
             </ul>
             <p class="list-price">{{house.region_name + "," + house.district_name}}</p>
             <span *ngIf="check_data_exist">
-              <a  style="cursor: pointer;" class="btn" (click)="onView(house)">View Details
-                <span class="angle_arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></span
-              ></a>
+              <a style="cursor: pointer;" class="btn" (click)="onView(house)">View Details
+                <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
             </span>
             <span *ngIf="!check_data_exist">
               <span *ngFor="let booked of house_booking_data">
-                <button disabled class="btn btn danger" *ngIf="booked.house.house_id == house.house_id.house_id">THIS HOUSE IS ALLREADY BOOKED , YOU CANT BOOK IT</button>
-                <a  style="cursor: pointer;" class="btn" (click)="onView(house)" *ngIf="booked.house.house_id != house.house_id.house_id">View Details
-                  <span class="angle_arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></span
-                ></a>
+                <button disabled class="btn btn danger" *ngIf="booked.house.house_id == house.house_id.house_id">THIS
+                  HOUSE IS ALLREADY BOOKED , YOU CANT BOOK IT</button>
+                <a style="cursor: pointer;" class="btn" (click)="onView(house)"
+                  *ngIf="booked.house.house_id != house.house_id.house_id">View Details
+                  <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
               </span>
             </span>
           </div>
@@ -78,22 +76,23 @@
             </h5>
           </div>
           <div class="sidebar_filter">
-            <form >
+            <form>
               <div class="form-group select">
-                <select class="form-control" name="brand">
-                  <option>Select Brand Type</option>
-                  <option >Ya Chini</option>
-                  <option >Ya Ghorofa</option>
-                </select>
-              </div>
-              <div class="form-group select">
-                <select class="form-control" name="fueltype">
-                  <option>Select Room Type</option>
+                <select class="form-control" >
+                  <option>Select House Type</option>
                   <option value="master">Master Room</option>
                   <option value="universal">Universal Room</option>
                   <option value="normal">Normal Room</option>
                 </select>
               </div>
+              <div class="form-group select">
+                <select class="form-control" name="brand">
+                  <option>Select By Region</option>
+                  <option *ngFor="let region of regions" [value]="region.value">{{region.viewValue}}</option>
+                 
+                </select>
+              </div>
+           
 
               <div class="form-group">
                 <button type="submit" class="btn btn-block" (click)="searchCar()">
@@ -110,23 +109,23 @@
             </h5>
           </div>
           <div class="recent_addedcars" *ngFor="let recent of recentHouses">
-            <ul >
+            <ul>
               <li class="">
                 <div class="recent_post_img">
-                  <a style="cursor: pointer;" >
+                  <a style="cursor: pointer;">
                     <img src="{{displayImage(recent.imageUrl)}}" alt="image"></a>
                 </div>
                 <div class="recent_post_title">
                   <a style="cursor: pointer;">{{recent.house_id.title}}</a>
-                  <p > {{recent.house_id.type}}</p>
-                  <p > Rooms : {{recent.house_id.bedrooms}}</p>
+                  <p> {{recent.house_id.type}}</p>
+                  <p> Rooms : {{recent.house_id.bedrooms}}</p>
                   <p class="widget_price"> Price :
                     <span *ngFor="let price of priceInfo">
-                    <span *ngIf="price.house.house_id==recent.house_id.house_id">
-                      {{price.renting_price | number }} tzs
+                      <span *ngIf="price.house.house_id==recent.house_id.house_id">
+                        {{price.renting_price | number }} tzs
+                      </span>
                     </span>
-                  </span>
-                    </p>
+                  </p>
                 </div>
               </li>
             </ul>
@@ -137,10 +136,10 @@
   </div>
 </section>
 
-    <!--Footer -->
-    <app-footer></app-footer>
-      <!-- /Footer-->
+<!--Footer -->
+<app-footer></app-footer>
+<!-- /Footer-->
 
-  <!--Back to top-->
-  <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-  <!--/Back to top-->
+<!--Back to top-->
+<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<!--/Back to top-->

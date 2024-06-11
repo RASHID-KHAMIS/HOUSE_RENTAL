@@ -5,6 +5,11 @@ import { HouseBookingService } from 'src/app/services/house-booking.service';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 import { PriceService } from 'src/app/services/price.service';
 
+interface Y {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-house-listing',
   templateUrl: './house-listing.component.html',
@@ -12,6 +17,11 @@ import { PriceService } from 'src/app/services/price.service';
 })
 export class HouseListingComponent implements OnInit{
 
+  regions: Y[] = [
+    {value: 'MJINI MAGHARIBI', viewValue: 'MJINI MAGHARIBI'},
+    {value: 'KASKAZINI UNGUJA', viewValue: 'KASKAZINI UNGUJA'},
+    {value: 'KUSINI UNGUJA', viewValue: 'KUSINI UNGUJA'},
+  ];
 
   house_booking_data: any;
 

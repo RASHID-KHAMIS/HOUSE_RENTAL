@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HouseBookingService } from 'src/app/services/house-booking.service';
 import { HouseLocationService } from 'src/app/services/house-location.service';
 import { LoginService } from 'src/app/services/login.service';
 import { PriceService } from 'src/app/services/price.service';
@@ -20,7 +21,8 @@ export class IndexComponent implements OnInit {
     private route: ActivatedRoute,
     private houseLocationService:HouseLocationService,
     private priceService:PriceService,
-    private reportService:ReportService
+    private reportService:ReportService,
+    private house_booking_services: HouseBookingService,
   ) { }
 
   username:any;
@@ -30,6 +32,8 @@ export class IndexComponent implements OnInit {
    this.fetchDashboardReport();
 
    this.username = sessionStorage.getItem("username");
+
+   this.getAllBookedHouses();
 
   }
 
@@ -62,6 +66,19 @@ export class IndexComponent implements OnInit {
       this.dashboard = resp;
       
     })
+  }
+
+  check_data_exist: boolean = false;
+  house_booking_data: any;
+  getAllBookedHouses(){
+    this.house_booking_services.getBookedHouse().subscribe((resp:any)=>{
+      this.house_booking_data = resp;
+      if(resp.length > 0){
+        this.check_data_exist = false;
+      }else{
+        this.check_data_exist = true;
+      }
+    });
   }
 
   onHouse(house:any){
