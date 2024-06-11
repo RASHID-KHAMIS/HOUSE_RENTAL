@@ -12,7 +12,7 @@
         </li>
         <li><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li>
         <li><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li>
-        <li *ngIf="role =='MARKETING OFFICER'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
+        <li *ngIf="role =='ADMINISTRATOR'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
         <li><a routerLink="customer" *ngIf="role=='MARKETING OFFICER'"><i class="fa fa-users"></i>Customer</a></li>
         <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a></li>
         <li><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
