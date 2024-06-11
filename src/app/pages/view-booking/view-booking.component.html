@@ -127,10 +127,12 @@
                                 </div>
                             </div>
                         </div><br><br>
-                        <div class="card-bottom">
-                            <!-- <button mat-raised-button>Cancel</button> &nbsp; -->
-                            <button mat-raised-button color="primary" (click)="onSave()">Confirm</button>
-                        </div>
+                        <span *ngFor="let book of bookings">
+                            <div class="card-bottom" *ngIf="book.bookingStatus==0">
+                                <button mat-raised-button color="primary" (click)="onSave()">Confirm</button>
+                            </div></span>
+                      
+                      
                     </app-card>
                  
        

@@ -2,12 +2,11 @@
     <ul class="ts-sidebar-menu">
 
         <li class="ts-label">Main</li>
-        <li><a ><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
         <li *ngIf="role=='ADMINISTRATOR'"><a href="#"><i class="fa fa-cog" ></i> Configuration</a>
             <ul>
                 <li><a routerLink="role">  Role</a></li>
-                <!-- <li><a href="manage-brands.php">Manage Brands</a></li> -->
             </ul>
         </li>
         <li><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li>
