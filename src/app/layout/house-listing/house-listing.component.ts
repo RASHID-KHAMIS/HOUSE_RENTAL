@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HouseBookingService } from 'src/app/services/house-booking.service';
@@ -24,6 +25,7 @@ export class HouseListingComponent implements OnInit{
   ];
 
   house_booking_data: any;
+  onSerchForm!:FormGroup;
 
   constructor(private router:Router,
     private route:ActivatedRoute,
@@ -88,6 +90,17 @@ export class HouseListingComponent implements OnInit{
     this.router.navigate(['/house-details'],{queryParams:{id:house.location_id}}).then(()=>{
       location.reload();
     })
+  }
+
+  onRegionChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedValue = selectElement.value;
+    console.log('Selected region:', selectedValue);
+    // Do something with the selected value
+  }
+
+  searchByRegion(){
+
   }
 
 }

@@ -76,7 +76,7 @@
             </h5>
           </div>
           <div class="sidebar_filter">
-            <form>
+            <form >
               <div class="form-group select">
                 <select class="form-control" >
                   <option>Select House Type</option>
@@ -86,10 +86,9 @@
                 </select>
               </div>
               <div class="form-group select">
-                <select class="form-control" name="brand">
+                <select class="form-control" name="brand" (change)="onRegionChange($event)">
                   <option>Select By Region</option>
                   <option *ngFor="let region of regions" [value]="region.value">{{region.viewValue}}</option>
-                 
                 </select>
               </div>
            
