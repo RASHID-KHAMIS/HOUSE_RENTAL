@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HouseBookingService } from 'src/app/services/house-booking.service';
+import { HouseLocationService } from 'src/app/services/house-location.service';
 import { StaffService } from 'src/app/services/staff.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +18,9 @@ export class ViewBookingComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private houseBookingService: HouseBookingService,
-    private staffService: StaffService) { }
+    private staffService: StaffService,
+    private houseLocationService:HouseLocationService,
+    private sanitizer:DomSanitizer) { }
   ngOnInit(): void {
     const booking = this.route.snapshot.queryParamMap.get('id');
     this.fetchBookingInfo(booking);
@@ -24,11 +28,16 @@ export class ViewBookingComponent implements OnInit {
   }
 
 
-  bookings: any
+  bookings: any;
+  imageSource1:any;
   fetchBookingInfo(id: any) {
     this.houseBookingService.getByHouseBookingID(id).subscribe((resp: any) => {
-      console.log(resp);
+      // console.log(resp);
       this.bookings = resp;
+      this.houseLocationService.getHouseByHouseID(resp.house.house_id).subscribe((resp2:any)=>{
+        this.imageSource1 = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${resp2[0].imageUrl}`);
+        
+      })
       
       this.viewBookingForm = new FormGroup({
         house_booking_id: new FormControl(resp.house_booking_id),

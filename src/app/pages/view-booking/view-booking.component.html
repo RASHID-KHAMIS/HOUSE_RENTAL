@@ -10,79 +10,81 @@
                             <button mat-raised-button color="primary" (click)="onBack()">Back</button>
                         </div><br>
                         <div class="row">
-                          
+
                             <div class="col-md-12">
                                 <div class="panel panel-default">
-                                    
+
                                     <div class="panel-heading">BOOKING information</div>
-    
-                                    <form [formGroup]="viewBookingForm" class="form-horizontal" >
+
+                                    <form [formGroup]="viewBookingForm" class="form-horizontal">
                                         <br><br>
-                                  
+
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">House Title</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="houseTitle" readOnly>
+                                                <input class="form-control" formControlName="houseTitle" readOnly>
                                             </div>
                                             <label class="col-sm-1 control-label">House Type</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="houseType" readonly>
+                                                <input class="form-control" formControlName="houseType" readonly>
                                             </div>
 
                                             <label class="col-sm-1 control-label">Size</label>
                                             <div class="col-sm-3">
-                                                <input  class="form-control" formControlName="houseSize" readonly>
+                                                <input class="form-control" formControlName="houseSize" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">Bedrooms</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="houseBedrooms" readOnly>
+                                                <input class="form-control" formControlName="houseBedrooms" readOnly>
                                             </div>
                                             <label class="col-sm-1 control-label">Bathrooms</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="houseBathrooms" readonly>
+                                                <input class="form-control" formControlName="houseBathrooms" readonly>
                                             </div>
 
                                             <label class="col-sm-1 control-label">Address</label>
                                             <div class="col-sm-3">
-                                                <input  class="form-control" formControlName="houseAddress" readonly>
+                                                <input class="form-control" formControlName="houseAddress" readonly>
                                             </div>
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label class="col-sm-1 control-label">Customer First  Name</label>
+                                            <label class="col-sm-1 control-label">Customer First Name</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="customerFName" readOnly>
+                                                <input class="form-control" formControlName="customerFName" readOnly>
                                             </div>
 
-                                            <label class="col-sm-1 control-label">Customer First  Name</label>
+                                            <label class="col-sm-1 control-label">Customer First Name</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="customerLName" readOnly>
+                                                <input class="form-control" formControlName="customerLName" readOnly>
                                             </div>
 
                                             <label class="col-sm-1 control-label">Email</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="customerEmail" readonly>
+                                                <input class="form-control" formControlName="customerEmail" readonly>
                                             </div>
 
-                                         
+
                                         </div>
 
 
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">Number</label>
                                             <div class="col-sm-3">
-                                                <input  class="form-control"  formControlName="customerPhoneNumber" readonly>
+                                                <input class="form-control" formControlName="customerPhoneNumber"
+                                                    readonly>
                                             </div>
                                             <label class="col-sm-1 control-label"> Customer Address</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="customerAddress" readOnly>
+                                                <input class="form-control" formControlName="customerAddress" readOnly>
                                             </div>
                                             <label class="col-sm-1 control-label">ID</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="customerNationalIdNumber" readonly>
+                                                <input class="form-control" formControlName="customerNationalIdNumber"
+                                                    readonly>
                                             </div>
 
                                         </div>
@@ -91,49 +93,55 @@
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">Start Date</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="startDate" readOnly>
+                                                <input class="form-control" formControlName="startDate" readOnly>
                                             </div>
                                             <label class="col-sm-1 control-label">End Date</label>
                                             <div class="col-sm-3">
-                                                <input   class="form-control" formControlName="endDate" readonly>
+                                                <input class="form-control" formControlName="endDate" readonly>
                                             </div>
 
                                             <label class="col-sm-1 control-label">Amount</label>
                                             <div class="col-sm-3">
-                                                <input  class="form-control" formControlName="totalPrice" readonly>
+                                                <input class="form-control" formControlName="totalPrice" readonly>
                                             </div>
                                         </div>
 
-    
+
                                         <div class="hr-dashed"></div>
                                         <div class="row">
                                             <div class="form-group">
-                                                <label class="col-sm-1 control-label">  Description</label>
+                                                <label class="col-sm-1 control-label"> Description</label>
                                                 <div class="col-sm-5">
-                                                    <textarea class="form-control"  rows="3" 
-                                                    formControlName="bookingDescription"    readonly></textarea>
+                                                    <textarea class="form-control" rows="3"
+                                                        formControlName="bookingDescription" readonly></textarea>
                                                 </div>
-    
-    
+
+
                                                 <label class="col-sm-1 control-label">Other Detail</label>
                                                 <div class="col-sm-5">
                                                     <textarea class="form-control" rows="3"
-                                                    formControlName="otherDetails"  readonly></textarea>
+                                                        formControlName="otherDetails" readonly></textarea>
                                                 </div>
                                             </div>
+                                        </div><br>
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-6">
+                                                <img [src]="imageSource1" alt="Image Source" width="70%" height="70%"
+                                                    style="border:solid 1px #000">
+                                            </div>
+                                            <div class="col-md-3"></div>
+
                                         </div>
                                     </form>
-                                  
+
                                 </div>
+                                <span *ngFor="let book of bookings">
+                                    <div class="card-bottom" *ngIf="book.bookingStatus==0">
+                                        <button mat-raised-button color="primary" (click)="onSave()">Confirm</button>
+                                    </div>
+                                </span>
                             </div>
                         </div><br><br>
-                        <span *ngFor="let book of bookings">
-                            <div class="card-bottom" *ngIf="book.bookingStatus==0">
-                                <button mat-raised-button color="primary" (click)="onSave()">Confirm</button>
-                            </div></span>
-                      
-                      
+
                     </app-card>
-                 
-       
-                                    

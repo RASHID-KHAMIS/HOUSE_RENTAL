@@ -37,4 +37,8 @@ export class HouseLocationService {
   getHouseLocationByRegion(region:any){
     return this.http.get(this.houseLocationAPI + "house-search-by-region/" + region)
   }
+
+  getHouseByHouseID(id:any){
+    return this.http.get(this.houseLocationAPI + "by-house-id/" + id)
+  }
 }
