@@ -25,4 +25,8 @@ export class RoleService {
   getRoleByName(name:any){
     return this.http.get(this.roleAPI + "roleByName/" + name)
   }
+
+  getSpecialRole(){
+    return this.http.get(this.roleAPI + "specialRoles")
+  }
 }

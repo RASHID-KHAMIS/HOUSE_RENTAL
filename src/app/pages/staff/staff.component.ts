@@ -63,7 +63,7 @@ export class StaffComponent implements OnInit {
 
   roles:any;
   fetchRole(){
-    this.roleService.getAllRoles().subscribe((resp:any)=>{
+    this.roleService.getSpecialRole().subscribe((resp:any)=>{
      this.roles = resp;
     })
   }

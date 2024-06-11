@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HouseBookingService } from 'src/app/services/house-booking.service';
@@ -18,14 +18,13 @@ interface Y {
 })
 export class HouseListingComponent implements OnInit{
 
-  regions: Y[] = [
-    {value: 'MJINI MAGHARIBI', viewValue: 'MJINI MAGHARIBI'},
-    {value: 'KASKAZINI UNGUJA', viewValue: 'KASKAZINI UNGUJA'},
-    {value: 'KUSINI UNGUJA', viewValue: 'KUSINI UNGUJA'},
+  types: Y[] = [
+    {value: 'FLOOR HOUSE', viewValue: 'FLOOR HOUSE'},
+    {value: 'NORMAL HOUSE', viewValue: 'NORMAL HOUSE'},
   ];
 
   house_booking_data: any;
-  onSerchForm!:FormGroup;
+  searchForm!:FormGroup;
 
   constructor(private router:Router,
     private route:ActivatedRoute,
@@ -38,6 +37,7 @@ export class HouseListingComponent implements OnInit{
     this.fetchAllPrice();
     this.fetchRecentHouse();
     this.getAllBookedHouses();
+    this.configureForm()
   }
 
 
@@ -81,9 +81,6 @@ export class HouseListingComponent implements OnInit{
     })
   }
 
-  searchCar(){
-    
-  }
 
   onView(house:any){
 
@@ -92,15 +89,20 @@ export class HouseListingComponent implements OnInit{
     })
   }
 
-  onRegionChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const selectedValue = selectElement.value;
-    console.log('Selected region:', selectedValue);
-    // Do something with the selected value
+  configureForm(){
+    this.searchForm = new FormGroup({
+      type:new FormControl(null)
+    })
   }
 
-  searchByRegion(){
 
+  searchCar(){
+    const values = this.searchForm.value;
+    console.log(values);
+    
   }
+
+
+ 
 
 }
