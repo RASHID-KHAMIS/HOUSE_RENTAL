@@ -47,8 +47,6 @@ export class CustomerComponent implements OnInit{
     })
   }
 
-  onOpen(row:any){
 
-  }
 
 }

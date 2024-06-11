@@ -16,28 +16,28 @@ export class HeaderComponent implements OnInit {
 
   loginForm!: FormGroup;
   signUpForm!: FormGroup;
-  role:any;
+  role: any;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService,
-    private roleService:RoleService,
-    private customerService:CustomerService) { }
+    private roleService: RoleService,
+    private customerService: CustomerService) { }
   ngOnInit(): void {
     this.configureLogin();
     this.configureSigUp();
 
     this.role = sessionStorage.getItem("role");
 
-    if(this.role=='CUSTOMER'){
+    if (this.role == 'CUSTOMER') {
       this.fetchInformation();
     }
-    
+
   }
 
-  fetchInformation(){
-    this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((response:any)=>{
-      this.customerInfo = response; 
-      })
+  fetchInformation() {
+    this.customerService.getCustomerInfoByUserID(sessionStorage.getItem("user_id")).subscribe((response: any) => {
+      this.customerInfo = response;
+    })
   }
 
   configureLogin() {
@@ -53,14 +53,14 @@ export class HeaderComponent implements OnInit {
       lastName: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.required),
       phoneNumber: new FormControl(null, Validators.required),
-      address: new FormControl(null,[Validators.email,Validators.required]),
+      address: new FormControl(null, [Validators.email, Validators.required]),
       nationalIdNumber: new FormControl(null, Validators.required),
       user_id: new FormControl(null),
     })
   }
 
 
-  customerInfo:any;
+  customerInfo: any;
   onLogin() {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
@@ -77,11 +77,18 @@ export class HeaderComponent implements OnInit {
           })
           break;
 
+        case 'MARKETING OFFICER':
+          this.router.navigateByUrl('/admin').then(() => {
+            location.reload();
+          })
+          break;
+
+
         case 'CUSTOMER':
           this.router.navigateByUrl('').then(() => {
             location.reload();
           })
-     
+
           break
         default:
           this.router.navigateByUrl("")
@@ -97,51 +104,51 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  onSinUp(){
-    this.roleService.getRoleByName("CUSTOMER").subscribe((resp:any)=>{
+  onSinUp() {
+    this.roleService.getRoleByName("CUSTOMER").subscribe((resp: any) => {
       const customer = {
         username: this.signUpForm.value.email,
         password: this.signUpForm.value.email,
         userStatus: '1',
         userType: resp.roleName
       }
-      this.loginService.registerUser(customer).subscribe((resp:any)=>{
-        this.signUpForm.patchValue({user_id:resp});
-            const values = this.signUpForm.value;
-            this.customerService.addCustomer(values).subscribe((resp:any)=>{
-              this.reload();
-              this.alert();
-            })
-        
+      this.loginService.registerUser(customer).subscribe((resp: any) => {
+        this.signUpForm.patchValue({ user_id: resp });
+        const values = this.signUpForm.value;
+        this.customerService.addCustomer(values).subscribe((resp: any) => {
+          this.reload();
+          this.alert();
+        })
+
       })
- 
+
     })
   }
 
-  onLogOut(){
+  onLogOut() {
     sessionStorage.clear();
-    this.router.navigateByUrl("").then(()=>{
+    this.router.navigateByUrl("").then(() => {
       location.reload();
     })
-  
+
   }
 
   onSelectChange(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'logout') {
       this.onLogOut();
-    }else if(selectedValue === 'booking'){
+    } else if (selectedValue === 'booking') {
       // this.router.navigateByUrl('booking')
       this.customerService.getCustomerInfoByUserID(sessionStorage.getItem('user_id')).
-      subscribe((response:any)=>{
-         this.router.navigate(['booking'],{queryParams:{id:response.customer_id}})
-      }) 
-      
+        subscribe((response: any) => {
+          this.router.navigate(['booking'], { queryParams: { id: response.customer_id } })
+        })
+
     }
-     else {
+    else {
       console.log('Selected:', selectedValue);
     }
-    
+
   }
 
   reload() {

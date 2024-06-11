@@ -43,7 +43,6 @@ export class AllBookingComponent implements OnInit{
 
   fetchAllBooking(){
     this.houseBookingService.getAllBooking().subscribe((resp:any)=>{
-      console.log(resp);
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

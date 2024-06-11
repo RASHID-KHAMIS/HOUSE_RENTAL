@@ -35,4 +35,8 @@ export class HouseBookingService {
   getByHouseBookingID(id:any){
     return this.http.get(this.houseBookingAPI + "/" + id)
   }
+
+  editBookingInfo(bookingID:any,staffID:any,body:any){
+    return this.http.put(this.houseBookingAPI + "/updateHouseBooking/" + bookingID + "/" + staffID,body)
+  }
 }

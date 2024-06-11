@@ -18,4 +18,8 @@ export class StaffService {
   getAllStaff(){
     return this.http.get(this.staffAPI)
   }
+
+  getStaffByUserID(id:any){
+    return this.http.get(this.staffAPI + "/staff-by-user-id/" + id)
+  }
 }
