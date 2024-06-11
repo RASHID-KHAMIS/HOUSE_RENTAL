@@ -39,8 +39,6 @@
             <div class="col-md-3 col-sm-3">
                 <div class="profile_nav">
                     <ul>
-                        <li><a href="profile.php">Profile Settings</a></li>
-                        <li><a href="update-password.php">Update Password</a></li>
                         <li><a href="my-booking.php">My Booking</a></li>
                         <li><a (click)="onLogOut()">Sign Out</a></li>
                     </ul>
@@ -103,7 +101,7 @@
                                         <th>From Date</th>
                                         <th>To Date</th>
                                         <th>Total Days</th>
-                                        <th>Payment Status</th>
+                                        <th>Booking Status</th>
                                     </tr>
                                     <tr>
                                         <td>{{booking.house.title}}</td>
@@ -112,11 +110,11 @@
                                         <td>{{booking.totalPrice | number}}</td>
                                         <td>
                                             <span *ngIf="booking.bookingStatus == 0">
-                                                <span style="color: red;">Not Paid</span>
+                                                <span style="color: red;">Not Confirmed</span>
                                             </span>
 
                                             <span *ngIf="booking.bookingStatus == 1">
-                                                <span class="badge badge-danger" style="color:green;">Paid</span>
+                                                <span class="badge badge-danger" style="color:green;">Confirmed</span>
                                             </span>
                                         </td>
                                     </tr>

@@ -43,8 +43,6 @@
           <ul>
             <select class="form-control" (change)="onSelectChange($event)">
               <option value="" selected class="form-control" *ngIf="customerInfo">{{customerInfo.firstName + " " + customerInfo.lastName }}</option>
-              <option value="">Profile Settings</option>
-              <option value="">Update Password</option>
               <option value="booking">My Booking</option>
               <option value="logout">Sign Out</option>
             </select>

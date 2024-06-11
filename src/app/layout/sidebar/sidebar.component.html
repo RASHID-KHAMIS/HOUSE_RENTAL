@@ -4,37 +4,19 @@
         <li class="ts-label">Main</li>
         <li><a ><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
-        <li><a href="#"><i class="fa fa-cog"></i> Configuration</a>
+        <li *ngIf="role=='ADMINISTRATOR'"><a href="#"><i class="fa fa-cog" ></i> Configuration</a>
             <ul>
                 <li><a routerLink="role">  Role</a></li>
                 <!-- <li><a href="manage-brands.php">Manage Brands</a></li> -->
             </ul>
         </li>
-<!-- 
-        <li><a href="#"><i class="fa fa-car"></i> Vehicles</a>
-            <ul>
-                <li><a href="post-avehical.php">Post a Vehicle</a></li>
-                <li><a href="manage-vehicles.php">Manage Vehicles</a></li>
-            </ul>
-        </li>
-
-        <li><a href="#"><i class="fa fa-sitemap"></i> Bookings</a>
-            <ul>
-                <li><a href="new-bookings.php">New</a></li>
-                <li><a href="confirmed-bookings.php">Confirmed</a></li>
-                <li><a href="canceled-bookings.php">Canceled</a></li>
-            </ul>
-        </li> -->
-
-
-
         <li><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li>
         <li><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li>
-        <li><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
-        <li><a routerLink="customer"><i class="fa fa-users"></i>Customer</a></li>
-        <li><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a></li>
+        <li *ngIf="role =='MARKETING OFFICER'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
+        <li><a routerLink="customer" *ngIf="role=='MARKETING OFFICER'"><i class="fa fa-users"></i>Customer</a></li>
+        <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a></li>
         <li><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
-        <li><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a></li>
+        <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a></li>
 
     </ul>
 </nav>
