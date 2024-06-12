@@ -49,15 +49,16 @@
                 <div class="profile_wrap">
                     <h3 class="uppercase underline">My Booikngs </h3>
                     <div class="my_vehicles_list" *ngIf="!check && bookings?.length > 0">
-                     
+
                         <ul class="vehicle_listing" *ngFor="let booking of bookings">
 
                             <li>
                                 <h4 style="color:red">Booking No {{booking.bookingNumber}}</h4>
                                 <div class="vehicle_img">
-                                    <a >
-                                        <img src="{{displayImage(booking.imageUrl)}}" class="img-responsive" alt="image">
-                                      </a>
+                                    <a>
+                                        <img src="{{displayImage(booking.imageUrl)}}" class="img-responsive"
+                                            alt="image">
+                                    </a>
 
                                 </div>
                                 <div class="vehicle_title">
@@ -69,49 +70,43 @@
                                     </div>
                                 </div>
 
-                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 1"> 
-                                    <a href="#"
-                                        class="btn outline btn-xs active-btn">Confirmed
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 1">
+                                    <a href="#" class="btn outline btn-xs active-btn">Confirmed
                                     </a>
                                     <div class="clearfix"></div>
                                 </div>
 
 
                                 <div class="vehicle_status" *ngIf="booking.bookingStatus == 2">
-                                     <a href="#" class="btn outline btn-xs">Cancelled
+                                    <a href="#" class="btn outline btn-xs">Cancelled
 
-                                     </a>
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 0"> 
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 0">
                                     <a href="#" class="btn outline btn-xs">Not Confirm yet
                                     </a>
                                     <div class="clearfix"></div>
                                 </div><br>
 
-                                    <div class="vehicle_status" >
-                                        <div class="row">
-                                            <form>
-                                                <div class="col-md-12">
-                                                    <label >Upload Receipt</label>     
-                                                        <input type="file" (change)="onImageUpload1($event)" class="form-control" placeholder="imageFile" >
-                                                </div> 
-                                              </form>
-                                      
-                                              <div >
-                                                  <button mat-raised-button color="primary" 
-                                                  style="margin-top: 5%;margin-left: -30%;">Submit</button>
-                                              </div>
-                                        </div> 
-                                      
-                                      </div>
-                       
-                               
+                                <div class="vehicle_status">
+                                    <div class="row">
+                                        <form [formGroup]="paymentForm">
+                                            <div class="col-md-12">
+                                                <label>Upload Receipt</label>
+                                                <input type="file" (change)="onImageUpload1($event)"
+                                                    class="form-control" placeholder="imageFile">
+                                            </div>
+                                        </form>
 
-                            
+                                        <div>
+                                            <button mat-raised-button color="primary"
+                                                style="margin-top: 5%;margin-left: -30%;" (click)="onSubmit()">Submit</button>
+                                        </div>
+                                    </div>
 
-
+                                </div>
 
                             </li>
 
@@ -136,7 +131,8 @@
                                             </span>
 
                                             <span *ngIf="booking.bookingStatus == 1">
-                                                <span class="badge badge-danger" style="color:green;">Booking Confirmed</span>
+                                                <span class="badge badge-danger" style="color:green;">Booking
+                                                    Confirmed</span>
                                             </span>
                                         </td>
                                     </tr>
@@ -149,7 +145,7 @@
                             </table>
                             <hr />
 
-                           
+
 
                         </ul>
                     </div>
