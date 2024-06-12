@@ -23,7 +23,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">House Title<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4" *ngIf="houses">
                                                 <input  class="form-control"
                                                     value="{{houses.house_id.title}}" readOnly>
                                             </div>
@@ -38,14 +38,16 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">House size<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4" *ngIf="houses">
                                                 <input class="form-control"
                                                     value="{{houses.house_id.size}}" readOnly>
                                             </div>
-                                            <label class="col-sm-2 control-label">Bedrooms<span
-                                                    style="color:red">*</span></label>
-                                            <div class="col-sm-4">
-                                                <input  class="form-control"
+                                            <label class="col-sm-2 control-label">Bedrooms
+                                                <span
+                                                    style="color:red">*</span>
+                                                </label>
+                                            <div class="col-sm-4" *ngIf="houses">
+                                                <input  class="form-control" 
                                                     value="{{houses.house_id.bedrooms}}" readonly>
                                             </div>
                                         </div>
@@ -53,13 +55,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Bathrooms<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4" *ngIf="houses">
                                                 <input  class="form-control"
                                                     value="{{houses.house_id.bathrooms}}" readOnly>
                                             </div>
                                             <label class="col-sm-2 control-label">Color<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4" *ngIf="houses">
                                                 <input class="form-control"
                                                     value="{{houses.house_id.color}}" readonly>
                                             </div>
@@ -68,20 +70,20 @@
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">Region<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-3" *ngIf="houses">
                                                 <input  class="form-control"
                                                     value="{{houses.region_name}}" readOnly>
                                             </div>
                                             <label class="col-sm-1 control-label">District<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-3" *ngIf="houses">
                                                 <input  class="form-control"
                                                     value="{{houses.district_name}}" readonly>
                                             </div>
     
                                             <label class="col-sm-1 control-label">Street<span
                                                     style="color:red">*</span></label>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-3" *ngIf="houses">
                                                 <input  class="form-control"
                                                     value="{{houses.house_id.address}}" readonly>
                                             </div>
@@ -92,7 +94,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label">Description<span
                                                         style="color:red">*</span></label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-4" *ngIf="houses">
                                                     <textarea class="form-control"  rows="3"
                                                         readonly>{{houses.house_id.description}}</textarea>
                                                 </div>
@@ -100,7 +102,7 @@
     
                                                 <label class="col-sm-1 control-label">Other Details<span
                                                         style="color:red">*</span></label>
-                                                <div class="col-sm-5">
+                                                <div class="col-sm-5" *ngIf="houses">
                                                     <textarea class="form-control"  rows="3"
                                                         readonly>{{houses.house_id.otherDetails}}</textarea>
                                                 </div>

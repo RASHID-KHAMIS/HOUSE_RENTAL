@@ -41,4 +41,8 @@ export class HouseLocationService {
   getHouseByHouseID(id:any){
     return this.http.get(this.houseLocationAPI + "by-house-id/" + id)
   }
+
+  getHouseByType(type:any){
+    return this.http.get(this.houseLocationAPI + "by-type/" + type)
+  }
 }

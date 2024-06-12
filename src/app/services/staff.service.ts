@@ -22,4 +22,8 @@ export class StaffService {
   getStaffByUserID(id:any){
     return this.http.get(this.staffAPI + "/staff-by-user-id/" + id)
   }
+
+  editStaff(id:any,body:any){
+    return this.http.put(this.staffAPI + "/" + id,body)
+  }
 }

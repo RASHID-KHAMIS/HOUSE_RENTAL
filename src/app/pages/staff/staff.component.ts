@@ -90,7 +90,6 @@ export class StaffComponent implements OnInit {
       phoneNumber: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
       dateOfBirth: new FormControl(null, Validators.required),
-      roleName: new FormControl(null),
       users: new FormControl(null),
     })
   }
@@ -111,6 +110,7 @@ export class StaffComponent implements OnInit {
   }
 
   openDialog2(row: any) {
+  
     this.staffEditForm = new FormGroup({
       staffId: new FormControl(row.staffId),
       staffName: new FormControl(row.staffName),
@@ -119,7 +119,6 @@ export class StaffComponent implements OnInit {
       phoneNumber: new FormControl(row.phoneNumber),
       address: new FormControl(row.address),
       dateOfBirth: new FormControl(row.dateOfBirth),
-      roleName: new FormControl(row.roleId),
       users: new FormControl(row.users),
     })
     let dialogRef = this.dialog.open(this.distributionDialog2, {
@@ -155,6 +154,13 @@ export class StaffComponent implements OnInit {
   }
 
   onEdit() {
+    const id = this.staffEditForm.value.staffId;
+    const  values = this.staffEditForm.value;
+
+    this.staffService.editStaff(id,values).subscribe((resp:any)=>{
+      this.reload();
+      this.alert2();
+    })
 
   }
 
@@ -167,6 +173,14 @@ export class StaffComponent implements OnInit {
   alert() {
     Swal.fire({
       title: "Staff  added successfully",
+      text: "You clicked the button!",
+      icon: "success"
+    });
+  }
+
+  alert2() {
+    Swal.fire({
+      title: "Staff  edited successfully",
       text: "You clicked the button!",
       icon: "success"
     });

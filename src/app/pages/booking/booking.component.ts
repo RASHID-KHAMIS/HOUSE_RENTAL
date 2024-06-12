@@ -41,4 +41,9 @@ export class BookingComponent implements OnInit{
     
   }
 
+  Selectfile1: File = null!;
+  onImageUpload1(event:any) {
+    this.Selectfile1 = event.target.files[0];
+  }
+
 }

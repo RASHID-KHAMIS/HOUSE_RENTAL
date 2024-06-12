@@ -83,7 +83,6 @@ export class HouseListingComponent implements OnInit{
 
 
   onView(house:any){
-
     this.router.navigate(['/house-details'],{queryParams:{id:house.location_id}}).then(()=>{
       location.reload();
     })
@@ -97,8 +96,12 @@ export class HouseListingComponent implements OnInit{
 
 
   searchCar(){
-    const values = this.searchForm.value;
-    console.log(values);
+
+    this.houseLocationService.getHouseByType(this.searchForm.get('type')?.value).subscribe((resp:any)=>{
+      // console.log(resp);
+      this.houses = resp;
+      this.houseNumber = resp.length; 
+    })
     
   }
 
