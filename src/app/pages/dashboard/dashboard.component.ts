@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReportService } from 'src/app/services/report.service';
 import * as L from 'leaflet';
+import { marker } from 'leaflet';
+import { HouseService } from 'src/app/services/house.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,47 +14,70 @@ export class DashboardComponent implements OnInit{
 
   private map: any;
   ngAfterViewInit(): void {
-    this.initMap();
+    // this.initMap();
   }
   constructor(private router:Router,
     private route:ActivatedRoute,
-    private reportService:ReportService){}
+    private reportService:ReportService,
+    private houseService:HouseService){}
   ngOnInit(): void {
-    this.report()
+    this.report();
+    this.location()
   }
 
-  private initMap(): void {
-    // Define the geographical bounds for Zanzibar
-    const zanzibarBounds = L.latLngBounds(
-      L.latLng(-6.391, 39.051), // Southwest corner
-      L.latLng(-5.927, 39.334)  // Northeast corner
-    );
+  // private initMap(): void {
+
+  //   const zanzibarBounds = L.latLngBounds(
+  //     L.latLng(-6.391, 39.051), 
+  //     L.latLng(-5.927, 39.334)  
+  //   );
   
-    // Initialize the map and set the center to Zanzibar
-    this.map = L.map('map', {
-      center: [-6.1659, 39.2026],  // Zanzibar coordinates
-      zoom: 10,                    // Adjust the zoom level as needed
-      maxBounds: zanzibarBounds,   // Set the bounds to restrict the view
-      maxBoundsViscosity: 1.0,     // Makes the map bounce back when trying to move out of bounds
-      minZoom: 10,                 // Restrict zoom level to keep focus on Zanzibar
-      maxZoom: 18                  // Maximum zoom level
-    });
+   
+  //   this.map = L.map('map', {
+  //     center: [-6.1659, 39.2026], 
+  //     zoom: 10,                   
+  //     maxBounds: zanzibarBounds,   
+  //     maxBoundsViscosity: 1.0,     
+  //     minZoom: 10,                 
+  //     maxZoom: 18                 
+  //   });
   
-    // Add OpenStreetMap tiles
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+   
+  //   const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //     maxZoom: 18,
+  //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  //   });
   
-    tiles.addTo(this.map);
-  }
+  //   tiles.addTo(this.map);
+  // }
 
   reports:any
   report(){
     this.reportService.dashboardReport().subscribe((resp:any)=>{
-      // console.log(resp);
       this.reports = resp;
     })
+  }
+
+  location(){
+    const map = L.map('map').setView([-6.1659, 39.2026], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // L.marker([-6.1659, 39.2026]).addTo(map).openPopup();
+
+      this.houseService.getAllHouses().subscribe((resp:any)=>{
+        if (resp.length > 0) {
+          for(let z = 0; z < resp.length; z++){            
+            const unguja = marker([resp[z].latitude, resp[z].longitude]).addTo(map).
+            bindPopup("<h5><b style='color:green;'> House Name:" + resp[z].title + 
+            "<br> Type : " + resp[z].type +
+            " <br> Address : " + resp[z].address + 
+            "<h5><b>");
+          }
+        }
+        
+      })
   }
 
 }
