@@ -43,6 +43,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { PaymentsComponent } from './pages/payments/payments.component';
 import { AllBookingComponent } from './pages/all-booking/all-booking.component';
 import { ViewBookingComponent } from './pages/view-booking/view-booking.component';
+import { ViewPaymentComponent } from './pages/view-payment/view-payment.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { ViewBookingComponent } from './pages/view-booking/view-booking.componen
     UserManagementComponent,
     PaymentsComponent,
     AllBookingComponent,
-    ViewBookingComponent
+    ViewBookingComponent,
+    ViewPaymentComponent
   ],
   imports: [
     BrowserModule,

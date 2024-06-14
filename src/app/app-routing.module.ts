@@ -18,6 +18,7 @@ import { UserManagementComponent } from './pages/user-management/user-management
 import { PaymentsComponent } from './pages/payments/payments.component';
 import { AllBookingComponent } from './pages/all-booking/all-booking.component';
 import { ViewBookingComponent } from './pages/view-booking/view-booking.component';
+import { ViewPaymentComponent } from './pages/view-payment/view-payment.component';
 
 const routes: Routes = [
 {
@@ -91,6 +92,10 @@ const routes: Routes = [
     {
       path:'view-booking',
       component:ViewBookingComponent
+    },
+    {
+      path:'view-payment',
+      component:ViewPaymentComponent
     },
     
     

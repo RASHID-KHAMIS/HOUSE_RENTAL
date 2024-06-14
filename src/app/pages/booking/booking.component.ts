@@ -30,13 +30,25 @@ export class BookingComponent implements OnInit{
   bookings:any;
   imageSource1:any;
   check:boolean = false;
+  houses:any;
   fetchAllBookedByCustomerID(custID:any){
     this.check =true;
     this.houseBookingService.getBookingByCustomerID(custID).subscribe((resp:any)=>{
       this.bookings = resp;
       this.check = false;
+
+      this.paymentService.getBookingByID(resp[0].house_booking_id).subscribe((resp2:any)=>{
+        console.log(resp2);
+        this.houses = resp2;
+
+        
+      })
       
     })
+  }
+
+  fetchByBooking(){
+
   }
 
    displayImage(url:any){

@@ -4,7 +4,7 @@
         <li class="ts-label">{{role}}</li>
         <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
-        <li >
+        <li *ngIf="role=='ADMINISTRATOR'">
             <a href="#"><i class="fa fa-cog"></i> Configuration</a>
             <ul>
                 <li><a routerLink="role"> Role</a></li>
@@ -19,9 +19,11 @@
                 Booking</a></li>
         <li *ngIf="role=='ACCOUNTANT'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a>
         </li>
-        <li *ngIf="role=='ACCOUNTANT'"><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
+        <li ><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
         <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a>
         </li>
 
     </ul>
 </nav>
+
+<!-- *ngIf="role=='ACCOUNTANT'" -->

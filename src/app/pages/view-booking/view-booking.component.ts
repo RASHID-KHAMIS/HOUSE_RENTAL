@@ -107,8 +107,7 @@ export class ViewBookingComponent implements OnInit {
       const submissionData = { ...formValues };
       const bookingID = submissionData.house_booking_id;
       const staffID = resp.staffId;
-      console.log(bookingID);
-      console.log(staffID);
+
 
 
       delete submissionData.customerFName;

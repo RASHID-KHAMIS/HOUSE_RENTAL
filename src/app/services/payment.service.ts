@@ -17,4 +17,16 @@ export class PaymentService {
   getAllPayment(){
     return this.http.get(this.paymentAPI + "all")
   }
+
+  getByPaymentID(id:any){
+    return this.http.get(this.paymentAPI + id)
+  }
+
+  editPayment(id:any,){
+    return this.http.get(this.paymentAPI + "updatePaymentStatus/" +id)
+  }
+
+  getBookingByID(id:any){
+    return this.http.get(this.paymentAPI + "byBookingId/" + id)
+  }
 }

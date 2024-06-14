@@ -76,13 +76,12 @@
                                     <div class="clearfix"></div>
                                 </div>
 
-
-                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 2">
-                                    <a href="#" class="btn outline btn-xs">Cancelled
-
+                                <div class="vehicle_status" *ngIf="houses.payment_status == 1">
+                                    <a href="#" class="btn outline btn-xs active-btn">Paid Successfully
                                     </a>
                                     <div class="clearfix"></div>
                                 </div>
+
 
                                 <div class="vehicle_status" *ngIf="booking.bookingStatus == 0">
                                     <a href="#" class="btn outline btn-xs">Not Confirm yet
@@ -102,7 +101,7 @@
 
                                         <div>
                                             <button mat-raised-button color="primary"
-                                                style="margin-top: 5%;margin-left: -30%;" (click)="onSubmit()">Submit</button>
+                                                style="margin-top: 5%;margin-right: 12%;" (click)="onSubmit()">Submit</button>
                                         </div>
                                     </div>
 
