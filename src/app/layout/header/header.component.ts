@@ -78,14 +78,14 @@ export class HeaderComponent implements OnInit {
           break;
 
         case 'MARKETING OFFICER':
-          this.router.navigateByUrl('/admin').then(() => {
+          this.router.navigateByUrl('/admin/all-booking').then(() => {
             location.reload();
           })
           break;
 
 
         case 'ACCOUNTANT':
-          this.router.navigateByUrl('/admin').then(() => {
+          this.router.navigateByUrl('/admin/all-booking').then(() => {
             location.reload();
           })
           break;
