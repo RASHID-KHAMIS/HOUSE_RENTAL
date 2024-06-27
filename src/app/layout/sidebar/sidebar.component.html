@@ -1,27 +1,108 @@
-<nav class="ts-sidebar">
+<nav class="ts-sidebar"  *ngIf="role=='ADMINISTRATOR'">
     <ul class="ts-sidebar-menu">
 
         <li class="ts-label">{{role}}</li>
         <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+        <li>
+            <a href="#"><i class="fa fa-cog"></i> Configuration</a>
+            <ul>
+                <li><a routerLink="role"> Role</a></li>
+            </ul>
+        </li>
+        <li><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li>
+        <li ><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li>
+        <li ><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
+        <li><a routerLink="customer"><i class="fa fa-users"></i>Customer</a></li>
+        <!-- <li ><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All
+                Booking</a></li> -->
+        <!-- <li *ngIf="role=='ACCOUNTANT'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a>
+        </li> -->
+        <li ><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
+        <li ><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a></li>
+
+    </ul>
+</nav>
+
+<nav class="ts-sidebar" *ngIf="role=='ACCOUNTANT'">
+    <ul class="ts-sidebar-menu">
+
+        <li class="ts-label">{{role}}</li>
+        <!-- <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
         <li *ngIf="role=='ADMINISTRATOR'">
             <a href="#"><i class="fa fa-cog"></i> Configuration</a>
             <ul>
                 <li><a routerLink="role"> Role</a></li>
             </ul>
-        </li>
-     
-        <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li>
-        <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li>
-        <li *ngIf="role =='ADMINISTRATOR'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
-        <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="customer"><i class="fa fa-users"></i>Customer</a></li>
-        <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All
-                Booking</a></li>
+        </li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li> -->
+        <!-- <li *ngIf="role =='ADMINISTRATOR'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="customer"><i class="fa fa-users"></i>Customer</a></li> -->
+        <!-- <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All
+                Booking</a></li> -->
         <li *ngIf="role=='ACCOUNTANT'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a>
         </li>
         <li ><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
-        <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a>
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a>
+        </li> -->
+
+    </ul>
+</nav>
+
+
+<nav class="ts-sidebar"  *ngIf="role=='MARKETING OFFICER'">
+    <ul class="ts-sidebar-menu">
+
+        <li class="ts-label">{{role}}</li>
+        <!-- <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+        <li *ngIf="role=='ADMINISTRATOR'">
+            <a href="#"><i class="fa fa-cog"></i> Configuration</a>
+            <ul>
+                <li><a routerLink="role"> Role</a></li>
+            </ul>
+        </li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li> -->
+        <!-- <li *ngIf="role =='ADMINISTRATOR'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="customer"><i class="fa fa-users"></i>Customer</a></li> -->
+        <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All
+                Booking</a></li>
+        <!-- <li *ngIf="role=='ACCOUNTANT'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a>
+        </li> -->
+        <li ><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a>
+        </li> -->
+
+    </ul>
+</nav>
+
+
+<nav class="ts-sidebar" *ngIf="role=='ACCOUNTANT'">
+    <ul class="ts-sidebar-menu">
+
+        <li class="ts-label">{{role}}</li>
+        <!-- <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+        <li *ngIf="role=='ADMINISTRATOR'">
+            <a href="#"><i class="fa fa-cog"></i> Configuration</a>
+            <ul>
+                <li><a routerLink="role"> Role</a></li>
+            </ul>
+        </li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li> -->
+        <!-- <li *ngIf="role =='ADMINISTRATOR'"><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li> -->
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="customer"><i class="fa fa-users"></i>Customer</a></li> -->
+        <!-- <li *ngIf="role=='MARKETING OFFICER'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All
+                Booking</a></li> -->
+        <li *ngIf="role=='ACCOUNTANT'"><a routerLink="all-booking"><i class="fa fa-hourglass-half"></i>All Booking</a>
         </li>
+        <li ><a routerLink="payments"><i class="fa fa-files-o"></i>Payments</a></li>
+        <!-- <li *ngIf="role=='ADMINISTRATOR'"><a routerLink="user-management"><i class="fa fa-table"></i>User Management</a>
+        </li> -->
 
     </ul>
 </nav>
