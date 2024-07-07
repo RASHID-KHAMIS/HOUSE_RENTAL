@@ -4,6 +4,8 @@ import { ReportService } from 'src/app/services/report.service';
 import * as L from 'leaflet';
 import { marker } from 'leaflet';
 import { HouseService } from 'src/app/services/house.service';
+import { StaffService } from 'src/app/services/staff.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,10 +21,14 @@ export class DashboardComponent implements OnInit{
   constructor(private router:Router,
     private route:ActivatedRoute,
     private reportService:ReportService,
-    private houseService:HouseService){}
+    private houseService:HouseService,
+    private staffService:StaffService,
+    private loginService:LoginService){}
   ngOnInit(): void {
     this.report();
-    this.location()
+    this.location();
+    this.staff();
+    this.houseType();
   }
 
   // private initMap(): void {
@@ -54,17 +60,35 @@ export class DashboardComponent implements OnInit{
   reports:any
   report(){
     this.reportService.dashboardReport().subscribe((resp:any)=>{
+
       this.reports = resp;
     })
   }
+
+  staffs:any;
+  staff(){
+    this.loginService.getAllUsers().subscribe((resp:any)=>{
+      this.staffs = resp.length;
+    })
+  }
+
+  types:any;
+  houseType(){
+    this.reportService.houseType().subscribe((resp:any)=>{
+      // console.log(resp);
+      
+      this.types  = resp;
+      // console.log(this.types[0].houseNo);
+    })
+  }
+
+
 
   location(){
     const map = L.map('map').setView([-6.1659, 39.2026], 9);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
-
-    // L.marker([-6.1659, 39.2026]).addTo(map).openPopup();
 
       this.houseService.getAllHouses().subscribe((resp:any)=>{
         if (resp.length > 0) {

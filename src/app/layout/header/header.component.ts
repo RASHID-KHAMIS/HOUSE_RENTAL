@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   loginForm!: FormGroup;
   signUpForm!: FormGroup;
   role: any;
+  
   constructor(private router: Router,
     private route: ActivatedRoute,
     private loginService: LoginService,
@@ -122,9 +123,14 @@ export class HeaderComponent implements OnInit {
         const values = this.signUpForm.value;
         this.customerService.addCustomer(values).subscribe((resp: any) => {
           this.alert();
+          setTimeout(()=>{
+             this.reload()
+          },2000)
         })
       })
     })
+
+   
   }
 
   onLogOut() {
@@ -152,7 +158,7 @@ export class HeaderComponent implements OnInit {
   }
 
   reload() {
-    this.router.navigateByUrl('')
+   location.reload()
   }
 
   alert() {

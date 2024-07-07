@@ -13,4 +13,8 @@ export class ReportService {
   dashboardReport(){
     return this.http.get(this.reportAPI + "summary")
   }
+
+  houseType(){
+    return this.http.get(this.reportAPI + "report-by-type")
+  }
 }

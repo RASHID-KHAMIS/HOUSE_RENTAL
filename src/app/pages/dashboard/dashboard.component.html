@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-primary text-light">
                                             <div class="stat-panel text-center">
@@ -24,7 +24,7 @@
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-success text-light">
                                             <div class="stat-panel text-center">
@@ -38,15 +38,15 @@
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
+                                </div> -->
+                                <div class="col-md-3" *ngFor="let d of types">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-info text-light">
                                             <div class="stat-panel text-center">
                                                 <div class="stat-panel-number h1 ">
-                                                5
+                                                {{d.houseNo}}
                                                 </div>
-                                                <div class="stat-panel-title text-uppercase">Floor House</div>
+                                                <div class="stat-panel-title text-uppercase">{{d.type}}</div>
                                             </div>
                                         </div>
                                         <a routerLink="house-list"
@@ -54,7 +54,7 @@
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-warning text-light">
                                             <div class="stat-panel text-center">                    
@@ -68,7 +68,7 @@
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                         <div class="panel-body bk-success text-light">
                                             <div class="stat-panel text-center">
                                                 <div class="stat-panel-number h1 ">
-                                                 5
+                                                {{staffs}}
                                                 </div>
                                                 <div class="stat-panel-title text-uppercase">Users</div>
                                             </div>
