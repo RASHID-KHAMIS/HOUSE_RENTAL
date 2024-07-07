@@ -64,12 +64,10 @@ export class HeaderComponent implements OnInit {
   onLogin() {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
-
     this.loginService.getLogin(username, password).subscribe((resp: any) => {
       sessionStorage.setItem('user_id', resp.user_id);
       sessionStorage.setItem('username', resp.username);
       sessionStorage.setItem('role', resp.userType);
-
       switch (resp.userType) {
         case 'ADMINISTRATOR':
           this.router.navigateByUrl('/admin').then(() => {
@@ -123,12 +121,9 @@ export class HeaderComponent implements OnInit {
         this.signUpForm.patchValue({ user_id: resp });
         const values = this.signUpForm.value;
         this.customerService.addCustomer(values).subscribe((resp: any) => {
-          this.reload();
           this.alert();
         })
-
       })
-
     })
   }
 
@@ -152,16 +147,12 @@ export class HeaderComponent implements OnInit {
         })
 
     }
-    else {
-      console.log('Selected:', selectedValue);
-    }
+    else {` `}
 
   }
 
   reload() {
-    this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/'])
-    })
+    this.router.navigateByUrl('')
   }
 
   alert() {
