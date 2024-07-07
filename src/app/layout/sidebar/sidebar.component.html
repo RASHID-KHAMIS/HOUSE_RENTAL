@@ -4,12 +4,12 @@
         <li class="ts-label">{{role}}</li>
         <li><a routerLink="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
-        <li>
+        <!-- <li>
             <a href="#"><i class="fa fa-cog"></i> Configuration</a>
-            <ul>
+            <ul> -->
                 <li><a routerLink="role"> Role</a></li>
-            </ul>
-        </li>
+            <!-- </ul>
+        </li> -->
         <li><a routerLink="add-house"><i class="fa fa-table"></i>Add House</a></li>
         <li ><a routerLink="house-list"><i class="fa fa-desktop"></i>House Lists</a></li>
         <li ><a routerLink="staff"><i class="fa fa-users"></i>Staff</a></li>
@@ -19,6 +19,18 @@
 
     </ul>
 </nav>
+
+<!-- <nav class="ts-sidebar" >
+    <ul class="ts-sidebar-menu">
+        <li class="ts-label">{{role}}</li>
+        <li>
+            <a href="#"><i class="fa fa-cog"></i> Configuration</a>
+            <ul>
+                <li><a routerLink="role"> Role</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav> -->
 
 <nav class="ts-sidebar" *ngIf="role=='ACCOUNTANT'">
     <ul class="ts-sidebar-menu">
