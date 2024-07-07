@@ -50,6 +50,10 @@ export class BookingComponent implements OnInit{
     return 'data:image/png;base64,' + url
   }
 
+  onLogOut(){
+    
+  }
+
   Selectfile1: File = null!;
   onImageUpload1(event:any) {
     this.Selectfile1 = event.target.files[0];
@@ -71,6 +75,7 @@ export class BookingComponent implements OnInit{
         this.alert()
       })  
     })
+
   }
 
   reload(){
