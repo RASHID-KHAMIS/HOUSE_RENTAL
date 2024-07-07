@@ -40,23 +40,14 @@ export class BookingComponent implements OnInit{
       this.paymentService.getBookingByID(resp[0].house_booking_id).subscribe((resp2:any)=>{
         console.log(resp2);
         this.houses = resp2;
-
-        
       })
       
     })
   }
 
-  fetchByBooking(){
-
-  }
 
    displayImage(url:any){
     return 'data:image/png;base64,' + url
-  }
-
-  onLogOut(){
-    
   }
 
   Selectfile1: File = null!;
@@ -66,7 +57,6 @@ export class BookingComponent implements OnInit{
 
   configureForm(){
     this.paymentForm = new FormGroup({
-
     })
   }
 
@@ -79,12 +69,8 @@ export class BookingComponent implements OnInit{
       this.paymentService.addPayment(customerId,bookingID,form1).subscribe((resp:any)=>{
         this.reload();
         this.alert()
-      })
-
-        
+      })  
     })
- 
-    
   }
 
   reload(){

@@ -112,7 +112,6 @@ export class RoleComponent implements OnInit{
 
   onSave(){
     const values = this.roleForm.value;
-    // console.log(values);
     this.roleService.addRole(values).subscribe((resp:any)=>{
       this.alert();
       this.reload()
