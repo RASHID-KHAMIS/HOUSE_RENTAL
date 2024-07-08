@@ -25,12 +25,22 @@ export class AddHouseComponent implements OnInit{
     {value: 'MJINI MAGHARIBI', viewValue: 'MJINI MAGHARIBI'},
     {value: 'KASKAZINI UNGUJA', viewValue: 'KASKAZINI UNGUJA'},
     {value: 'KUSINI UNGUJA', viewValue: 'KUSINI UNGUJA'},
+    {value: 'KASKAZINI PEMBA', viewValue: 'KASKAZINI PEMBA'},
+    {value: 'KUSINI PEMBA', viewValue: 'KUSINI PEMBA'},
   ];
 
   districts: Y[] = [
     {value: 'MJINI', viewValue: 'MJINI'},
     {value: 'MAGHARIBI A', viewValue: 'MAGHARIBI A'},
     {value: 'MAGHARIBI B', viewValue: 'MAGHARIBI B'},
+    {value: 'KATI', viewValue: 'KATI'},
+    {value: 'KUSINI', viewValue: 'KUSINI'},
+    {value: 'KASKAZINI A', viewValue: 'KASKAZINI A'},
+    {value: 'KASKAZINI B', viewValue: 'KASKAZINI B'},
+    {value: 'MKOANI', viewValue: 'MKOANI'},
+    {value: 'CHAKE-CHAKE', viewValue: 'CHAKE-CHAKE'},
+    {value: 'MICHEWENI', viewValue: 'MICHEWENI'},
+    {value: 'WETE', viewValue: 'WETE'},
   ];
 
   types: Y[] = [
