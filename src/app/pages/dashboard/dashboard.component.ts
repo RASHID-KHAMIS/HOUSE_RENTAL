@@ -76,7 +76,6 @@ export class DashboardComponent implements OnInit{
   houseType(){
     this.reportService.houseType().subscribe((resp:any)=>{
       // console.log(resp);
-      
       this.types  = resp;
       // console.log(this.types[0].houseNo);
     })

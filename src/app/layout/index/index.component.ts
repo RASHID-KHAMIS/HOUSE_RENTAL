@@ -42,6 +42,8 @@ export class IndexComponent implements OnInit {
   fetchHouseByLimits(){
     this.check = true;
     this.houseLocationService.getHouseLocationWithLimit(8).subscribe((resp:any)=>{
+      console.log(resp);
+      
       this.houses = resp;
       this.check = false
     })
