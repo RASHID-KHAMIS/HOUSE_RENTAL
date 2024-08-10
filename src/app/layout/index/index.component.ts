@@ -1,13 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HouseBookingService } from 'src/app/services/house-booking.service';
 import { HouseLocationService } from 'src/app/services/house-location.service';
-import { LoginService } from 'src/app/services/login.service';
 import { PriceService } from 'src/app/services/price.service';
 import { ReportService } from 'src/app/services/report.service';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-index',
@@ -30,9 +28,7 @@ export class IndexComponent implements OnInit {
    this.fetchHouseByLimits();
    this.fetchAllPrice();
    this.fetchDashboardReport();
-
    this.username = sessionStorage.getItem("username");
-
    this.getAllBookedHouses();
 
   }
@@ -42,8 +38,6 @@ export class IndexComponent implements OnInit {
   fetchHouseByLimits(){
     this.check = true;
     this.houseLocationService.getHouseLocationWithLimit(8).subscribe((resp:any)=>{
-      console.log(resp);
-      
       this.houses = resp;
       this.check = false
     })
