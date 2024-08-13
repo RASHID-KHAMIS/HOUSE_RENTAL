@@ -35,10 +35,11 @@ export class BookingComponent implements OnInit{
     this.check =true;
     this.houseBookingService.getBookingByCustomerID(custID).subscribe((resp:any)=>{
       this.bookings = resp;
+      console.log(this.bookings);
+      
       this.check = false;
 
       this.paymentService.getBookingByID(resp[0].house_booking_id).subscribe((resp2:any)=>{
-        console.log(resp2);
         this.houses = resp2;
       })
       

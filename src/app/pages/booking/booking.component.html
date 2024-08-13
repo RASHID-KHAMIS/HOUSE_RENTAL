@@ -50,9 +50,9 @@
                     <h3 class="uppercase underline">My Booikngs </h3>
                     <div class="my_vehicles_list" *ngIf="!check && bookings?.length > 0">
 
-                        <ul class="vehicle_listing" *ngFor="let booking of bookings">
+                        <ul class="vehicle_listing">
 
-                            <li>
+                            <li *ngFor="let booking of bookings">
                                 <h4 style="color:red">Booking No {{booking.bookingNumber}}</h4>
                                 <div class="vehicle_img">
                                     <a>
@@ -71,20 +71,20 @@
                                 </div>
 
                                 <div class="vehicle_status" *ngIf="booking.bookingStatus == 1">
-                                    <a href="#" class="btn outline btn-xs active-btn">Confirmed
+                                    <a class="btn outline btn-xs active-btn">Confirmed
                                     </a>
                                     <div class="clearfix"></div>
                                 </div>
 
                                 <div class="vehicle_status" *ngIf="houses.payment_status == 1">
-                                    <a href="#" class="btn outline btn-xs active-btn">Paid Successfully
+                                    <a class="btn outline btn-xs active-btn">Paid Successfully
                                     </a>
                                     <div class="clearfix"></div>
                                 </div>
 
 
                                 <div class="vehicle_status" *ngIf="booking.bookingStatus == 0">
-                                    <a href="#" class="btn outline btn-xs">Not Confirm yet
+                                    <a class="btn outline btn-xs">Not Confirm yet
                                     </a>
                                     <div class="clearfix"></div>
                                 </div><br>
@@ -101,7 +101,8 @@
 
                                         <div>
                                             <button mat-raised-button color="primary"
-                                                style="margin-top: 5%;margin-right: 12%;" (click)="onSubmit()">Submit</button>
+                                                style="margin-top: 5%;margin-right: 12%;"
+                                                (click)="onSubmit()">Submit</button>
                                         </div>
                                     </div>
 
@@ -119,8 +120,8 @@
                                         <th>Total Days</th>
                                         <th>Status</th>
                                     </tr>
-                                    <tr>
-                                        <td>{{booking.house.title}}</td>
+                                    <tr *ngFor="let booking of bookings">
+                                        <td>{{booking.bookingNumber}}</td>
                                         <td>{{booking.startDate}}</td>
                                         <td> {{booking.endDate}}</td>
                                         <td>{{booking.totalPrice | number}}</td>
@@ -135,7 +136,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr *ngFor="let booking of bookings">
                                         <th colspan="4" style="text-align:center;"> Grand Total</th>
                                         <th>{{booking.totalPrice | number}}</th>
                                     </tr>
@@ -160,4 +161,3 @@
 </section>
 <!--/my-vehicles-->
 <app-footer></app-footer>
-<!-- <?php include('includes/footer.php');?> -->
