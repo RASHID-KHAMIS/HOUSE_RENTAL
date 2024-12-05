@@ -1,0 +1,173 @@
+<!--Header-->
+
+<header>
+    <app-header></app-header>
+</header>
+<!-- /Header -->
+
+
+<section id="listing_img_slider">
+    <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+        <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+        <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+        <div><img [src]="imageSource1"
+            class="img-responsive" alt="image" width="900" height="560">
+        </div>
+
+</section>
+<!--/Listing-Image-Slider-->
+
+
+<!--Listing-detail-->
+<section class="listing-detail" >
+    <div class="container">
+        <div class="listing_detail_head row">
+            <div class="col-md-9">
+                <h2 *ngIf="houses">{{houses.house_id.title}}</h2>
+            </div>
+            <div class="col-md-3">
+                <div class="price_info" >
+                    <span *ngFor="let price of priceInfo">
+                        <span *ngIf="price.house.house_id == houses.house_id.house_id">
+                            <p >{{price.renting_price}} /=</p>Per Day
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="main_features">
+                    <ul>
+
+                        <li> <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <h5 *ngIf="houses">{{houses.house_id.bedrooms}}</h5>
+                            <p>Rooms</p>
+                        </li>
+                        <li> <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <h5 *ngIf="houses">{{houses.house_id.type}}</h5>
+                            <p>House Type</p>
+                        </li>
+
+                        <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            <h5 *ngIf="houses">{{houses.house_id.bathrooms}}</h5>
+                            <p>Bathrooms</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listing_more_info">
+                    <div class="listing_detail_wrap">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs gray-bg" role="tablist">
+                            <li role="presentation" class="active"><a href="#vehicle-overview "
+                                    aria-controls="vehicle-overview" role="tab" data-toggle="tab">House Overview </a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- vehicle-overview -->
+                            <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
+
+                                <p *ngIf="houses">{{houses.house_id.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!--Side-Bar-->
+            <aside class="col-md-3">
+
+                <div class="share_vehicle">
+                    <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="#"><i
+                                class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i
+                                class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a href="#"><i
+                                class="fa fa-google-plus-square" aria-hidden="true"></i></a> </p>
+                </div>
+                <div class="sidebar_widget">
+                    <div class="widget_heading">
+                        <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
+                    </div>
+                    <form [formGroup]="bookForm">
+                        <div class="form-group">
+                            <label>From Date:</label>
+                            <input type="date" class="form-control"  placeholder="From Date" required formControlName="startDate" >
+                        </div>
+                        <div class="form-group">
+                            <label>To Date:</label>
+                            <input type="date" class="form-control"  placeholder="To Date" required formControlName="endDate">
+                        </div>
+                        <div class="form-group">
+                            <textarea formControlName="bookingDescription" rows="4" class="form-control"  placeholder="Message"
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn"  value="Book Now" (click)="onSubmit()">
+                        </div>
+
+                        <!-- <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login
+                            For Book</a> -->
+
+                    </form>
+                </div>
+            </aside>
+            <!--/Side-Bar-->
+        </div>
+
+        <div class="space-20"></div>
+        <div class="divider"></div>
+
+        <!--Similar-Cars-->
+        <div class="similar_cars">
+            <h3>Similar House</h3>
+            <div class="row">
+
+                <div class="col-md-3 grid_listing" *ngFor="let location of houseLocation">
+                    <div class="product-listing-m gray-bg">
+                        <div class="product-listing-img"> <a href="">
+                            <img src="{{displayImage(location.imageUrl)}}" class="img-responsive" alt="image" /> </a>
+                        </div>
+                        <div class="product-listing-content">
+                            <h5><a href="">{{location.house_id.title}}</a></h5>
+                            <p class="list-price">
+                                <span *ngFor="let price of priceInfo">
+                                    <span *ngIf="price.house.house_id == location.house_id.house_id">
+                                        <p >{{price.renting_price}} /=</p>
+                                    </span>
+                                </span>
+                            </p>
+
+                            <ul class="features_list">
+
+                                <li><i class="fa fa-user" aria-hidden="true"></i>{{location.house_id.type}}</li>
+                                <li><i class="fa fa-calendar" aria-hidden="true"></i>{{location.house_id.address}}</li>
+                                <li><i class="fa fa-home" aria-hidden="true"></i>{{location.house_id.color}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Similar-Cars-->
+
+    </div>
+</section>
+<!--/Listing-detail-->
+
+<!--Footer -->
+<app-footer></app-footer>
+<!-- /Footer-->
+
+<!--Back to top-->
+<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<!--/Back to top-->

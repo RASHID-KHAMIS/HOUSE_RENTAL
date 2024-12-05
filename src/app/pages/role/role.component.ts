@@ -1,54 +1,14 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RoleService } from 'src/app/services/role.service';
+import Swal from 'sweetalert2';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-
-/**
- * @title Data table with sorting, pagination, and filtering.
- */
 @Component({
   selector: 'app-role',
   templateUrl: './role.component.html',
@@ -56,30 +16,29 @@ const NAMES: string[] = [
 })
 export class RoleComponent implements OnInit{
   @ViewChild('distributionDialog') distributionDialog!: TemplateRef<any>;
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource!: MatTableDataSource<UserData>;
+  @ViewChild('distributionDialog2') distributionDialog2!: TemplateRef<any>;
+  displayedColumns: string[] = ['id', 'name', 'status', 'action'];
+  dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  roleForm!:FormGroup;
+  roleEditForm!:FormGroup;
   constructor(private router:Router,
     private route:ActivatedRoute,
-    private dialog:MatDialog
-  ){
-      // Create 100 users
-      const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-      // Assign the data to the data source for the table to render
-      this.dataSource = new MatTableDataSource(users);
-  }
-
+    private dialog:MatDialog,
+    private roleService:RoleService
+  ){}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
-
+    this.configureForm();
+    this.fetchAllRole();
+    this.configureEditForm();
   }
 
   applyFilter(event: Event) {
@@ -91,9 +50,17 @@ export class RoleComponent implements OnInit{
     }
   }
 
+  fetchAllRole(){
+    this.roleService.getAllRoles().subscribe((resp:any)=>{
+      this.dataSource = new MatTableDataSource(resp);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
+  }
+
   openDialog() {
     let dialogRef = this.dialog.open(this.distributionDialog, {
-      width: '750px',
+      width: '550px',
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -106,20 +73,103 @@ export class RoleComponent implements OnInit{
     })
   }
 
+  openDialog2(row:any) {
+    this.roleEditForm = new FormGroup({
+      roleId: new FormControl(row.roleId),
+      roleName: new FormControl(row.roleName),
+     roleStatus: new FormControl(row.roleStatus),
+    })
+    let dialogRef = this.dialog.open(this.distributionDialog2, {
+      width: '550px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        if (result !== 'no') {
+          const enabled = "Y"
+
+        } else if (result === 'no') {
+        }
+      }
+    })
+  }
+
+
+  configureForm(){
+    this.roleForm = new FormGroup({
+      roleName: new FormControl(null,Validators.required),
+     roleStatus: new FormControl(1),
+    })
+  }
+
+  configureEditForm(){
+    this.roleEditForm = new FormGroup({
+      roleId: new FormControl(null),
+      roleName: new FormControl(null,Validators.required),
+     roleStatus: new FormControl(1),
+    })
+  }
+
+
+  onSave(){
+    const values = this.roleForm.value;
+    this.roleService.addRole(values).subscribe((resp:any)=>{
+      this.alert();
+      this.reload()
+    })
+    
+  }
+
+  onEdit(){
+    const id = this.roleEditForm.value.roleId;
+    const  values = this.roleEditForm.value;
+
+    this.roleService.editRole(id,values).subscribe((resp:any)=>{
+      this.alert2();
+      this.reload()
+    })
+  }
+
+  reload(){
+    this.router.navigateByUrl('',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['admin/role'])
+    })
+  }
+
+  alert(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Role Added successfully"
+    });
+  }
+
+  alert2(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Role Edited successfully"
+    });
+  }
+
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-}

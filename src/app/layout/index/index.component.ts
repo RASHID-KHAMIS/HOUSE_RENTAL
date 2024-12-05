@@ -1,37 +1,92 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HouseBookingService } from 'src/app/services/house-booking.service';
+import { HouseLocationService } from 'src/app/services/house-location.service';
+import { LoginService } from 'src/app/services/login.service';
+import { PriceService } from 'src/app/services/price.service';
+import { ReportService } from 'src/app/services/report.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent implements OnInit{
+export class IndexComponent implements OnInit {
 
-  loginForm!:FormGroup;
-  constructor(private router:Router,
-    private route:ActivatedRoute
-  ){}
+ 
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private houseLocationService:HouseLocationService,
+    private priceService:PriceService,
+    private reportService:ReportService,
+    private house_booking_services: HouseBookingService,
+  ) { }
+
+  username:any;
   ngOnInit(): void {
-    this.configureLogin();
-   
+   this.fetchHouseByLimits();
+   this.fetchAllPrice();
+   this.fetchDashboardReport();
+
+   this.username = sessionStorage.getItem("username");
+
+   this.getAllBookedHouses();
+
   }
 
-  configureLogin(){
-    this.loginForm = new FormGroup({
-      username:new FormControl(null, Validators.required),
-      password:new FormControl(null, Validators.required),
+  check:boolean = false;
+  houses:any;
+  fetchHouseByLimits(){
+    this.check = true;
+    this.houseLocationService.getHouseLocationWithLimit(8).subscribe((resp:any)=>{
+      this.houses = resp;
+      this.check = false
     })
   }
 
-  onLogin(){
-    const values = this.loginForm.value;
-    // console.log(values);
-    this.router.navigateByUrl('/admin').then(()=>{
+
+  displayImage(url:any){
+    return 'data:image/png;base64,' + url
+  }
+
+  prices:any;
+  fetchAllPrice(){
+    this.priceService.getAllPrice().subscribe((resp:any)=>{
+      this.prices = resp;
+    })
+  }
+
+
+  dashboard:any;
+  fetchDashboardReport(){
+    this.reportService.dashboardReport().subscribe((resp:any)=>{
+      this.dashboard = resp;
+      
+    })
+  }
+
+  check_data_exist: boolean = false;
+  house_booking_data: any;
+  getAllBookedHouses(){
+    this.house_booking_services.getBookedHouse().subscribe((resp:any)=>{
+      this.house_booking_data = resp;
+      if(resp.length > 0){
+        this.check_data_exist = false;
+      }else{
+        this.check_data_exist = true;
+      }
+    });
+  }
+
+  onHouse(house:any){
+    this.router.navigate(['/house-details'],{queryParams:{id:house.location_id}}).then(()=>{
       location.reload();
-    })
-
+    }) 
   }
+
+ 
 
 }
