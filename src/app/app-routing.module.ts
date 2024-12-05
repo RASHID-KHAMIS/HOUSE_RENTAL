@@ -7,6 +7,18 @@ import { ContactUsComponent } from './layout/contact-us/contact-us.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 import { RoleComponent } from './pages/role/role.component';
+import { AddHouseComponent } from './pages/add-house/add-house.component';
+import { HouseListsComponent } from './pages/house-lists/house-lists.component';
+import { ViewHouseComponent } from './pages/view-house/view-house.component';
+import { CustomerComponent } from './pages/customer/customer.component';
+import { HouseDetailsComponent } from './layout/house-details/house-details.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { StaffComponent } from './pages/staff/staff.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
+import { AllBookingComponent } from './pages/all-booking/all-booking.component';
+import { ViewBookingComponent } from './pages/view-booking/view-booking.component';
+import { ViewPaymentComponent } from './pages/view-payment/view-payment.component';
 
 const routes: Routes = [
 {
@@ -26,6 +38,14 @@ const routes: Routes = [
   component:ContactUsComponent
 },
 {
+  path:'house-details',
+  component:HouseDetailsComponent
+},
+{
+  path:'booking',
+  component:BookingComponent
+},
+{
   path:'admin',
   component:AdminDashboardComponent,
   children:[
@@ -37,6 +57,48 @@ const routes: Routes = [
       path:'role',
       component:RoleComponent
     },
+    {
+      path:'add-house',
+      component:AddHouseComponent
+    },
+    {
+      path:'house-list',
+      component:HouseListsComponent
+    },
+    {
+      path:'view-house',
+      component:ViewHouseComponent
+    },
+    {
+      path:'customer',
+      component:CustomerComponent
+    },
+    {
+      path:'staff',
+      component:StaffComponent
+    },
+    {
+      path:'user-management',
+      component:UserManagementComponent
+    },
+    {
+      path:'payments',
+      component:PaymentsComponent
+    },
+    {
+      path:'all-booking',
+      component:AllBookingComponent
+    },
+    {
+      path:'view-booking',
+      component:ViewBookingComponent
+    },
+    {
+      path:'view-payment',
+      component:ViewPaymentComponent
+    },
+    
+    
 ]
 },
 ];

@@ -30,6 +30,20 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { CardComponent } from './layout/card/card.component';
 import {MatCardModule} from '@angular/material/card';
+import { AddHouseComponent } from './pages/add-house/add-house.component';
+import { HouseListsComponent } from './pages/house-lists/house-lists.component';
+import { ViewHouseComponent } from './pages/view-house/view-house.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { CustomerComponent } from './pages/customer/customer.component';
+import { HouseDetailsComponent } from './layout/house-details/house-details.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { StaffComponent } from './pages/staff/staff.component';
+import { UserManagementComponent } from './pages/user-management/user-management.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
+import { AllBookingComponent } from './pages/all-booking/all-booking.component';
+import { ViewBookingComponent } from './pages/view-booking/view-booking.component';
+import { ViewPaymentComponent } from './pages/view-payment/view-payment.component';
 
 
 @NgModule({
@@ -44,7 +58,21 @@ import {MatCardModule} from '@angular/material/card';
     AdminDashboardComponent,
     NavbarComponent,
     SidebarComponent,
-    CardComponent
+    CardComponent,
+    AddHouseComponent,
+    HouseListsComponent,
+    ViewHouseComponent,
+    HeaderComponent,
+    CustomerComponent,
+    HouseDetailsComponent,
+    FooterComponent,
+    BookingComponent,
+    StaffComponent,
+    UserManagementComponent,
+    PaymentsComponent,
+    AllBookingComponent,
+    ViewBookingComponent,
+    ViewPaymentComponent
   ],
   imports: [
     BrowserModule,

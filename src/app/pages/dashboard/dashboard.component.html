@@ -10,21 +10,21 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-primary text-light">
                                             <div class="stat-panel text-center">
                                                 <div class="stat-panel-number h1 ">
-                                           16
+                                           {{reports.all_houses}}
                                                 </div>
                                                 <div class="stat-panel-title text-uppercase">Number of House</div>
                                             </div>
                                         </div>
-                                        <a href="reg-users.php" class="block-anchor panel-footer">Full Detail <i
+                                        <a routerLink="house-list" class="block-anchor panel-footer">Full Detail <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <!-- <div class="col-md-3">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-success text-light">
                                             <div class="stat-panel text-center">
@@ -38,33 +38,18 @@
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
+                                </div> -->
+                                <div class="col-md-3" *ngFor="let d of types">
                                     <div class="panel panel-default">
                                         <div class="panel-body bk-info text-light">
                                             <div class="stat-panel text-center">
                                                 <div class="stat-panel-number h1 ">
-                                                5
+                                                {{d.houseNo}}
                                                 </div>
-                                                <div class="stat-panel-title text-uppercase">Ghorofa</div>
+                                                <div class="stat-panel-title text-uppercase">{{d.type}}</div>
                                             </div>
                                         </div>
-                                        <a href="manage-bookings.php"
-                                            class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
-                                                class="fa fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body bk-warning text-light">
-                                            <div class="stat-panel text-center">                    
-                                                <div class="stat-panel-number h1 ">
-                                                    3
-                                                </div>
-                                                <div class="stat-panel-title text-uppercase">Za Kawaida</div>
-                                            </div>
-                                        </div>
-                                        <a href="manage-brands.php"
+                                        <a routerLink="house-list"
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
@@ -74,9 +59,6 @@
                     </div>
                 </div>
             </div>
-
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
@@ -87,12 +69,12 @@
                                         <div class="panel-body bk-primary text-light">
                                             <div class="stat-panel text-center">      
                                                   <div class="stat-panel-number h1 ">
-                                                40
+                                               {{reports.customers}}
                                                 </div>
                                                 <div class="stat-panel-title text-uppercase">Customers</div>
                                             </div>
                                         </div>
-                                        <a href="manage-subscribers.php" class="block-anchor panel-footer">Full
+                                        <a routerLink="customer" class="block-anchor panel-footer">Full
                                             Detail <i class="fa fa-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -101,12 +83,12 @@
                                         <div class="panel-body bk-success text-light">
                                             <div class="stat-panel text-center">
                                                 <div class="stat-panel-number h1 ">
-                                                 5
+                                                {{staffs}}
                                                 </div>
                                                 <div class="stat-panel-title text-uppercase">Users</div>
                                             </div>
                                         </div>
-                                        <a href="manage-conactusquery.php"
+                                        <a routerLink="user-management"
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
@@ -116,12 +98,12 @@
                                         <div class="panel-body bk-info text-light">
                                             <div class="stat-panel text-center">
                                                 <div class="stat-panel-number h1 ">
-                                                 6
+                                                {{reports.zilizokodishwa}}
                                                 </div>
-                                                <div class="stat-panel-title text-uppercase">Priced House</div>
+                                                <div class="stat-panel-title text-uppercase">Rented House</div>
                                             </div>
                                         </div>
-                                        <a href="testimonials.php"
+                                        <a routerLink="house-list"
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
@@ -132,12 +114,12 @@
                                         <div class="panel-body bk-warning text-light">
                                             <div class="stat-panel text-center">                    
                                                 <div class="stat-panel-number h1 ">
-                                                    3
+                                                   {{reports.hazijakodishwa}}
                                                 </div>
-                                                <div class="stat-panel-title text-uppercase">NOn Priced House</div>
+                                                <div class="stat-panel-title text-uppercase">Free House</div>
                                             </div>
                                         </div>
-                                        <a href="manage-brands.php"
+                                        <a routerLink="house-list"
                                             class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                 class="fa fa-arrow-right"></i></a>
                                     </div>
@@ -150,4 +132,27 @@
             </div>
 
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                         
+                            <div class="panel-body">
+
+                                <div class="card-body" style="padding: 0;">
+                                    <div id="map" style="height: 70vh; width: 100%;"></div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+           
+                </div>
+
+            </div>
+        </div>
+
+    
     </div>

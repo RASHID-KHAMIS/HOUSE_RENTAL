@@ -1,0 +1,154 @@
+<div class="ts-main-content">
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2 class="page-title">HOUSE</h2>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Add House</div>
+                                <div class="panel-body">
+
+                                    <app-card>
+                                        <form [formGroup]="houseForm">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>House Title</mat-label>
+                                                        <input matInput placeholder="Title" formControlName="title">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Type</mat-label>
+                                                        <mat-select formControlName="type">
+                                                            <mat-option *ngFor="let type of types" [value]="type.value">{{type.viewValue}}</mat-option>
+                                                        </mat-select>
+                                                      </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Size</mat-label>
+                                                        <input type="number" matInput placeholder="size in cm square" formControlName="size">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Bedrooms</mat-label>
+                                                        <input type="number" matInput placeholder="Bedrooms in cm square"  formControlName="bedrooms">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Bathrooms</mat-label>
+                                                        <input type="number" matInput placeholder="bathrooms in cm square" formControlName="bathrooms">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Address</mat-label>
+                                                        <input matInput placeholder="address" formControlName="address">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Latitude</mat-label>
+                                                        <input type="number" matInput placeholder="latitude" formControlName="latitude">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Longitude</mat-label>
+                                                        <input type="number" matInput placeholder="longitude" formControlName="longitude">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+    
+    
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Color</mat-label>
+                                                        <input matInput placeholder="color" formControlName="color">
+                                                    </mat-form-field>
+                                                </div>
+                                        
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Renting Price</mat-label>
+                                                        <input matInput placeholder="renting_price" formControlName="renting_price">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Region</mat-label>
+                                                        <mat-select formControlName="region">
+                                                            <mat-option *ngFor="let region of regions" [value]="region.value">{{region.viewValue}}</mat-option>
+                                                        </mat-select>
+                                                      </mat-form-field>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>District</mat-label>
+                                                        <mat-select formControlName="district">
+                                                            <mat-option *ngFor="let district of districts" [value]="district.value">{{district.viewValue}}</mat-option>
+                                                        </mat-select>
+                                                      </mat-form-field>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>House Description</mat-label>
+                                                        <textarea matInput placeholder="Ex. How it look like..." formControlName="description"></textarea>
+                                                      </mat-form-field>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <mat-form-field style="width: 100%;" appearance="outline">
+                                                        <mat-label>Other Details</mat-label>
+                                                        <textarea matInput placeholder="Ex. How it look like..." formControlName="otherDetails"></textarea>
+                                                      </mat-form-field>
+                                                </div>
+
+                                             
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label >House Picture</label>     
+                                                        <input type="file" (change)="onImageUpload1($event)" class="form-control" placeholder="imageFile" >
+                                                </div> 
+                                            </div>
+
+                                           
+                                        </form><br><br><br>
+                                        <div class="card-bottom">
+                                            <button mat-raised-button color="primary" (click)="onSave()">Add</button>
+                                        </div>
+                                
+                                    </app-card>
+
+                                </div>
+                            </div>
+                        </div>
+
+               
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

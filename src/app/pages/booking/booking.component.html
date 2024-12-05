@@ -1,0 +1,163 @@
+<!--Header-->
+
+<header>
+    <app-header></app-header>
+</header>
+<!-- /Header -->
+
+<section class="page-header profile_page">
+    <div class="container">
+        <div class="page-header_wrap">
+            <div class="page-heading">
+                <h1>My Booking</h1>
+            </div>
+            <ul class="coustom-breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li>My Booking</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Dark Overlay-->
+    <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header-->
+
+
+<section class="user_profile inner_pages">
+    <div class="container">
+        <div class="user_profile_info gray-bg padding_4x4_40">
+            <div class="upload_user_logo"> <img src="../../../assets/images/logo666.png" alt="image">
+            </div>
+
+            <div class="dealer_info">
+                <h1>HOUSE RENT SYSTEM</h1>
+                <p>Zanzibar<br>
+                    Tanzania</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <div class="profile_nav">
+                    <ul>
+                        <li><a href="my-booking.php">My Booking</a></li>
+                        <li><a (click)="onLogOut()">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-sm-8">
+                <div class="profile_wrap">
+                    <h3 class="uppercase underline">My Booikngs </h3>
+                    <div class="my_vehicles_list" *ngIf="!check && bookings?.length > 0">
+
+                        <ul class="vehicle_listing">
+
+                            <li *ngFor="let booking of bookings">
+                                <h4 style="color:red">Booking No {{booking.bookingNumber}}</h4>
+                                <div class="vehicle_img">
+                                    <a>
+                                        <img src="{{displayImage(booking.imageUrl)}}" class="img-responsive"
+                                            alt="image">
+                                    </a>
+
+                                </div>
+                                <div class="vehicle_title">
+
+                                    <h3><a> {{booking.house.title}} , {{booking.house.type}}</a></h3>
+                                    <p><b>From </b> {{booking.startDate}} <b>To </b>{{booking.endDate}}</p>
+                                    <div style="float: left">
+                                        <p><b>Message:</b> {{booking.bookingDescription}} </p>
+                                    </div>
+                                </div>
+
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 1">
+                                    <a class="btn outline btn-xs active-btn">Confirmed
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="vehicle_status" *ngIf="houses.payment_status == 1">
+                                    <a class="btn outline btn-xs active-btn">Paid Successfully
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+
+
+                                <div class="vehicle_status" *ngIf="booking.bookingStatus == 0">
+                                    <a class="btn outline btn-xs">Not Confirm yet
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div><br>
+
+                                <div class="vehicle_status">
+                                    <div class="row">
+                                        <form [formGroup]="paymentForm">
+                                            <div class="col-md-12">
+                                                <label>Upload Receipt</label>
+                                                <input type="file" (change)="onImageUpload1($event)"
+                                                    class="form-control" placeholder="imageFile">
+                                            </div>
+                                        </form>
+
+                                        <div>
+                                            <button mat-raised-button color="primary"
+                                                style="margin-top: 5%;margin-right: 12%;"
+                                                (click)="onSubmit()">Submit</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </li>
+
+                            <h5 style="color:blue">Invoice</h5>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>House Name</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Total Days</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <tr *ngFor="let booking of bookings">
+                                        <td>{{booking.bookingNumber}}</td>
+                                        <td>{{booking.startDate}}</td>
+                                        <td> {{booking.endDate}}</td>
+                                        <td>{{booking.totalPrice | number}}</td>
+                                        <td>
+                                            <span *ngIf="booking.bookingStatus == 0">
+                                                <span style="color: red;">Not Confirmed</span>
+                                            </span>
+
+                                            <span *ngIf="booking.bookingStatus == 1">
+                                                <span class="badge badge-danger" style="color:green;">Booking
+                                                    Confirmed</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let booking of bookings">
+                                        <th colspan="4" style="text-align:center;"> Grand Total</th>
+                                        <th>{{booking.totalPrice | number}}</th>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <hr />
+
+
+
+                        </ul>
+                    </div>
+                    <div *ngIf="!check && (!bookings || bookings.length === 0)">
+                        <h1 align="center" style="color:red">No booking yet</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--/my-vehicles-->
+<app-footer></app-footer>
